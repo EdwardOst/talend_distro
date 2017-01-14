@@ -19,9 +19,9 @@ password=$2
 #    "${userid}" \
 #    "${password}"
 
-#download_list "manifest.txt" \
-#   "./downloads" \
-#    "${userid}" \
-#    "${password}"
+download_list "talend-6.2.1.cfg" \
+   "/home/ec2-user/eost/talend-distro/6.3.1" \
+    "${userid}" \
+    "${password}"
 
 checksum downloads
