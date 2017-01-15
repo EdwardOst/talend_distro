@@ -6,16 +6,26 @@ source parse-url.sh
 function talend_packager() {
 
 
-# default configuration
+# default top level parameters
+# TODO: allow this to be loaded from a file specified as an option
+# TODO: allow environment defaults
 
     local manifest_file="job_manifest.cfg"
     local group_path="com/talend"
     local app_name="myapp"
     local version="0.1.0-SNAPSHOT"
 
+# default nexus source configuration
+# TODO: allow this to be loaded from a file specified as an option
+# TODO: allow environment defaults
+
     local nexus_userid="tadmin"
     local nexus_password="tadmin"
     local target_dir=~/talend_job
+
+# default nexus target configuration
+# TODO: allow this to be loaded from a file specified as an option
+# TODO: allow environment defaults
 
     local nexus_target_protocol="http"
     local nexus_target_host="192.168.99.1"
@@ -25,13 +35,7 @@ function talend_packager() {
     local nexus_target_userid="tadmin"
     local nexus_target_password="tadmin"
 
-
-#    local nexus_host
-
-#    local nexus_port
-#    local nexus_repo_path
-
-#    local nexus_job_path
+# internal instance variables
 
     local job_extension
     local job_filename
@@ -65,7 +69,7 @@ function parse_args() {
 
     local OPTIND=1
     while getopts ":hm:g:a:v:" opt; do
-        case $opt in
+        case "$opt" in
             h)
                 help
                 exit 0
@@ -89,34 +93,6 @@ function parse_args() {
         esac
     done
 }
-
-
-#function parse_zip_url() {
-#
-#    shopt extglob
-#    shopt -s extglob
-#
-#    local _nexus_url="${1}"
-#
-#    nexus_host="${_nexus_url#*://}"
-#    nexus_host="${nexus_host%%:*}"
-#
-#    nexus_port="${_nexus_url#http://*:}"
-#    nexus_port="${nexus_port%%/*}"
-#
-#    nexus_repo_path="${_nexus_url%%content/*}content/"
-#    nexus_repo_path="${nexus_repo_path##http://+([0-9])\.+([0-9])\.+([0-9])\.+([0-9])\:+([0-9])/}"
-#
-#    nexus_job_path="${_nexus_url#*content/}"
-#    nexus_job_path="${nexus_job_path%/*}"
-#
-#    job_extension="${_nexus_url##*.}"
-#    job_filename="${_nexus_url##*/}"
-#    job_file_root="${job_filename%.*}"
-#    job_root="${job_file_root/%-+([0-9])\.+([0-9])\.+([0-9])*}"
-#    shopt -u extglob
-#    shopt extglob
-#}
 
 
 function parse_zip_url() {
@@ -148,56 +124,60 @@ function parse_zip_url() {
 
 function download_zip() {
     local _nexus_url="${1}"
-    wget --http-user=${nexus_userid} --http-password=${nexus_password} ${_nexus_url}
+    wget --http-user="${nexus_userid}" --http-password="${nexus_password}" --directory-prefix="${target_dir}" "${_nexus_url}" 
 }
 
 
 function process_zip() {
     mkdir -p "${target_dir}/${job_file_root}"
-    unzip -d ${target_dir}/${job_file_root} ${job_filename}
+    unzip -d "${target_dir}/${job_file_root}" "${target_dir}/${job_filename}"
 
     # rename jobInfo.properties
-    mv ${target_dir}/${job_file_root}/jobInfo.properties ${target_dir}/${job_file_root}/jobInfo_${job_root}.properties
+    mv "${target_dir}/${job_file_root}/jobInfo.properties" "${target_dir}/${job_file_root}/jobInfo_${job_root}.properties"
     # collisions are most likely with the routines.jar which has a common name but potentially different content
-    mv ${target_dir}/${job_file_root}/lib/routines.jar ${target_dir}/${job_file_root}/lib/routines_${job_root}.jar
+    mv "${target_dir}/${job_file_root}/lib/routines.jar" "${target_dir}/${job_file_root}/lib/routines_${job_root}.jar"
     # sed command to tweak shell script to use routines_${job_root}.jar
-    sed -i "s/routines\.jar/routines_${job_root}\.jar/g" ${target_dir}/${job_file_root}/${job_root}/${job_root}_run.sh
+    sed -i "s/routines\.jar/routines_${job_root}\.jar/g" "${target_dir}/${job_file_root}/${job_root}/${job_root}_run.sh"
 }
 
 
 function merge_zip() {
-    rsync -aibvh --stats ${target_dir}/${job_file_root}/ ${target_dir}/target/
+    rsync -aibvh --stats "${target_dir}/${job_file_root}/" "${target_dir}/target/"
 }
 
+
+function process_job_entry() {
+    local _current_url="${1}"
+
+    parse_zip_url "${_current_url}"
+    download_zip "${_current_url}"
+    process_zip
+    merge_zip
+}
 
 function process_manifest() {
     local _inputfile="${1}"
     local _app_name="${2}"
     local _current_url
-    while read _current_url; do
-        parse_zip_url "${_current_url}"
-        download_zip "${_current_url}"
-        process_zip
-        merge_zip
-    done < ${_inputfile}
-    mv ${target_dir}/target ${target_dir}/${_app_name}
-    tar -C ${target_dir} -zcvf ${_app_name}.tgz ${_app_name}
+
+    forline "${_inputfile}" process_job_entry
+
+    mv "${target_dir}/target" "${target_dir}/${_app_name}"
+    tar -C "${target_dir}" -zcvf "${_app_name}.tgz" "${_app_name}"
 }
 
 
 function publish_app() {
     local _nexus_target_base="${nexus_target_protocol}://${nexus_target_host}:${nexus_target_port}/${nexus_target_repo}/${group_path}/${version}"
     local _nexus_target_url="${_nexus_target_base}/${app_name}-${version}.tgz"
-    curl -v -u ${nexus_target_userid}:${nexus_target_password} \
-        --upload-file ${app_name}.tgz \
-        ${_nexus_target_url}
+    curl -v -u "${nexus_target_userid}:${nexus_target_password}" \
+        --upload-file "${app_name}.tgz" \
+        "${_nexus_target_url}"
 }
 
-echo "**** executing talend_packater ****"
+parse_args "$@"
 
-parse_args $@
-
-process_manifest ${manifest_file} ${app_name}
+process_manifest "${manifest_file}" "${app_name}"
 
 publish_app
 

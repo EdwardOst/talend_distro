@@ -74,6 +74,7 @@ function forline() {
     local _line
 
     while IFS='' read -r _line || [[ -n "${_line}" ]]; do
+        debugLog "PROCESSING LINE: ${_operation} ${_line} ${@}"
         ${_operation} "${_line}" "${@}"
     done < "${_file}"
 }
