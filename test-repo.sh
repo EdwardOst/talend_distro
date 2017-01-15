@@ -20,7 +20,7 @@ password=$2
 #    "${password}"
 
 download_list "talend-6.2.1.cfg" \
-   "/home/ec2-user/eost/talend-distro/6.3.1" \
+   "/home/ec2-user/eost/talend-distro/6.2.1" \
     "${userid}" \
     "${password}"
 
