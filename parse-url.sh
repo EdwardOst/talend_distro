@@ -4,8 +4,6 @@ export PARSE_URL_FLAG=1
 
 source util.sh
 
-echo "*** starting parse_url ******"
-
 
 function parse_url() {
 
@@ -18,6 +16,7 @@ function parse_url() {
     local _host="${_url#*://}"
     local _port="${_host#*:}"
     local _path="${_host#*/}"
+    local _file="${_path##*/}"
     if [ "${_port}" == "${_host}" ]; then
         _host="${_host%%/*}"
         _port="80"
@@ -31,6 +30,7 @@ function parse_url() {
     _parsed_url[host]="${_host}"
     _parsed_url[port]="${_port}"
     _parsed_url[path]="${_path}"
+    _parsed_url[file]="${_file}"
 }
 
 
