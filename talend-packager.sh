@@ -15,23 +15,23 @@ function talend_packager() {
 
 # TODO: allow this to be loaded from a file specified as an option
 
-# default top level parameters
+  # default top level parameters
     local _manifest_file="${TALEND_PACKAGER_JOB_MANIFEST:-job_manifest.cfg}"
+    local _working_dir="${TALEND_PACKAGER_WORKING_DIR:-$(pwd)}"
+
+  # default nexus source configuration
+    local _nexus_userid="${TALEND_PACKAGER_NEXUS_USERID:-tadmin}"
+    local _nexus_password="${TALEND_PACKAGER_NEXUS_PASSWORD:-tadmin}"
+
+  # default nexus target configuration
+    local _nexus_target_repo="${TALEND_PACKAGER_NEXUS_TARGET_REPO:-http://192.168.99.1:8081/nexus/service/local/repositories/snapshots/content}"
+    local _nexus_target_userid="${TALEND_PACKAGER_NEXUS_TARGET_USERID:-tadmin}"
+    local _nexus_target_password="${TALEND_PACKAGER_NEXUS_TARGET_PASSWORD:-tadmin}"
     local _group_path="${TALEND_PACKAGER_GROUP_PATH:-com/talend}"
     local _app_name="${TALEND_PACKAGER_APP_NAME:-myapp}"
     local _version="${TALEND_PACKAGER_VERSION:-0.1.0-SNAPSHOT}"
 
-# default nexus source configuration
-    local _nexus_userid="${TALEND_PACKAGER_NEXUS_USERID:-tadmin}"
-    local _nexus_password="${TALEND_PACKAGER_NEXUS_PASSWORD:-tadmin}"
-    local _workig_dir="${TALEND_PACKAGER_WORKING_DIR:-$(pwd)}"
-
-# default nexus target configuration
-    local _nexus_target_repo="${TALEND_PACKAGER_NEXUS_TARGET_REPO:-http://192.168.99.1:8081/nexus/service/local/repositories/snapshots/content}"
-    local _nexus_target_userid="${TALEND_PACKAGER_NEXUS_TARGET_USERID:-tadmin}"
-    local _nexus_target_password="${TALEND_PACKAGER_NEXUS_TARGET_PASSWORD:-tadmin}"
-
-# internal instance variables
+  # internal instance variables
     local _job_filename
     local _job_file_root
 
@@ -64,7 +64,7 @@ EOF
 function parse_args() {
 
     local OPTIND=1
-    while getopts ":hm:g:a:v:w:s:t:" opt; do
+    while getopts ":hm:g:a:v:s:t:w:" opt; do
         case "$opt" in
             h)
                 help
@@ -82,9 +82,6 @@ function parse_args() {
             v)
                 _version="${OPTARG}"
                 ;;
-            w)
-                _working_dir="${OPTARG}"
-                ;;
             s)
                 local source_credential="${OPTARG}"
                 _nexus_userid="${source_credential%:*}"
@@ -94,6 +91,9 @@ function parse_args() {
                 local target_credential="${OPTARG}"
                 _nexus_target_userid="${target_credential%:*}"
                 _nexus_target_password="${target_credential#*:}"
+                ;;
+            w)
+                _working_dir="${OPTARG}"
                 ;;
             ?)
                 help >&2
@@ -128,13 +128,13 @@ function parse_zip_url() {
 
 function download_zip() {
     local _nexus_url="${1}"
-    wget --http-user="${_nexus_userid}" --http-password="${_nexus_password}" --directory-prefix="${_workig_dir}" "${_nexus_url}" 
+    wget --http-user="${_nexus_userid}" --http-password="${_nexus_password}" --directory-prefix="${_working_dir}" "${_nexus_url}" 
 }
 
 
 function process_zip() {
-    mkdir -p "${_workig_dir}/${_job_file_root}"
-    unzip -d "${_workig_dir}/${_job_file_root}" "${_workig_dir}/${_job_filename}"
+    mkdir -p "${_working_dir}/${_job_file_root}"
+    unzip -d "${_working_dir}/${_job_file_root}" "${_working_dir}/${_job_filename}"
 
     local _extglob_save=$(shopt -p extglob)
     shopt -s extglob
@@ -142,18 +142,18 @@ function process_zip() {
     eval ${_extglob_save}
 
     # rename jobInfo.properties
-    mv "${_workig_dir}/${_job_file_root}/jobInfo.properties" "${_workig_dir}/${_job_file_root}/jobInfo_${job_root}.properties"
+    mv "${_working_dir}/${_job_file_root}/jobInfo.properties" "${_working_dir}/${_job_file_root}/jobInfo_${job_root}.properties"
     # collisions are most likely with the routines.jar which has a common name but potentially different content
-    mv "${_workig_dir}/${_job_file_root}/lib/routines.jar" "${_workig_dir}/${_job_file_root}/lib/routines_${job_root}.jar"
+    mv "${_working_dir}/${_job_file_root}/lib/routines.jar" "${_working_dir}/${_job_file_root}/lib/routines_${job_root}.jar"
     # sed command to tweak shell script to use routines_${job_root}.jar
-    sed -i "s/routines\.jar/routines_${job_root}\.jar/g" "${_workig_dir}/${_job_file_root}/${job_root}/${job_root}_run.sh"
+    sed -i "s/routines\.jar/routines_${job_root}\.jar/g" "${_working_dir}/${_job_file_root}/${job_root}/${job_root}_run.sh"
     # sed command to insert exec at beginning of java invocation
-    sed -i "s/^java /exec java /g" "${_workig_dir}/${_job_file_root}/${job_root}/${job_root}_run.sh"
+    sed -i "s/^java /exec java /g" "${_working_dir}/${_job_file_root}/${job_root}/${job_root}_run.sh"
 }
 
 
 function merge_zip() {
-    rsync -aibvh --stats "${_workig_dir}/${_job_file_root}/" "${_workig_dir}/target/"
+    rsync -aibvh --stats "${_working_dir}/${_job_file_root}/" "${_working_dir}/target/"
 }
 
 
@@ -173,8 +173,8 @@ function process_manifest() {
 
     forline "${_inputfile}" process_job_entry
 
-    mv "${_workig_dir}/target" "${_workig_dir}/${_app_name}"
-    tar -C "${_workig_dir}" -zcvf "${_app_name}.tgz" "${_app_name}"
+    mv "${_working_dir}/target" "${_working_dir}/${_app_name}"
+    tar -C "${_working_dir}" -zcvf "${_app_name}.tgz" "${_app_name}"
 }
 
 

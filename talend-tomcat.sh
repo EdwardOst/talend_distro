@@ -17,20 +17,23 @@ source "${repo_path}"
 
 function talend_tomcat () {
 
-
-    #download
-    local _tomcat_url="http://download.nextag.com/apache/tomcat/tomcat-8/v8.5.11/bin/apache-tomcat-8.5.11.tar.gz"
-    local _tomcat_userid
-    local _tomcat_password
-    local _tomcat_version
-    local _tomcat_file
+  # default top level parameters
     local _working_dir=$(pwd)
 
-    #publish
-    local _nexus_url="http://192.168.99.1:8081/nexus/service/local/repositories/snapshots/content"
-    local _nexus_userid="tadmin"
-    local _nexus_password="tadmin"
-    local _nexus_group="com/talend/tomcat"
+  #download
+    local _tomcat_url="${TALEND_TOMCAT_TOMCAT_URL:-http://download.nextag.com/apache/tomcat/tomcat-8/v8.5.11/bin/apache-tomcat-8.5.11.tar.gz}"
+    local _tomcat_userid="${TALEND_TOMCAT_TOMCAT_USERID}"
+    local _tomcat_password="${TALEND_TOMCAT_TOMCAT_PASSWORD}"
+
+  #publish
+    local _nexus_url="${TALEND_TOMCAT_NEXUS_URL:-http://192.168.99.1:8081/nexus/service/local/repositories/snapshots/content}"
+    local _nexus_userid="${TALEND_TOMCAT_NEXUS_USERID:-tadmin}"
+    local _nexus_password="${TALEND_TOMCAT_NEXUS_PASSWORD:-tadmin}"
+    local _nexus_group="${TALEND_TOMCAT_NEXUS_GROUP:-com/talend/tomcat}"
+
+  # internal variables
+    local _tomcat_version
+    local _tomcat_file
 
 
 function tomcat_help() {
@@ -41,8 +44,15 @@ Parse tomcat url for version number.
 Publish to local nexus.
 
 usage:
-    talend_tomcat [-t tomcat_url] [-w working_dir] [-n nexus_url] [-g nexus_group]
+    talend_tomcat [-m tomcat_url] [-n nexus_url] [-g nexus_group] [-s source credential] [-t target credential] [-w working_dir] 
 
+    -m tomcat url default: http://download.nextag.com/apache/tomcat/tomcat-8/v8.5.11/bin/apache-tomcat-8.5.11.tar.gz
+    -n nexus url default: http://localhost:8081/nexus/service/local/repositories/snapshots/content
+    -g group_path default "com/talend/tomcat"
+    -s source nexus credential in userid:password format default "tadmin:tadmin"
+    -t target nexus credential in userid:password format default "tadmin:tadmin"
+    -w working directory default current directory
+ 
 EOF
 }
 
@@ -50,17 +60,14 @@ EOF
 function tomcat_parse_args() {
 
     local OPTIND=1
-    while getopts ":ht:w:n:g:u:p:" opt; do
+    while getopts ":hm:n:g:s:t:w:" opt; do
         case $opt in
             h)
                 help
                 exit 0
                 ;;
-            t)
+            m)
                 _tomcat_url="${OPTARG}"
-                ;;
-            w)
-                _working_dir="${OPTARG}"
                 ;;
             n)
                 _nexus_url="${OPTARG}"
@@ -68,11 +75,18 @@ function tomcat_parse_args() {
             g)
                 _nexus_group="${OPTARG}"
                 ;;
-            u)
-                _nexus_userid="${OPTARG}"
+            s)
+                local source_credential="${OPTARG}"
+                _tomcat_userid="${source_credential%:*}"
+                _tomcat_password="${source_credential#*:}"
                 ;;
-            p)
-                _nexus_password="${OPTARG}"
+            t)
+                local target_credential="${OPTARG}"
+                _nexus_userid="${target_credential%:*}"
+                _nexus_password="${target_credential#*:}"
+                ;;
+            w)
+                _working_dir="${OPTARG}"
                 ;;
             ?)
                 tomcat_help >&2
@@ -99,6 +113,7 @@ function tomcat_parse_url() {
     _tomcat_version="${_tomcat_version##*/v}"
 
 }
+
 
 function tomcat_download() {
 
