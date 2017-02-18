@@ -2,7 +2,11 @@
 
 export REPO_FLAG=1
 
-source util.sh
+script_path=$(readlink -e "${BASH_SOURCE[0]}")
+script_dir="${script_path%/*}"
+
+util_path=$(readlink -e "${script_dir}/util.sh")
+source "${util_path}"
 
 echo "***** REPO *****"
 
@@ -86,5 +90,9 @@ function checksum() {
 export -f download_file
 
 export -f download_manifest
+
+export -f download_list
+
+export -f checksum
 
 debugLog "repo: loaded"

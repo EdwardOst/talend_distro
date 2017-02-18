@@ -1,7 +1,3 @@
-#!/bin/bash
-
-# utility functions
-
 [ ${UTIL_FLAG:-0} -gt 0 ] && return 0
 
 export UTIL_FLAG=1

@@ -2,7 +2,11 @@
 
 export PARSE_URL_FLAG=1
 
-source util.sh
+script_path=$(readlink -e "${BASH_SOURCE[0]}")
+script_dir="${script_path%/*}"
+
+util_path=$(readlink -e "${script_dir}/util.sh")
+source "${util_path}"
 
 
 function parse_url() {

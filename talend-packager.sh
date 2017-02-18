@@ -1,7 +1,15 @@
-set -x
+[ "${TALEND_PACKAGER_FLAG:-0}" -gt 0 ] && return 0
 
-source util.sh
-source parse-url.sh
+export TALEND_PACKAGER_FLAG=1
+
+script_path=$(readlink -e "${BASH_SOURCE[0]}")
+script_dir="${script_path%/*}"
+
+util_path=$(readlink -e "${script_dir}/util.sh")
+source "${util_path}"
+
+parse_url_path=$(readlink -e "${script_dir}/parse-url.sh")
+source "${parse_url_path}"
 
 function talend_packager() {
 
@@ -138,6 +146,8 @@ function process_zip() {
     mv "${target_dir}/${job_file_root}/lib/routines.jar" "${target_dir}/${job_file_root}/lib/routines_${job_root}.jar"
     # sed command to tweak shell script to use routines_${job_root}.jar
     sed -i "s/routines\.jar/routines_${job_root}\.jar/g" "${target_dir}/${job_file_root}/${job_root}/${job_root}_run.sh"
+    # sed command to insert exec at beginning of java invocation
+    sed -i "s/^java /exec java /g" "${target_dir}/${job_file_root}/${job_root}/${job_root}_run.sh"
 }
 
 
