@@ -50,9 +50,9 @@ usage:
     talend_package [-m manifest_file] [-g group_path] [-a app_name] [-v version] [-s source credential] [-t target credential] [-w working directory]
 
     -m manifest_file default "job_manifest.cfg"
-    -g group_path default "com/talend"
-    -a app_name default "myapp"
-    -v version default "0.1.0-SNAPSHOT"
+    -g target group_path default "com/talend"
+    -a target app_name default "myapp"
+    -v target version default "0.1.0-SNAPSHOT"
     -s source nexus credential in userid:password format default "tadmin:tadmin"
     -t target nexus credential in userid:password format default "tadmin:tadmin"
     -w working directory default current directory
@@ -149,6 +149,8 @@ function process_zip() {
     sed -i "s/routines\.jar/routines_${job_root}\.jar/g" "${_working_dir}/${_job_file_root}/${job_root}/${job_root}_run.sh"
     # sed command to insert exec at beginning of java invocation
     sed -i "s/^java /exec java /g" "${_working_dir}/${_job_file_root}/${job_root}/${job_root}_run.sh"
+    # exec permission is not set and is not maintianed by zip format, so set it here
+    chmod +x "${_working_dir}/${_job_file_root}/${job_root}/${job_root}_run.sh"
 }
 
 
@@ -174,7 +176,8 @@ function process_manifest() {
     forline "${_inputfile}" process_job_entry
 
     mv "${_working_dir}/target" "${_working_dir}/${_app_name}"
-    tar -C "${_working_dir}" -zcvf "${_app_name}.tgz" "${_app_name}"
+    # keep permissions using tgz format
+    tar -C "${_working_dir}" -zcvpf "${_app_name}.tgz" "${_app_name}"
 }
 
 

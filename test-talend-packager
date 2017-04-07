@@ -7,4 +7,9 @@ script_dir="${script_path%/*}"
 source ${script_dir}/talend-packager.sh
 
 
-talend_packager -m "/home/eost/talend-distro/job_manifest.cfg" -g "com/talend/se/distro/packager" -a "myapp"
+rm -f myapp.tgz
+rm -f t0_docker_create_customer-0.1.0-SNAPSHOT.zip
+rm -rf myapp
+rm -rf  t0_docker_create_customer-0.1.0-SNAPSHOT
+
+talend_packager -m "${script_dir}/job_manifest.cfg" -g "com/talend/se/packager" -a "myapp"
