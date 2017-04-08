@@ -30,5 +30,4 @@ Index
 | test-talend-packager    | test talend-packager script                                |
 | test-talend-tomcat      | test tomcat download                                       |
 | util.sh                 | common bash utilities                                      |
-|-------------------------|------------------------------------------------------------|
 
