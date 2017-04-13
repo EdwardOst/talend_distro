@@ -13,6 +13,8 @@ source "${url_path}"
 repo_path=$(readlink -e "${script_dir}/util/repo.sh")
 source "${repo_path}"
 
+[ $# -lt 2 ] && echo "username and password arguments required" && exit 1
+
 userid=$1
 password=$2
 

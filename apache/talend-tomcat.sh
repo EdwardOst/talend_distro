@@ -35,7 +35,7 @@ function talend_tomcat () {
     local _tomcat_version
     local _tomcat_file
     createTempFile
-    local _temp_tomcat_download_file=_createTempFile_result
+    local _temp_tomcat_download_file="${_createTempFile_result}"
     debugVar _temp_tomcat_download_file
 
     function tomcat_help() {

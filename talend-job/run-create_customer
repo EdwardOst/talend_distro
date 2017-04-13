@@ -1,8 +1,14 @@
+image="${1:-eost/create_customer}"
+image_version="${2-0.1}"
+app_name="${3:-myapp}"
+job_name="${4:-t0_docker_create_customer}"
+job_version="${5:-0.1.0-SNAPSHOT}"
+
 docker run --read-only \
            -v /home/eost/in:/talend/in:ro \
            -v /home/eost/out:/talend/out \
            -v /home/eost/log:/talend/log \
            -v /home/eost/amc:/talend/amc \
            --rm -it \
-           eost/create_customer:0.1 \
-           /talend/myapp/t0_docker_create_customer/t0_docker_create_customer_run.sh
+           ${image}:${image_version} \
+           /talend/${app_name}/${job_name}-${job_version}/${job_name}/${job_name}_run.sh
