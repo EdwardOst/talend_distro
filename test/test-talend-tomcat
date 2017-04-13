@@ -1,0 +1,9 @@
+set -e
+set -x
+
+test_tomcat_script_path=$(readlink -e "${BASH_SOURCE[0]}")
+test_tomcat_script_dir="${test_tomcat_script_path%/*}"
+
+source ${test_tomcat_script_dir}/lib/apache/talend-tomcat.sh
+
+talend_tomcat 
