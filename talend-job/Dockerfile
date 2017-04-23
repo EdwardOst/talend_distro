@@ -10,6 +10,11 @@ ARG job_parent_dir=/talend
 
 ADD "http://192.168.99.1:8081/nexus/service/local/repositories/snapshots/content/${job_group}/${job_version}/${job_tgz}" "${job_parent_dir}/"
 RUN tar xzvpf "${job_parent_dir}/${job_tgz}" -C "${job_parent_dir}" && \
-    rm "${job_parent_dir}/${job_tgz}"
+    rm "${job_parent_dir}/${job_tgz}" && \
+    mkdir -p /talend/in && \
+    mkdir -p /talend/out && \
+    mkdir -p /talend/log && \
+    mkdir -p /talend/amc
+COPY states.xlsx /talend/in
 
 ENTRYPOINT [ "/bin/ash" ]

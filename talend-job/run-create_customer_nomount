@@ -4,11 +4,7 @@ app_name="${3:-myapp}"
 job_name="${4:-t1_docker_create_customer_s3}"
 job_version="${5:-0.1.0-SNAPSHOT}"
 
-docker run --read-only \
-           -v /home/eost/in:/talend/in:ro \
-           -v /home/eost/out:/talend/out \
-           -v /home/eost/log:/talend/log \
-           -v /home/eost/amc:/talend/amc \
+docker run \
            --rm -it \
            ${image}:${image_version} \
            /talend/${app_name}/${job_name}-${job_version}/${job_name}/${job_name}_run.sh
