@@ -18,7 +18,7 @@ function talend_packager() {
   # default top level parameters
     local _manifest_file="${TALEND_PACKAGER_JOB_MANIFEST:-job_manifest.cfg}"
     local _working_dir
-    if [ -n "${TALEND_PACKAGER_WORKING_DIR}" ] ; then 
+    if [ -n "${TALEND_PACKAGER_WORKING_DIR}" ] ; then
         _working_dir="${TALEND_PACKAGER_WORKING_DIR}"
     else
         createTempDir
@@ -30,15 +30,23 @@ function talend_packager() {
     local _nexus_password="${TALEND_PACKAGER_NEXUS_PASSWORD:-tadmin}"
 
   # default nexus target configuration
+    local _nexus_source_userid="${TALEND_PACKAGER_NEXUS_SOURCE_USERID:-tadmin}"
+    local _nexus_source_password="${TALEND_PACKAGER_NEXUS_SOURCE_PASSWORD:-tadmin}"
+    local _source_credential="${_nexus_source_userid}:${_nexus_source_password}"
     local _nexus_target_repo="${TALEND_PACKAGER_NEXUS_TARGET_REPO:-http://192.168.99.1:8081/nexus/service/local/repositories/snapshots/content}"
     local _nexus_target_userid="${TALEND_PACKAGER_NEXUS_TARGET_USERID:-tadmin}"
     local _nexus_target_password="${TALEND_PACKAGER_NEXUS_TARGET_PASSWORD:-tadmin}"
+    local _target_credential="${_nexus_target_userid}:${_nexus_target_password}"
     local _group_path="${TALEND_PACKAGER_GROUP_PATH:-com/talend}"
     local _app_name="${TALEND_PACKAGER_APP_NAME:-myapp}"
     local _version="${TALEND_PACKAGER_VERSION:-0.1.0-SNAPSHOT}"
 
+  # help flag
+    local _help_flag=0
+
 
 function help() {
+    _help_flag=1
     cat <<EOF
 
 Download all talend job zip files from url's listed in manifest file.
@@ -55,8 +63,8 @@ usage:
     -g target group_path: env var TALEND_PACKAGER_GROUP_PATH : default "com/talend"
     -a target app_name: env var TALEND_PACKAGER_APP_NAME : default "myapp"
     -v target version: env var TALEND_PACKAGER_VERSION : default "0.1.0-SNAPSHOT"
-    -s source nexus credential in userid:password format : env var TALEND_PACKAGER_NEXUS_USERID : default "tadmin:tadmin"
-    -t target nexus credential in userid:password format : env var TALEND_PACKAGER_NEXUS_PASSWORD : default "tadmin:tadmin"
+    -s source nexus credential in userid:password format : env var TALEND_PACKAGER_NEXUS_SOURCE_USERID:TALEND_PACKAGER_NEXUS_SOURCE_PASSWORD : default "tadmin:tadmin"
+    -t target nexus credential in userid:password format : env var TALEND_PACKAGER_NEXUS_TARGET_USERID:TALEND_PACKAGER_NEXUS_TARGET_PASSWORD : default "tadmin:tadmin"
     -w working directory : env var TALEND_PACKAGER_WORKING_DIR : defaults to creating a temp directory
 
 EOF
@@ -70,7 +78,7 @@ function parse_args() {
         case "$opt" in
             h)
                 help
-                exit 0
+                return 0
                 ;;
             m)
                 _manifest_file="${OPTARG}"
@@ -85,21 +93,21 @@ function parse_args() {
                 _version="${OPTARG}"
                 ;;
             s)
-                local source_credential="${OPTARG}"
-                _nexus_userid="${source_credential%:*}"
-                _nexus_password="${source_credential#*:}"
+                _source_credential="${OPTARG}"
+                _nexus_userid="${_source_credential%:*}"
+                _nexus_password="${_source_credential#*:}"
                 ;;
             t)
-                local target_credential="${OPTARG}"
-                _nexus_target_userid="${target_credential%:*}"
-                _nexus_target_password="${target_credential#*:}"
+                _target_credential="${OPTARG}"
+                _nexus_target_userid="${_target_credential%:*}"
+                _nexus_target_password="${_target_credential#*:}"
                 ;;
             w)
                 _working_dir="${OPTARG}"
                 ;;
             ?)
                 help >&2
-                exit 1
+                return 2
                 ;;
         esac
     done
@@ -130,7 +138,7 @@ function parse_zip_url() {
 
 function download_zip() {
     local _nexus_url="${1}"
-    wget --http-user="${_nexus_userid}" --http-password="${_nexus_password}" --directory-prefix="${_working_dir}" "${_nexus_url}" 
+    wget -q --http-user="${_nexus_userid}" --http-password="${_nexus_password}" --directory-prefix="${_working_dir}" "${_nexus_url}" 
 }
 
 
@@ -145,7 +153,7 @@ function process_zip() {
     local _job_file_root="${_job_file_name%.*}"
 
     mkdir -p "${_working_dir}/${_job_file_root}"
-    unzip -d "${_working_dir}/${_job_file_root}" "${_working_dir}/${_job_file_name}"
+    unzip -qq -d "${_working_dir}/${_job_file_root}" "${_working_dir}/${_job_file_name}"
 
     local _extglob_save=$(shopt -p extglob)
     shopt -s extglob
@@ -166,7 +174,7 @@ function process_zip() {
 
 
 function merge_zip() {
-    rsync -aibvh --stats "${_working_dir}/${_job_file_root}/" "${_working_dir}/target/"
+    rsync -aibh --stats "${_working_dir}/${_job_file_root}/" "${_working_dir}/target/" > /dev/null
 }
 
 
@@ -187,18 +195,25 @@ function process_manifest() {
 
     mv "${_working_dir}/target" "${_working_dir}/${_app_name}"
     # keep permissions using tgz format
-    tar -C "${_working_dir}" -zcvpf "${_app_name}.tgz" "${_app_name}"
+    tar -C "${_working_dir}" -zcpf "${_app_name}.tgz" "${_app_name}"
 }
 
 
 function publish_app() {
     local nexus_target_url="${_nexus_target_repo}/${_group_path}/${_version}/${_app_name}-${_version}.tgz"
-    curl -v -u "${_nexus_target_userid}:${_nexus_target_password}" \
+    curl -u "${_nexus_target_userid}:${_nexus_target_password}" \
         --upload-file "${_app_name}.tgz" \
         "${nexus_target_url}"
 }
 
 parse_args "$@"
+# exit with success value if help was requested
+if [ ${_help_flag} -eq 1 ] ; then
+    return 0
+fi
+
+echo "executing: talend_package -m \"${_manifest_file}\" -g \"${_group_path}\" -a \"${_app_name}\" -v \"${_version}\" -s \"${_source_credential}\" -t \"${_target_credential}\" -w \"${_working_dir}\""
+
 
 trap_add "rm -f \"${_app_name}.tgz\"" EXIT
 process_manifest "${_manifest_file}" "${_app_name}"

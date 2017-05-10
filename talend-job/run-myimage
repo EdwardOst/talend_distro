@@ -1,0 +1,38 @@
+set -e
+# set -x
+
+
+image="${1:-eost/create_customer}"
+image_version="${2-0.1}"
+app_name="${3:-myapp}"
+job_name="${4:-t1_docker_create_customer_s3}"
+job_version="${5:-0.1.0-SNAPSHOT}"
+
+[ $# -lt 5 ] && \
+echo "usage: run [image [image_version [app_name [job_name [job_version]]]]]" && \
+echo "defaults: image=eost/create_customer" && \
+echo "          image_version=0.1" && \
+echo "          app_name=myapp" && \
+echo "          job_version=0.1.0-SNAPSHOT" && \
+echo ""
+
+cat <<EOF
+excuting: docker run --read-only \\
+           -v /home/eost/in:/talend/in:ro \\
+           -v /home/eost/out:/talend/out \\
+           -v /home/eost/log:/talend/log \\
+           -v /home/eost/amc:/talend/amc \\
+           --rm -d \\
+           ${image}:${image_version} \\
+           /talend/${app_name}/${job_name}-${job_version}/${job_name}/${job_name}_run.sh
+
+EOF
+
+docker run --read-only \
+           -v /home/eost/in:/talend/in:ro \
+           -v /home/eost/out:/talend/out \
+           -v /home/eost/log:/talend/log \
+           -v /home/eost/amc:/talend/amc \
+           --rm -d \
+           ${image}:${image_version} \
+           /talend/${app_name}/${job_name}-${job_version}/${job_name}/${job_name}_run.sh

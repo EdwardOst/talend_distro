@@ -1,0 +1,13 @@
+set -e
+# set -x
+
+# [ $# -lt 1 ] && echo "docker image tag required" && exit 1
+image_tag="${1:-eost/create_customer:0.1}"
+
+script_path=$(readlink -e "${BASH_SOURCE[0]}")
+script_dir="${script_path%/*}"
+
+pushd ${script_dir}
+echo "executing: docker build --no-cache -t \"${image_tag}\" ."
+docker build --no-cache -t "${image_tag}" .
+popd

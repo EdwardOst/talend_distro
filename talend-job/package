@@ -1,0 +1,9 @@
+set -e
+# set -x
+
+script_path=$(readlink -e "${BASH_SOURCE[0]}")
+script_dir="${script_path%/*}"
+
+source ${script_dir}/lib/packager/talend-packager.sh
+
+talend_packager "$@"
