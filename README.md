@@ -71,7 +71,7 @@ Publish the job to Nexus by right clicking and using the context menu in Talend 
 
 Get the URL of your published zip file from Nexus.
 
-![get nexus job url](pictures/02_nexus_get_job_url)
+![get nexus job url](pictures/02_nexus_get_job_url.png)
 
 If necessary, switch to your linux VM and clone this github repo.
 
