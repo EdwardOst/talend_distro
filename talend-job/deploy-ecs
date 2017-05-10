@@ -1,4 +1,4 @@
 $(aws ecr get-login --region us-east-1)
-docker tag eost/create_customer:0.1 115057027035.dkr.ecr.us-east-1.amazonaws.com/talend/eost:latest
-docker push 115057027035.dkr.ecr.us-east-1.amazonaws.com/talend/eost:latest
+docker tag ${USER}/create_customer:0.1 115057027035.dkr.ecr.us-east-1.amazonaws.com/talend/${USER}:latest
+docker push 115057027035.dkr.ecr.us-east-1.amazonaws.com/talend/${USER}:latest
 

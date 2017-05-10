@@ -1,4 +1,4 @@
-image="${1:-eost/create_customer}"
+image="${1:-${USER}/create_customer}"
 image_version="${2-0.1}"
 app_name="${3:-myapp}"
 job_name="${4:-t1_docker_create_customer_s3}"
