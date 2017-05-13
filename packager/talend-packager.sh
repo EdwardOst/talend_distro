@@ -57,7 +57,7 @@ Compress the merged files with tgz rather than zip.
 Publish the new app tgz to target nexus.
 
 usage:
-    talend_package [-m manifest_file] [-g group_path] [-a app_name] [-v version] [-s source credential] [-t target credential] [-w working directory]
+    talend_packager [-m manifest_file] [-g group_path] [-a app_name] [-v version] [-s source credential] [-t target credential] [-w working directory]
 
     -m manifest_file: env var TALEND_PACKAGER_JOB_MANIFEST : default "job_manifest.cfg"
     -g target group_path: env var TALEND_PACKAGER_GROUP_PATH : default "com/talend"

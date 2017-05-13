@@ -1,16 +1,16 @@
 set -e
-set -x
+# set -x
 
 script_path=$(readlink -e "${BASH_SOURCE[0]}")
 script_dir="${script_path%/*}"
 
-util_path=$(readlink -e "${script_dir}/util/util.sh")
+util_path=$(readlink -e "${script_dir}/../util.sh")
 source "${util_path}"
 
-url_path=$(readlink -e "${script_dir}/util/url.sh")
+url_path=$(readlink -e "${script_dir}/../url.sh")
 source "${url_path}"
 
-repo_path=$(readlink -e "${script_dir}/util/repo.sh")
+repo_path=$(readlink -e "${script_dir}/../repo.sh")
 source "${repo_path}"
 
 [ $# -lt 2 ] && echo "username and password arguments required" && exit 1

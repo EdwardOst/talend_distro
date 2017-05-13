@@ -4,6 +4,7 @@ export UTIL_FLAG=1
 
 export HELP_DOC_REQUEST=2
 
+
 # echo message only if DEBUG_LOG variable is set
 
 function debugLog() { 
@@ -13,11 +14,16 @@ function debugLog() {
 }
 
 
+# echo a variable if DEBUG_LOG is set, pass variable name without $ as arg
+
 function debugVar() {
 	if [ -n "${DEBUG_LOG}" ] ; then
 		cat <<< "${FUNCNAME[*]}: ${1}=${!1}" 1>&2
 	fi
 }
+
+
+# print the current call stack to stderr
 
 function debugStack() {
 	if [ -n "${DEBUG_LOG}" ] ; then
@@ -26,9 +32,18 @@ function debugStack() {
 	fi
 }
 
+
+# send message to stderr
+
 function yell() { echo "$0: $*" >&2; }
 
+
+# send message to stderr and exit
+
 function die() { yell "$*"; exit 111; }
+
+
+# exit if the command is not completed successfully
 
 function try() { "$@" || die "cannot $*"; }
 
@@ -40,12 +55,14 @@ function try() { "$@" || die "cannot $*"; }
 # usage
 #	result _myVar
 #
+
 function result() { eval _${FUNCNAME[1]}_result='"${!1}"'; }
 
 
 #
 # iterate through an array and apply a function to each element
 #
+
 function foreach() {
 
     [ ${#} -lt 2 ] && echo "usage: foreach <array> <operation>" && exit 1
@@ -60,28 +77,28 @@ function foreach() {
 }
 
 
-    function forline() {
+function forline() {
 
-        [ ${#} -lt 2 ] && echo "usage: forline <file> <operation>" && exit 1
+    [ ${#} -lt 2 ] && echo "usage: forline <file> <operation>" && exit 1
 
-        local _file="${1}"
-        local _operation="${2}"
-        shift 2
-        local _line
+    local _file="${1}"
+    local _operation="${2}"
+    shift 2
+    local _line
 
-        while IFS='' read -r _line || [[ -n "${_line}" ]]; do
-            debugLog "PROCESSING LINE: ${_operation} ${_line} ${@}"
-            ${_operation} "${_line}" "${@}"
-        done < "${_file}"
-    }
+    while IFS='' read -r _line || [[ -n "${_line}" ]]; do
+        debugLog "PROCESSING LINE: ${_operation} ${_line} ${@}"
+        ${_operation} "${_line}" "${@}"
+    done < "${_file}"
+}
 
 
 function createUserOwnedDirectory() {
 
     if [ "${1}" = "-h" -o "${1}" = "--help" -o $# -lt 1 ] ; then
-       cat <<-HELPDOC
+        cat <<-HELPDOC
 
-	  createUserOwnedDirectory
+	createUserOwnedDirectory
 
 	  DESCRIPTION
 
@@ -121,6 +138,7 @@ function createUserOwnedDirectory() {
     debugStack "creating ${__owner}:${__group} ${__fullDirPath}"
     sudo mkdir -p ${__fullDirPath}
     sudo chown ${__owner}:${__group} ${__fullDirPath}
+
 }
 
 
@@ -187,11 +205,12 @@ export -f debugStack
 export -f yell
 export -f die
 export -f try
+export -f result
+export -f foreach
+export -f forline
 export -f createUserOwnedDirectory
 export -f trap_add
 export -f createTempFile
-
-export -f foreach
-export -f forline
+export -f createTempDir
 
 debugLog "util.sh: loaded"
