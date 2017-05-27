@@ -5,21 +5,37 @@ export UTIL_FLAG=1
 export HELP_DOC_REQUEST=2
 
 
+
+
 # echo message only if DEBUG_LOG variable is set
 
 function debugLog() { 
-	if [ -n "${DEBUG_LOG}" ] ; then
-		 cat <<< "$@" 1>&2
-	fi
+    if [ -n "${DEBUG_LOG}" ] ; then
+        cat <<< "debug: ${FUNCNAME[*]}: ${@}" 1>&2
+    fi
+}
+
+
+# echo message to log
+
+function infoLog() { 
+    cat <<< "info: ${FUNCNAME[*]}: ${@}" 1>&2
 }
 
 
 # echo a variable if DEBUG_LOG is set, pass variable name without $ as arg
 
 function debugVar() {
-	if [ -n "${DEBUG_LOG}" ] ; then
-		cat <<< "${FUNCNAME[*]}: ${1}=${!1}" 1>&2
-	fi
+    if [ -n "${DEBUG_LOG}" ] ; then
+        cat <<< "debug: ${FUNCNAME[*]}: ${1}=${!1}" 1>&2
+    fi
+}
+
+
+# echo a variable to the log, pass variable name without $ as arg
+
+function infoVar() {
+    cat <<< "info: ${FUNCNAME[*]}: ${1}=${!1}" 1>&2
 }
 
 
@@ -28,8 +44,16 @@ function debugVar() {
 function debugStack() {
 	if [ -n "${DEBUG_LOG}" ] ; then
 		[ $# -gt 0 ] && __tag=": $@"
-		cat <<< "${FUNCNAME[*]}${__tag}" 1>&2
+		cat <<< "debug: ${FUNCNAME[*]}${__tag}" 1>&2
 	fi
+}
+
+
+# print the current call stack
+
+function infoStack() {
+    [ $# -gt 0 ] && __tag=": $@"
+    cat <<< "info: ${FUNCNAME[*]}${__tag}" 1>&2
 }
 
 
@@ -90,6 +114,46 @@ function forline() {
         debugLog "PROCESSING LINE: ${_operation} ${_line} ${@}"
         ${_operation} "${_line}" "${@}"
     done < "${_file}"
+}
+
+
+function assign() {
+    [ ${#} -lt 2 ] && echo "usage: assign <var_name> <value>" && exit 1
+    local -n var="${1}"
+    var="${2}"
+    debugVar "${!var}"
+}
+
+function dictionary_to_var() {
+    [ ${#} -lt 1 ] && echo "usage: dictioary_to_var <dictionary>" && exit 1
+
+    local -r -n properties="${1}"
+
+    for item in "${!properties[@]}"; do
+       assign "${item}" "${properties[${item}]}"
+       debugVar "${item}"
+    done
+}
+
+
+function parseProperty() {
+    [ ${#} -lt 2 ] && echo "usage: parseProperty <property_key_value_string> <properties_array> [prefix]" && exit 1
+    local _line="${1}"
+    local -r -n properties_arr="${2}"
+    local _key="${_line%%=*}"
+    local _value="${_line##*=}"
+    properties_arr["${_key}"]="${_value}"
+}
+
+
+function load_properties() {
+    [ ${#} -lt 2 ] && echo "usage: load_properties <properties_file> <properties_array> [prefix]" && exit 1
+    local -r properties_file="${1}"
+    local -r properties_arr="${2}"
+
+    mapfile -t < <(grep -v "#" "${properties_file}")
+
+    foreach MAPFILE parseProperty "${properties_arr}"
 }
 
 
@@ -201,13 +265,20 @@ createTempDir() {
 
 export -f debugLog
 export -f debugVar
+export -f infoLog
+export -f infoVar
 export -f debugStack
+export -f infoStack
 export -f yell
 export -f die
 export -f try
 export -f result
 export -f foreach
 export -f forline
+export -f assign
+export -f dictionary_to_var
+export -f parseProperty
+export -f load_properties
 export -f createUserOwnedDirectory
 export -f trap_add
 export -f createTempFile
