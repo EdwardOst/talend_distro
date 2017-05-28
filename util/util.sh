@@ -7,11 +7,10 @@ export HELP_DOC_REQUEST=2
 
 
 function trim() {
-        shopt -s extglob
-        local astring="${1/#+( )}"
-        astring="${astring/%+( )}"
-        astring="${astring,,}"; debugVar astring
-        echo -n "${astring}"
+    shopt -s extglob
+    local -n astring="${1}"
+    astring="${astring/#+( )}"
+    astring="${astring/%+( )}"
 }
 
 
