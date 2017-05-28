@@ -6,6 +6,15 @@ export HELP_DOC_REQUEST=2
 
 
 
+function trim() {
+        shopt -s extglob
+        local astring="${1,,}"
+        astring="${astring/#+( )}"
+        astring="${astring/%+( )}"
+        astring="${astring,,}"; debugVar astring
+        echo -n "${astring}"
+}
+
 
 # echo message only if DEBUG_LOG variable is set
 
