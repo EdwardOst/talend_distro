@@ -14,6 +14,28 @@ function trim() {
 }
 
 
+#
+# define
+#
+# pretty print define function for reading here documents into a variable
+# then use a here string to access it elsewhere
+#
+# example
+# create a template using here document
+# backtick allows commands or functions to inject derived content
+#
+# define my_template <<-EOF
+# 	function ${my_func}() {
+#	    echo "executing ${my_func}"
+#	    `typeset -p my_dictionary`
+#	}
+#	EOF
+
+define(){ IFS='\n' read -r -d '' ${1} || true; }
+
+
+
+
 # echo message only if DEBUG_LOG variable is set
 
 function debugLog() { 
