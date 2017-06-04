@@ -21,16 +21,22 @@ declare -A mydescriptions=( ["-g"]="myget shortoption" \
 #command_array=( "badcommand" )
 #command_array=( "cmd1" )
 
+function mycommand() {
+    myarg="${1}"
+    echo "mycommand: option1=${option1} option2=${option2} myarg=${myarg}"
+}
+
 function mycommand1() {
     myarg="${1}"
     echo "mycommand1: option1=${option1} option2=${option2} myarg=${myarg}"
 }
 
+#command_array=( "mycommand" "-h" )
+command_array=( "mycommand" "-o" "value1" "--opt2" "value2" "arg1" )
 #command_array=( "mycommand" "-o" "value1" "cmd1" "--opt2" "value2" "arg1" )
-command_array=( "mycommand" "-h" )
 parse_args myindex myoptions mysubcommands mydescriptions "${command_array[@]}"
 echo "command_array=${command_array[@]}"
 echo "myindex=${myindex}"
 newarray=( "${command_array[@]:${myindex}}" )
-echo "newarray=" "${newarray[@]}"
+echo "newarray=${newarray[@]}"
 
