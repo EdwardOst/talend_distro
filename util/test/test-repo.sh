@@ -24,14 +24,19 @@ password=$2
 #    "${userid}" \
 #    "${password}"
 
-#download_manifest "manifest.cfg" \
-#    "./downloads" \
+download_manifest "/home/eost/docker/talend_distro/talend-6.2.1/talend-6.2.1.cfg" \
+    "./downloads" \
+    "${userid}" \
+    "${password}"
+
+#download_list "/home/eost/docker/talend_distro/talend-6.2.1/talend-6.2.1.cfg" \
+#   "./downloads" \
 #    "${userid}" \
 #    "${password}"
 
-download_list "/home/eost/docker/talend_distro/talend-6.2.1/talend-6.2.1.cfg" \
-   "/home/eost/docker/talend_distro/talend-6.2.1/repo" \
-    "${userid}" \
-    "${password}"
+#download_list "/home/eost/docker/talend_distro/talend-6.2.1/talend-6.2.1.cfg" \
+#   "/home/eost/docker/talend_distro/talend-6.2.1/repo" \
+#    "${userid}" \
+#    "${password}"
 
 checksum "/home/eost/docker/talend_distro/talend-6.2.1/repo"

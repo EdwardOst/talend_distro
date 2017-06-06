@@ -10,33 +10,60 @@ source "${util_path}"
 parse_args_path=$(readlink -e "${script_dir}/../parse_args.sh")
 source "${parse_args_path}"
 
-myindex=0
-declare -A myoptions=( ["-o"]=option1 ["--opt1"]=option1 ["--opt2"]=option2 )
-declare -A mysubcommands=( ["cmd1"]=mycommand1 ["cmd2"]=mycommand2 )
-declare -A mydescriptions=( ["-g"]="myget shortoption" \
-                            ["--get"]="myget long option" \
-                            ["cmd1"]="my subcommand 1" \
-                            ["cmd2"]="my subcommand 2" )
 
-#command_array=( "badcommand" )
-#command_array=( "cmd1" )
-
-function mycommand() {
-    myarg="${1}"
-    echo "mycommand: option1=${option1} option2=${option2} myarg=${myarg}"
+function my_load_config() {
+    debugLog "load_dictionary ${1}"
+    load_dictionary "${1}"
 }
 
-function mycommand1() {
-    myarg="${1}"
-    echo "mycommand1: option1=${option1} option2=${option2} myarg=${myarg}"
-}
 
-#command_array=( "mycommand" "-h" )
-command_array=( "mycommand" "-o" "value1" "--opt2" "value2" "arg1" )
-#command_array=( "mycommand" "-o" "value1" "cmd1" "--opt2" "value2" "arg1" )
-parse_args myindex myoptions mysubcommands mydescriptions "${command_array[@]}"
-echo "command_array=${command_array[@]}"
+function myfunc() {
+
+local -a mycommand
+declare -A myoptions=( ["-o"]=option0 ["--opt1"]=option1 ["--opt2"]=option2 ["-c"]=load_config ["--config"]=load_config )
+declare -A myexec_options=( ["-c"]="my_load_config" \
+                            ["--c"]="my_load_config" )
+declare -a myargs=( "arg1" "arg2" )
+declare -A mysubcommands=( ["sub1"]="subcommand1" ["sub2"]="subcommand2" )
+declare -A mydescriptions=(
+                            ["-o"]="option0" \
+                            ["--opt1"]="option1" \
+                            ["--opt2"]="option2" \
+                            ["arg1"]="arg1" \
+                            ["sub1"]="subcommand1" \
+                            ["sub2"]="subcommand2"
+                          )
+
+local myindex
+local option0=default0
+local option1=default1
+local option2=default2
+local arg1
+local arg2
+
+
+parse_args mycommand myindex myoptions myexec_options myargs mysubcommands mydescriptions "${@}"
+
 echo "myindex=${myindex}"
-newarray=( "${command_array[@]:${myindex}}" )
-echo "newarray=${newarray[@]}"
+echo "old args: ${@}"
+shift "${myindex}"
+echo "new args: ${@}"
+echo "mycommand: ${mycommand[@]}"
 
+echo "option0=${option0}"
+echo "option1=${option1}"
+echo "option2=${option2}"
+}
+
+declare -A test_config=( ["option0"]="test0" ["option1"]="test1" ["option2"]="test2" )
+
+#myfunc
+#myfunc -h
+#myfunc -o value0
+#myfunc --opt1 value1
+#myfunc -o value1 --opt2 value2
+#myfunc -o value1 --opt2 value2 arg1
+#myfunc -o value1 --opt2 value2 sub1 arg1
+#myfunc -c test_config --opt2 value2 sub1 arg1
+myfunc -c test_config --opt2 value2 sub1 arg1
+myfunc -o value0 -c test_config --opt2 value2 sub1 arg1

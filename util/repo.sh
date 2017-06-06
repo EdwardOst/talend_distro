@@ -23,10 +23,10 @@ EOF
 
 export DOWNLOAD_FILE_OPTIONS="-N"
 
-#
+
 # download
 #
-# download files from external url to local file system using wget
+# download a file from external url to local file system using wget
 #
 function download_file() {
     [ $# -lt 4 ] &&  echo "ERROR: usage: download <sourceUrl> <targetDir> <userid> <password>" && return 1
@@ -44,7 +44,9 @@ function download_file() {
     wget "${DOWNLOAD_FILE_OPTIONS}" "${_userid_arg}" "${_password_arg}" -P "${_targetDir}" "${_sourceUrl}"
 }
 
-
+# download manifest files sequentially
+#
+#
 function download_manifest() {
 
     [ $# -lt 4 ] &&  echo "ERROR: usage: download_manifest <manifest_file> <targetDir> <userid> <password>" && return 1
@@ -57,7 +59,9 @@ function download_manifest() {
     forline "${_manifestFile}" download_file "${_targetDir}" "${_userid}" "${_password}"
 }
 
-
+# download manifest files in parallel
+#
+#
 function download_list() {
     [ $# -lt 4 ] &&  echo "ERROR: usage: download_list <manifest_file> <targetDir> <userid> <password>" && return 1
 

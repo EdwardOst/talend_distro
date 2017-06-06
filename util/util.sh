@@ -39,7 +39,7 @@ define(){ IFS='\n' read -r -d '' "${1}" || true; }
 
 function debugLog() { 
     if [ -n "${DEBUG_LOG}" ] ; then
-        cat <<< "debug: ${FUNCNAME[*]}: ${@}" 1>&2
+        cat <<< "${FUNCNAME[*]}: ${@}" 1>&2
     fi
 }
 
@@ -47,7 +47,7 @@ function debugLog() {
 # echo message to log
 
 function infoLog() { 
-    cat <<< "info: ${FUNCNAME[*]}: ${@}" 1>&2
+    cat <<< "${FUNCNAME[*]}: ${@}" 1>&2
 }
 
 
@@ -55,7 +55,7 @@ function infoLog() {
 
 function debugVar() {
     if [ -n "${DEBUG_LOG}" ] ; then
-        cat <<< "debug: ${FUNCNAME[*]}: ${1}=${!1}" 1>&2
+        cat <<< "${FUNCNAME[*]}: ${1}=${!1}" 1>&2
     fi
 }
 
@@ -63,7 +63,7 @@ function debugVar() {
 # echo a variable to the log, pass variable name without $ as arg
 
 function infoVar() {
-    cat <<< "info: ${FUNCNAME[*]}: ${1}=${!1}" 1>&2
+    cat <<< "${FUNCNAME[*]}: ${1}=${!1}" 1>&2
 }
 
 
@@ -81,7 +81,7 @@ function debugStack() {
 
 function infoStack() {
     [ $# -gt 0 ] && __tag=": $@"
-    cat <<< "info: ${FUNCNAME[*]}${__tag}" 1>&2
+    cat <<< "${FUNCNAME[*]}${__tag}" 1>&2
 }
 
 
@@ -153,6 +153,29 @@ function assign() {
 }
 
 
+# echo variables with a given prefix
+#
+# usage: echo_scope [ prefix [separator]]
+#
+function echo_scope() {
+    local prefix="${1:-${FUNCNAME[1]}}"
+    local separator="${2:-_}"
+
+    prefix="${prefix}${separator}"
+
+    local list_params
+    define list_params <<-EOF
+	local -a var_array=( \${!${prefix}*} )
+	EOF
+    source /dev/stdin <<< "${list_params}"
+
+    local key
+    for var_name in "${var_array[@]}"; do
+        echo "${var_name}=${!var_name}"
+    done
+}
+
+
 # read associative array into variables adding an optional prefix
 # add/remove a prefix by starting prefix with +/-
 #
@@ -164,6 +187,8 @@ function load_dictionary() {
     local -r -n context_array="${1}"
     local prefix="${2}"
     local operator
+
+    echo "*** prefix=${prefix}"
 
     if [ -n "${prefix}" ]; then
         local separator="${3:-_}"
@@ -178,13 +203,15 @@ function load_dictionary() {
             operator="add_prefix"
         fi
     fi
+    echo "*** prefix=${prefix}"
 
     local property
     for key in "${!context_array[@]}"; do
         property="${key}"
+        debugVar "property"
         [ -n "${operator}" ] && "${operator}" "property" "${prefix}"
         assign "${property}" "${context_array[${key}]}"
-        debugVar "property"
+        debugVar "${property}"
     done
 }
 
@@ -508,6 +535,7 @@ export -f result
 export -f foreach
 export -f forline
 export -f assign
+export -f echo_scope
 export -f load_dictionary
 export -f load_context
 export -f export_dictionary
