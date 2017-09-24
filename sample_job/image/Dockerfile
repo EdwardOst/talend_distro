@@ -14,7 +14,9 @@ RUN tar xzvpf "${job_parent_dir}/${job_tgz}" -C "${job_parent_dir}" && \
     mkdir -p /talend/in && \
     mkdir -p /talend/out && \
     mkdir -p /talend/log && \
+    mkdir -p /talend/temp && \
+    mkdir -p /talend/data && \
+    mkdir -p /talend/config && \
     mkdir -p /talend/amc
-COPY states.xlsx /talend/in
 
 ENTRYPOINT [ "/bin/ash" ]

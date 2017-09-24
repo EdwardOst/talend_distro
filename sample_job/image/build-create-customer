@@ -9,5 +9,6 @@ script_dir="${script_path%/*}"
 
 pushd ${script_dir}
 echo "executing: docker build --no-cache -t \"${image_tag}\" ."
-docker build --no-cache -t "${image_tag}" .
+docker build --no-cache -t "${image_tag}" --build-arg job_group=com/talend/se/packager --build-arg job_version=0.1.0-SNAPSHOT --build-arg job_tgz=customer_address-0.1.0-SNAPSHOT.tgz --build-arg job_parent_dir=/talend .
+
 popd

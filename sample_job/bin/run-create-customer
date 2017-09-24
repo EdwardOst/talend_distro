@@ -1,0 +1,35 @@
+set -e
+# set -x
+
+image="${1:-${USER}/create_customer}"
+image_version="${2-0.1}"
+app_name="${3:-customer_address}"
+job_name="${4:-t0_docker_create_customer}"
+job_version="${5:-0.1.0-SNAPSHOT}"
+
+cat <<EOF
+excuting: docker run --read-only \\
+           -v volumes/in:/talend/in:ro \\
+           -v volumes/out:/talend/out \\
+           -v volumes/config:/talend/config \\
+           -v volumes/data:/talend/data \\
+           -v volumes/temp:/talend/temp \\
+           -v volumes/log:/talend/log \\
+           -v volumes/amc:/talend/amc \\
+           --rm -d \\
+           ${image}:${image_version} \\
+           /talend/${app_name}/${job_name}-${job_version}/${job_name}/${job_name}_run.sh
+
+EOF
+
+docker run --read-only \
+           -v volumes/in:/talend/in:ro \\
+           -v volumes/out:/talend/out \\
+           -v volumes/config:/talend/config \\
+           -v volumes/data:/talend/data \\
+           -v volumes/temp:/talend/temp \\
+           -v volumes/log:/talend/log \\
+           -v volumes/amc:/talend/amc \\
+           --rm -d \
+           ${image}:${image_version} \
+           /talend/${app_name}/${job_name}-${job_version}/${job_name}/${job_name}_run.sh

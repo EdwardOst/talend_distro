@@ -71,7 +71,7 @@ Clone this github repo.
 
 Import the `t1_docker_create_customer_s3.zip` sample job from `talend_distro/sample_job` directory.
 
-~[import_job](pictures/00_import_job_a.png)
+![import_job](pictures/00_import_job_a.png)
 
 Publish the job to Nexus by right clicking and using the context menu in Talend Studio.
 

@@ -9,10 +9,13 @@ job_version="${5:-0.1.0-SNAPSHOT}"
 
 cat <<EOF
 excuting: docker run --read-only \\
-           -v ~/in:/talend/in:ro \\
-           -v ~/out:/talend/out \\
-           -v ~/log:/talend/log \\
-           -v ~/amc:/talend/amc \\
+           -v in:/talend/in:ro \\
+           -v out:/talend/out \\
+           -v config:/talend/config \\
+           -v data:/talend/data \\
+           -v temp:/talend/temp \\
+           -v log:/talend/log \\
+           -v amc:/talend/amc \\
            --rm -d \\
            ${image}:${image_version} \\
            /talend/${app_name}/${job_name}-${job_version}/${job_name}/${job_name}_run.sh
@@ -20,10 +23,13 @@ excuting: docker run --read-only \\
 EOF
 
 docker run --read-only \
-           -v ~/in:/talend/in:ro \
-           -v ~/out:/talend/out \
-           -v ~/log:/talend/log \
-           -v ~/amc:/talend/amc \
+           -v in:/talend/in:ro \\
+           -v out:/talend/out \\
+           -v config:/talend/config \\
+           -v data:/talend/data \\
+           -v temp:/talend/temp \\
+           -v log:/talend/log \\
+           -v amc:/talend/amc \\
            --rm -d \
            ${image}:${image_version} \
            /talend/${app_name}/${job_name}-${job_version}/${job_name}/${job_name}_run.sh
