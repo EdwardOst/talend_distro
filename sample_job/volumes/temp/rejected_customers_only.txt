@@ -1,1 +1,0 @@
-sysid;customerId;last;first;gender;errorCode;errorMessage
