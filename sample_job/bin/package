@@ -1,10 +1,21 @@
+#!/usr/bin/env bash
+
 set -e
-# set -x
+set -u
 
 script_path=$(readlink -e "${BASH_SOURCE[0]}")
 script_dir="${script_path%/*}"
 
-source ${script_dir}/../lib/packager/talend-packager.sh
+source "${script_dir}/../lib/packager/talend-packager.sh"
 
+declare manifest="${1:-manifest.cfg}"
+declare artifactid="${2:-talend_app}"
+declare groupid="${3:-com/talend/se/packager}"
 
-talend_packager -m "${script_dir}/../job_manifest.cfg" -g "com/talend/se/packager" -a "customer_address"
+declare usage="package.sh [ <manifest> [ <groupid> [ <artifactid> ] ] ]"
+
+[ -z "${manifest}" ] && echo "Manifest cannot be empty: ${usage}" 1>&2 && exit 1
+[ -z "${artifactid}" ] && echo "Artifactid cannot be empty: ${usage}" 1>&2 && exit 1
+[ -z "${groupid}" ] && echo "Groupid cannot be empty: ${usage}" 1>&2 && exit 1
+
+talend_packager -m "${manifest}" -g "${groupid}" -a "${artifactid}"
