@@ -1,0 +1,1 @@
+../../packager/talend-packager.sh
