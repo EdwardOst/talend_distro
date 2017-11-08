@@ -4,58 +4,35 @@
 
 shared bash script utilities.
 
-### talend-6.2.1
-
-Bash scripts to download Talend distribution files to local storage.
-
-* Use an S3Fuse or similar mounting tool to use Cloud Storage.
-* Alternatively run this from Dockerfile or from a Docker tool container and save to a Docker Data Container.
-
-### apache
-
-Bash scripts to download Apache products used by Talend, e.g. Tomcat
-
 ### packager
 
 Bash scripts to (re)package Talend Jobs for use in containers.
 
-* Manifest downloads multiple Talend Jobs from Nexus, unzips, and merges them
-* Each Job launch script is modified to use `exec` so that Talend Jobs run as PID 1
+* Download potentially multiple Talend Jobs from Nexus based on the Manifest.
+* Unzip and merge jobs
+* Modify each Job launch script to use `exec` so that Talend Jobs run as PID 1
+* Repackage as a tgz preserving privileges
+* Publish back to Nexus
 
 ### talend-job
 
 sample talend job image
 
-
-| File                    |  Description                                               |
-:------------------------:|:----------------------------------------------------------:|
-| job_manifest.cfg        | sample manifest file used by test-talend-packager          |
-| LICENSE                 | Apache license                                             |
-| parse-url.sh            | utility to parse a url returns a bash dictionary           |
-| README.md               |                                                            |
-| repo.sh                 | utility wrapper for using wget                             |
-| talend-6.2.1.cfg        | download manifest for Talend packages                      |
-| talend-packager.sh      | repackage Talend Jobs for use with Docker                  |
-| talend-tomcat.sh        | download Apache Tomcat and upload to local nexus repo      |
-| test_nexus_wget.sh      | test sandbox for wget interaction wth nexus                |
-| test-parse-url          | test parse-url script                                      |
-| test-repo               | test repo script                                           |
-| test-talend-packager    | test talend-packager script                                |
-| test-talend-tomcat      | test tomcat download                                       |
-| util.sh                 | common bash utilities                                      |
-
 ### Talend Docker Workflow
 
 These directions assume you have an enterprise Talend subscription and that you have correctly configured Talend Studio to use the Talend Artifact Repository (i.e Nexus).
 
-The workflow is fairly simple.  All work is done on Linux.  I have used Ubuntu.  
-Your linux machine will need Docker installed.
-The Talend Studio steps can be run in any environment.
 The sample scripts are available on github `https://github.com/EdwardOst/talend_distro` .
-You can clone the files from github, or just download the zip file of the repo.
 
-In my case I ran Studio on my Windows laptop and published to Nexus.
+The workflow is fairly simple.
+All containerization work is done on Linux with Docker installed.
+Talend Studio steps can run on a separate machine if desired.
+Your Linux machine does can be a console machine (no X Windows desktop) if you run Taled Studio on another machine.
+Both Linux and Studio machines need access to a Nexus instance.
+
+I ran Studio on my laptop Windows and published to a Nexus instance also running on my laptop Windows.
 From there I ran the scripts in this project on an Ubuntu image running in a VirtualBox VM.
+I have used Ubuntu in the examples but the scripts should work in most bash environments.
 
 1.  Import the sample job found in the `talend_distro/sample_job` directory into Talend Studio. 
 2.  Select Publish Job from the Talend Studio to create a Talend job zip file.
@@ -69,7 +46,7 @@ Clone this github repo.
 
     git clone https://github.com/EdwardOst/talend_distro.git
 
-Import the `t1_docker_create_customer_s3.zip` sample job from `talend_distro/sample_job` directory.
+Import the `t0_docker_create_customer.zip` sample job from `talend_distro/sample_job` directory.
 
 ![import_job](pictures/00_import_job_a.png)
 

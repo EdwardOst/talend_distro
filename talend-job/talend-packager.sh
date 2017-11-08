@@ -27,7 +27,8 @@ source "${talend_packager_array_util_path}"
 
 function help() {
     _help_flag=1
-    cat <<EOF
+    local usage
+    define usage <<EOF
 
 Download all talend job zip files from url's listed in manifest file.
 Merge all talend job zip files.
@@ -48,6 +49,7 @@ usage:
     -w working directory : env var TALEND_PACKAGER_WORKING_DIR : defaults to creating a temp directory
 
 EOF
+    echo "${usage}"
 }
 
 

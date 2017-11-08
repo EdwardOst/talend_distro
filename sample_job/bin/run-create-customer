@@ -7,29 +7,16 @@ app_name="${3:-customer_address}"
 job_name="${4:-t0_docker_create_customer}"
 job_version="${5:-0.1.0-SNAPSHOT}"
 
-cat <<EOF
-excuting: docker run --read-only \\
-           -v volumes/in:/talend/in:ro \\
-           -v volumes/out:/talend/out \\
-           -v volumes/config:/talend/config \\
-           -v volumes/data:/talend/data \\
-           -v volumes/temp:/talend/temp \\
-           -v volumes/log:/talend/log \\
-           -v volumes/amc:/talend/amc \\
-           --rm -d \\
-           ${image}:${image_version} \\
-           /talend/${app_name}/${job_name}-${job_version}/${job_name}/${job_name}_run.sh
+echo "/talend/${app_name}/${job_name}-${job_version}/${job_name}/${job_name}_run.sh"
 
-EOF
-
-docker run --read-only \
-           -v volumes/in:/talend/in:ro \\
-           -v volumes/out:/talend/out \\
-           -v volumes/config:/talend/config \\
-           -v volumes/data:/talend/data \\
-           -v volumes/temp:/talend/temp \\
-           -v volumes/log:/talend/log \\
-           -v volumes/amc:/talend/amc \\
+docker run \
+           -v /home/eost/talend_distro/sample_job/volumes/in:/talend/in:ro \
+           -v /home/eost/talend_distro/sample_job/volumes/out:/talend/out \
+           -v /home/eost/talend_distro/sample_job/volumes/config:/talend/config \
+           -v /home/eost/talend_distro/sample_job/volumes/data:/talend/data \
+           -v /home/eost/talend_distro/sample_job/volumes/temp:/talend/temp \
+           -v /home/eost/talend_distro/sample_job/volumes/log:/talend/log \
+           -v /home/eost/talend_distro/sample_job/volumes/amc:/talend/amc \
            --rm -d \
            ${image}:${image_version} \
            /talend/${app_name}/${job_name}-${job_version}/${job_name}/${job_name}_run.sh

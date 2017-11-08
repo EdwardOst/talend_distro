@@ -7,12 +7,12 @@ app_name="${3:-customer_address}"
 job_name="${4:-t0_docker_create_customer}"
 job_version="${5:-0.1.0-SNAPSHOT}"
 
-docker run -v /home/eost/docker/talend_distro/sample_job/volumes/in:/talend/in:ro \
-           -v /home/eost/docker/talend_distro/sample_job/volumes/out:/talend/out \
-           -v /home/eost/docker/talend_distro/sample_job/volumes/config:/talend/config \
-           -v /home/eost/docker/talend_distro/sample_job/volumes/data:/talend/data \
-           -v /home/eost/docker/talend_distro/sample_job/volumes/temp:/talend/temp \
-           -v /home/eost/docker/talend_distro/sample_job/volumes/log:/talend/log \
-           -v /home/eost/docker/talend_distro/sample_job/volumes/amc:/talend/amc \
+docker run -v /home/eost/talend_distro/sample_job/volumes/in:/talend/in:ro \
+           -v /home/eost/talend_distro/sample_job/volumes/out:/talend/out \
+           -v /home/eost/talend_distro/sample_job/volumes/config:/talend/config \
+           -v /home/eost/talend_distro/sample_job/volumes/data:/talend/data \
+           -v /home/eost/talend_distro/sample_job/volumes/temp:/talend/temp \
+           -v /home/eost/talend_distro/sample_job/volumes/log:/talend/log \
+           -v /home/eost/talend_distro/sample_job/volumes/amc:/talend/amc \
            --rm -it \
            ${image}:${image_version}

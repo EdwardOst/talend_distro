@@ -1,1 +1,1 @@
-../../packager/talend-packager.sh
+../../talend-job/talend-packager.sh
