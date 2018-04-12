@@ -1,9 +1,0 @@
-[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 98: [tLogRow_1] 1197|197|Personnal|Lindbergh Blvd||Pierre|||OK|US|Warren.Ford@gmail.com|234-555-1212
-[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 99: [tLogRow_1] 1198|198|Personnal|Carpinteria North||Raleigh|||GA|US|Franklin.Johnson@gmail.com|234-555-1212
-[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 100: [tLogRow_1] 1199|199|Personnal|Redwood Highway||Montgomery|||NH|US|Zachary.Hoover@gmail.com|234-555-1212
-[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tRowGenerator_1 - Generated records count:100 .
-[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Printed row count: 100.
-[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tRowGenerator_2 - Generating records.
-[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tRowGenerator_2 - Generated records count:10 .
-[WARN ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tWarn_1 - Message: Finished. Code: 42
-[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - TalendJob: 't0_docker_create_customer' - Done.

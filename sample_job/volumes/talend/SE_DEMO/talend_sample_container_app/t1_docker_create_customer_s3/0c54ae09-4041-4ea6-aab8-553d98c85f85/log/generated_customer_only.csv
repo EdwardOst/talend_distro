@@ -1,0 +1,21 @@
+sysid;customerId;last;first;gender
+200;C1100;Cleveland;Chester;M
+201;C1101;Jefferson;Lyndon;M
+202;C1102;McKinley;Herbert;M
+203;C1103;Van Buren;Theodore;M
+204;C1104;Harding;Chester;F
+205;C1105;Adams;Zachary;F
+206;C1106;Roosevelt;Jimmy;F
+207;C1107;Nixon;Theodore;F
+208;C1108;Polk;Franklin;F
+209;C1109;Carter;Ulysses;F
+200;C1100;Jefferson;Ulysses;M
+201;C1101;Van Buren;Jimmy;M
+202;C1102;Pierce;Jimmy;F
+203;C1103;Jefferson;Warren;F
+204;C1104;Hoover;Herbert;M
+205;C1105;Coolidge;Grover;F
+206;C1106;Wilson;Woodrow;M
+207;C1107;Polk;Benjamin;F
+208;C1108;Nixon;Martin;F
+209;C1109;Hayes;Ulysses;F

@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+
+[ "${TALEND_BUILD_FLAG:-0}" -gt 0 ] && return 0
+
+export TALEND_BUILD_FLAG=1
+
+set -e
+set -u
+
+talend_build_script_path=$(readlink -e "${BASH_SOURCE[0]}")
+talend_build_script_dir="${talend_build_script_path%/*}"
+
+source "${talend_build_script_dir}/../util/util.sh"
+
+export INFO_LOG=true
+export DEBUG_LOG=true
+
+# nexus source
+declare nexus_artifactid="${1:-${nexus_artifactid:-talend_sample_container_app}}"
+declare nexus_group="${2:-${nexus_group:-com/talend/se/container}}"
+declare nexus_version="${3:-${nexus_version:-0.1.0}}"
+
+# docker target
+declare app_user="${4:-${app_user:-${USER}}}"
+declare app_name="${5:-${app_name:-${nexus_artifactid}}}"
+declare app_version="${6:-${app_version:-${nexus_version}}}"
+declare nexus_host="${7:-${nexus_host:-192.168.99.1}}"
+declare job_parent_dir="${8:-${job_parent_dir:-/talend}}"
+
+required nexus_group nexus_artifactid nexus_version app_user app_name app_version nexus_host job_parent_dir
+
+debugVar nexus_group
+debugVar nexus_artifactid
+debugVar nexus_version
+debugVar app_user
+debugVar app_name
+debugVar app_version
+debugVar nexus_host
+debugVar job_parent_dir
+
+declare image_tag="${app_user}/${app_name}:${app_version}"
+declare app_tgz="${nexus_artifactid}-${nexus_version}.tgz"
+
+debugVar image_tag
+debugVar app_tgz
+
+pushd "${talend_build_script_dir}"
+infoLog docker build --no-cache -t "${image_tag}" \
+             --build-arg nexus_group="${nexus_group}" \
+             --build-arg nexus_version="${nexus_version}" \
+             --build-arg app_tgz="${app_tgz}" \
+             --build-arg nexus_host="${nexus_host}" \
+             --build-arg job_parent_dir="${job_parent_dir}" .
+
+docker build --no-cache -t "${image_tag}" \
+             --build-arg nexus_group="${nexus_group}" \
+             --build-arg nexus_version="${nexus_version}" \
+             --build-arg app_tgz="${app_tgz}" \
+             --build-arg nexus_host="${nexus_host}" \
+             --build-arg job_parent_dir="${job_parent_dir}" .
+
+popd
+
+infoLog "Finished"

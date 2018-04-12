@@ -1,0 +1,4 @@
+2018-03-20 17:24:17;4RhUja;4RhUja;4RhUja;SE_DEMO;t0_docker_create_customer;Default;3;tWarn;tWarn_3;job: 841ed6d0-2c63-11e8-8d9c-080027f69c5a: started;0
+2018-03-20 17:24:17;4RhUja;4RhUja;4RhUja;SE_DEMO;t0_docker_create_customer;Default;3;tWarn;tWarn_4;job: 841ed6d0-2c63-11e8-8d9c-080027f69c5a: subjob: Create Customers with Addresses: started;0
+2018-03-20 17:24:17;4RhUja;4RhUja;4RhUja;SE_DEMO;t0_docker_create_customer;Default;6;Java Exception;tFileInputDelimited_2;java.io.FileNotFoundException:/talend/SE_DEMO/talend_sample_container_app/t0_docker_create_customer/in/states.csv (No such file or directory);1
+2018-03-20 17:24:17;4RhUja;4RhUja;4RhUja;SE_DEMO;t0_docker_create_customer;Default;3;tWarn;tWarn_2;job: 841ed6d0-2c63-11e8-8d9c-080027f69c5a: finished;0

@@ -1,1 +1,0 @@
-../../talend-job/talend-packager.sh

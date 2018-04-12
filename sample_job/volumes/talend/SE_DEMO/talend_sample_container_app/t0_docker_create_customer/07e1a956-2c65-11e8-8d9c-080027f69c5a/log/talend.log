@@ -1,0 +1,161 @@
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LoadContext_1_tFileExist_1 - Directory or file : /talend/config/talend.cfg doesn't exist.
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LoadContext_1_tFileExist_2 - Directory or file : /talend/SE_DEMO/config/project.cfg doesn't exist.
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LoadContext_1_tFileExist_3 - Directory or file : /talend/SE_DEMO/t0_docker_create_customer/config/job.cfg exists.
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LoadContext_1_tFileInputDelimited_3 - Retrieving records from the datasource.
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LoadContext_1_tFileInputDelimited_3 - Retrieved records count: 1.
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LoadContext_1_tContextLoad_3 - Loaded contexts count: 1.
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LoadContext_1_tFileExist_4 - Directory or file : /talend/SE_DEMO/t0_docker_create_customer/07e1a956-2c65-11e8-8d9c-080027f69c5a/config/job_instance.cfg doesn't exist.
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tContextDump_2 - Dumping context.
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tContextDump_2 - Dumped contexts count: 39.
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 1: address_rejects|address_rejects.csv
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 2: addresses_file|addresses.csv
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 3: amc_dir|/talend/SE_DEMO/t0_docker_create_customer/amc
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 4: amc_log_file|amc_log.log
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 5: amc_meter_file|amc_meter.log
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 6: amc_stats_file|amc_stats.log
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 7: config_dir|/talend/SE_DEMO/t0_docker_create_customer/07e1a956-2c65-11e8-8d9c-080027f69c5a/config
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 8: config_file|job_instance.cfg
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 9: config_log_file|
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 10: customer_only_records|10
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 11: customers_file|customers.csv
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 12: customers_rejected|customer_rejected.csv
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 13: customers_target_state|customers_target_state.csv
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 14: customers_valid|customers_valid.csv
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 15: generated_customer|generated_customers.csv
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 16: generated_customer_only|generated_customer_only.csv
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 17: global_config_dir|/talend/config
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 18: global_config_file|talend.cfg
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 19: global_var|hardcoded_global_var
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 20: in_dir|/talend/SE_DEMO/t0_docker_create_customer/in
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 21: instance_var|hardcoded_instance_var
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 22: job_config_dir|/talend/SE_DEMO/t0_docker_create_customer/config
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 23: job_config_file|job.cfg
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 24: job_id|07e1a956-2c65-11e8-8d9c-080027f69c5a
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 25: job_var|hardcoded_job_var
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 26: log_dir|/talend/SE_DEMO/t0_docker_create_customer/07e1a956-2c65-11e8-8d9c-080027f69c5a/log
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 27: log_file|talend.log
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 28: log_level|INFO
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 29: out_dir|/talend/SE_DEMO/t0_docker_create_customer/07e1a956-2c65-11e8-8d9c-080027f69c5a/out
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 30: project_config_dir|/talend/SE_DEMO/config
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 31: project_config_file|project.cfg
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 32: project_var|hardcoded_project_var
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 33: records|100
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 34: rejected_customer|rejected_customers.csv
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 35: rejected_customer_only|rejected_customers_only.csv
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 36: root_dir|/talend
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 37: sequenceStart|100
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 38: states_file|states.csv
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 39: temp_dir|/talend/SE_DEMO/t0_docker_create_customer/07e1a956-2c65-11e8-8d9c-080027f69c5a/temp
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Printed row count: 39.
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tWarn_3 - Message: job: 07e1a956-2c65-11e8-8d9c-080027f69c5a: started. Code: 0
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tWarn_4 - Message: job: 07e1a956-2c65-11e8-8d9c-080027f69c5a: subjob: Create Customers with Addresses: started. Code: 0
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tFileInputDelimited_2 - Retrieving records from the datasource.
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tFileInputDelimited_2 - Retrieved records count: 65.
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tRowGenerator_1 - Generating records.
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 1: [tLogRow_1] 1100|100|Personnal|Carpinteria South||Juneau|||AR|US|Ulysses.Johnson@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 2: [tLogRow_1] 1101|101|Business|Fairview Avenue||Carson City|||OH|US|Dwight.Clinton@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 3: [tLogRow_1] 1102|102|Business|El Camino Real||Lincoln|||MN|US|Jimmy.Harrison@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 4: [tLogRow_1] 1103|103|Business|Carpinteria South||Austin|||HI|US|John.Cleveland@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 5: [tLogRow_1] 1104|104|Personnal|Bowles Avenue||Columbus|||SC|US|Herbert.Eisenhower@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 6: [tLogRow_1] 1105|105|Business|Moreno Drive||Lansing|||KY|US|Martin.Tyler@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 7: [tLogRow_1] 1106|106|Business|San Ysidro Blvd||Phoenix|||GA|US|George.Adams@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 8: [tLogRow_1] 1107|107|Personnal|French Camp Turnpike Road||Montpelier|||MA|US|Andrew.Van Buren@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 9: [tLogRow_1] 1108|108|Personnal|San Luis Obispo North||Springfield|||AL|US|Zachary.Johnson@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 10: [tLogRow_1] 1109|109|Business|Tully Road East||Annapolis|||NY|US|James.Coolidge@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 11: [tLogRow_1] 1110|110|Business|Monroe Street||Oklahoma City|||WY|US|Calvin.Nixon@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 12: [tLogRow_1] 1111|111|Business|Cerrillos Road||Phoenix|||UT|US|William.Ford@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 13: [tLogRow_1] 1112|112|Business|Lake Tahoe Blvd.||Lansing|||NH|US|Richard.Carter@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 14: [tLogRow_1] 1113|113|Personnal|French Camp Turnpike Road||Springfield|||TX|US|Dwight.Van Buren@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 15: [tLogRow_1] 1114|114|Personnal|San Simeon||Jefferson City|||MS|US|Chester.Pierce@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 16: [tLogRow_1] 1115|115|Personnal|Cleveland Ave.||Pierre|||CA|US|Millard.Jefferson@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 17: [tLogRow_1] 1116|116|Personnal|Camelback Rd||Jefferson City|||UT|US|Calvin.Roosevelt@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 18: [tLogRow_1] 1117|117|Business|Pacific Hwy S||Frankfort|||NJ|US|Franklin.Wilson@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 19: [tLogRow_1] 1118|118|Personnal|Erringer Road||Montpelier|||NV|US|Thomas.Tyler@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 20: [tLogRow_1] 1119|119|Personnal|S Rustle St||Oklahoma City|||AZ|US|Bill.Hoover@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 21: [tLogRow_1] 1120|120|Personnal|North Preisker Lane||Montgomery|||NJ|US|William.Polk@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 22: [tLogRow_1] 1121|121|Business|Cerrillos Road||Dover|||KY|US|Andrew.Harrison@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 23: [tLogRow_1] 1122|122|Business|W. Russell St.||Lincoln|||MO|US|Dwight.Taylor@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 24: [tLogRow_1] 1123|123|Business|Lake Tahoe Blvd.||Raleigh|||OK|US|Gerald.Washington@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 25: [tLogRow_1] 1124|124|Personnal|East Calle Primera||Boston|||VA|US|Rutherford.Taft@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 26: [tLogRow_1] 1125|125|Personnal|East 1st Street||Salt Lake City|||VA|US|Ulysses.Taft@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 27: [tLogRow_1] 1126|126|Business|Castillo Drive||Carson City|||NJ|US|Grover.Ford@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 28: [tLogRow_1] 1127|127|Business|South Roosevelt Drive||Topeka|||OH|US|William.Pierce@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 29: [tLogRow_1] 1128|128|Personnal|South Roosevelt Drive||Salem|||NV|US|William.Tyler@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 30: [tLogRow_1] 1129|129|Business|Padre Boulevard||Augusta|||TX|US|Andrew.Lincoln@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 31: [tLogRow_1] 1130|130|Business|Via Real||Olympia|||HI|US|Dwight.Polk@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 32: [tLogRow_1] 1131|131|Personnal|Padre Boulevard||Atlanta|||SD|US|Ronald.Madison@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 33: [tLogRow_1] 1132|132|Personnal|Padre Boulevard||Providence|||RI|US|Millard.Tyler@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 34: [tLogRow_1] 1133|133|Business|El Camino Real||Jefferson City|||NM|US|William.Van Buren@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 35: [tLogRow_1] 1134|134|Personnal|El Camino Real||Harrisburg|||ME|US|John.Harrison@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 36: [tLogRow_1] 1135|135|Business|Bailard Avenue||Trenton|||MN|US|William.Quincy@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 37: [tLogRow_1] 1136|136|Personnal|Via Real||Sacramento|||AK|US|Ronald.Roosevelt@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 38: [tLogRow_1] 1137|137|Personnal|Lindbergh Blvd||Santa Fe|||MA|US|Theodore.Harrison@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 39: [tLogRow_1] 1138|138|Business|North Broadway Street||Des Moines|||CT|US|Millard.Grant@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 40: [tLogRow_1] 1139|139|Personnal|South Roosevelt Drive||Columbia|||NJ|US|William.Carter@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 41: [tLogRow_1] 1140|140|Business|E Fowler Avenue||Helena|||NV|US|Gerald.McKinley@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 42: [tLogRow_1] 1141|141|Personnal|Camelback Rd||Trenton|||MO|US|Dwight.Wilson@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 43: [tLogRow_1] 1142|142|Business|S Rustle St||Sacramento|||AL|US|Rutherford.Coolidge@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 44: [tLogRow_1] 1143|143|Business|Bailard Avenue||Phoenix|||SC|US|Ulysses.Eisenhower@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 45: [tLogRow_1] 1144|144|Personnal|Harry S Truman Blvd||Providence|||IN|US|Warren.Garfield@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 46: [tLogRow_1] 1145|145|Business|Santa Rosa South||Des Moines|||SD|US|Franklin.Adams@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 47: [tLogRow_1] 1146|146|Personnal|North Broadway Street||Lansing|||MA|US|Thomas.Hayes@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 48: [tLogRow_1] 1147|147|Business|Erringer Road||Sacramento|||MN|US|George.McKinley@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 49: [tLogRow_1] 1148|148|Personnal|North Atherton Street||Baton Rouge|||MN|US|Lyndon.Truman@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 50: [tLogRow_1] 1149|149|Business|Harbor Dr||Springfield|||MN|US|Thomas.Fillmore@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 51: [tLogRow_1] 1150|150|Business|E Fowler Avenue||Providence|||VA|US|Harry.Harding@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 52: [tLogRow_1] 1151|151|Business|W. Russell St.||Pierre|||DE|US|Abraham.Wilson@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 53: [tLogRow_1] 1152|152|Business|Lawrenceville Suwanee||Oklahoma City|||MD|US|Harry.Taft@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 54: [tLogRow_1] 1153|153|Business|North Broadway Street||Nashville|||CO|US|Harry.Truman@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 55: [tLogRow_1] 1154|154|Business|Cleveland Ave.||Boise|||NE|US|Woodrow.Garfield@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 56: [tLogRow_1] 1155|155|Personnal|East Calle Primera||Honolulu|||HI|US|John.Truman@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 57: [tLogRow_1] 1156|156|Business|North Ventu Park Road||Atlanta|||PA|US|Calvin.Fillmore@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 58: [tLogRow_1] 1157|157|Business|East 1st Street||Cheyenne|||SC|US|Lyndon.Monroe@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 59: [tLogRow_1] 1158|158|Personnal|San Marcos||Springfield|||ME|US|Calvin.Arthur@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 60: [tLogRow_1] 1159|159|Business|Milpas Street||Concord|||CA|US|Theodore.Van Buren@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 61: [tLogRow_1] 1160|160|Business|Cleveland Ave.||Sacramento|||FL|US|Herbert.Polk@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 62: [tLogRow_1] 1161|161|Personnal|North Ventu Park Road||Madison|||ME|US|Theodore.Fillmore@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 63: [tLogRow_1] 1162|162|Business|Woodson Rd.||Little Rock|||NM|US|Martin.Cleveland@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 64: [tLogRow_1] 1163|163|Personnal|East Fry Blvd.||Madison|||AR|US|Millard.Harrison@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 65: [tLogRow_1] 1164|164|Business|Carpinteria South||Frankfort|||NH|US|Millard.Washington@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 66: [tLogRow_1] 1165|165|Business|E Fowler Avenue||Oklahoma City|||CA|US|Richard.Washington@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 67: [tLogRow_1] 1166|166|Personnal|Castillo Drive||Denver|||AZ|US|Jimmy.Reagan@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 68: [tLogRow_1] 1167|167|Business|North Erringer Road||Hartford|||IL|US|James.Adams@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 69: [tLogRow_1] 1168|168|Business|Castillo Drive||Albany|||MD|US|Rutherford.Kennedy@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 70: [tLogRow_1] 1169|169|Personnal|San Simeon||Oklahoma City|||NV|US|Chester.Jefferson@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 71: [tLogRow_1] 1170|170|Business|Steele Lane||Boston|||UT|US|Bill.Cleveland@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 72: [tLogRow_1] 1171|171|Personnal|Tanger Blvd||Atlanta|||OR|US|Martin.Hayes@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 73: [tLogRow_1] 1172|172|Personnal|Redwood Highway||Phoenix|||UT|US|Harry.Jefferson@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 74: [tLogRow_1] 1173|173|Business|Westside Freeway||Indianapolis|||MI|US|Benjamin.Wilson@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 75: [tLogRow_1] 1174|174|Business|Santa Rosa North||Carson City|||OH|US|John.Fillmore@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 76: [tLogRow_1] 1175|175|Business|San Luis Obispo North||Helena|||WY|US|Bill.Lincoln@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 77: [tLogRow_1] 1176|176|Personnal|North Atherton Street||Hartford|||NC|US|Thomas.Jefferson@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 78: [tLogRow_1] 1177|177|Personnal|North Preisker Lane||Boise|||MN|US|William.Roosevelt@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 79: [tLogRow_1] 1178|178|Business|San Simeon||Harrisburg|||RI|US|Franklin.Roosevelt@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 80: [tLogRow_1] 1179|179|Business|North Atherton Street||Austin|||MD|US|William.Wilson@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 81: [tLogRow_1] 1180|180|Personnal|Steele Lane||Columbia|||CA|US|Woodrow.Taft@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 82: [tLogRow_1] 1181|181|Personnal|Timberlane Drive||Cheyenne|||CO|US|Lyndon.Washington@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 83: [tLogRow_1] 1182|182|Business|Carpinteria North||Madison|||NC|US|Harry.Taylor@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 84: [tLogRow_1] 1183|183|Business|Harbor Dr||Tallahassee|||NH|US|Lyndon.Harrison@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 85: [tLogRow_1] 1184|184|Personnal|Lawrenceville Suwanee||Helena|||WA|US|James.Johnson@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 86: [tLogRow_1] 1185|185|Business|French Camp Turnpike Road||Richmond|||WI|US|George.Monroe@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 87: [tLogRow_1] 1186|186|Business|North Preisker Lane||Frankfort|||WI|US|Andrew.Nixon@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 88: [tLogRow_1] 1187|187|Business|French Camp Turnpike Road||Topeka|||KY|US|Martin.Adams@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 89: [tLogRow_1] 1188|188|Business|North Ventu Park Road||Trenton|||MS|US|Abraham.Adams@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 90: [tLogRow_1] 1189|189|Business|San Ysidro Blvd||Phoenix|||MD|US|Calvin.Taft@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 91: [tLogRow_1] 1190|190|Personnal|Harbor Dr||Baton Rouge|||MT|US|John.Ford@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 92: [tLogRow_1] 1191|191|Personnal|Greenwood Road||Salem|||GA|US|Zachary.Harrison@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 93: [tLogRow_1] 1192|192|Personnal|Moreno Drive||Lansing|||ME|US|Franklin.Taft@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 94: [tLogRow_1] 1193|193|Personnal|San Ysidro Blvd||Madison|||MO|US|Chester.Nixon@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 95: [tLogRow_1] 1194|194|Personnal|Steele Lane||Salem|||DE|US|Rutherford.Harrison@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 96: [tLogRow_1] 1195|195|Business|Hutchinson Rd||Dover|||ND|US|Warren.Jefferson@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 97: [tLogRow_1] 1196|196|Personnal|Bayshore Freeway||Salem|||MA|US|Abraham.Grant@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 98: [tLogRow_1] 1197|197|Business|Fontaine Road||Montpelier|||TX|US|Chester.Harding@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 99: [tLogRow_1] 1198|198|Personnal|San Ysidro Blvd||Honolulu|||NM|US|Bill.Arthur@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Content of row 100: [tLogRow_1] 1199|199|Business|Burnett Road||Concord|||WI|US|Millard.McKinley@gmail.com|234-555-1212
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tRowGenerator_1 - Generated records count:100 .
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tLogRow_1 - Printed row count: 100.
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tRowGenerator_2 - Generating records.
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tRowGenerator_2 - Generated records count:10 .
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tWarn_1 - Message: job: 07e1a956-2c65-11e8-8d9c-080027f69c5a: subjob: Create Customers with Addresses: finished. Code: 0
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tWarn_2 - Message: job: 07e1a956-2c65-11e8-8d9c-080027f69c5a: finished. Code: 0
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - TalendJob: 't0_docker_create_customer' - Done.

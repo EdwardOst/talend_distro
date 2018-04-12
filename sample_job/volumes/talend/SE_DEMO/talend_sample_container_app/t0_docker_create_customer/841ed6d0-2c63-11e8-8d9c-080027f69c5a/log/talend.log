@@ -1,0 +1,54 @@
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LoadContext_1_tFileExist_1 - Directory or file : /talend/config/talend.cfg doesn't exist.
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LoadContext_1_tFileExist_2 - Directory or file : /talend/SE_DEMO/config/project.cfg doesn't exist.
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LoadContext_1_tFileExist_3 - Directory or file : /talend/SE_DEMO/t0_docker_create_customer/config/job.cfg exists.
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LoadContext_1_tFileInputDelimited_3 - Retrieving records from the datasource.
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LoadContext_1_tFileInputDelimited_3 - Retrieved records count: 1.
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LoadContext_1_tContextLoad_3 - Loaded contexts count: 1.
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LoadContext_1_tFileExist_4 - Directory or file : /talend/SE_DEMO/t0_docker_create_customer/841ed6d0-2c63-11e8-8d9c-080027f69c5a/config/job_instance.cfg doesn't exist.
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tContextDump_2 - Dumping context.
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tContextDump_2 - Dumped contexts count: 39.
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 1: address_rejects|address_rejects.csv
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 2: addresses_file|addresses.csv
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 3: amc_dir|/talend/SE_DEMO/t0_docker_create_customer/amc
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 4: amc_log_file|amc_log.log
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 5: amc_meter_file|amc_meter.log
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 6: amc_stats_file|amc_stats.log
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 7: config_dir|/talend/SE_DEMO/t0_docker_create_customer/841ed6d0-2c63-11e8-8d9c-080027f69c5a/config
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 8: config_file|job_instance.cfg
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 9: config_log_file|
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 10: customer_only_records|10
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 11: customers_file|customers.csv
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 12: customers_rejected|customer_rejected.csv
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 13: customers_target_state|customers_target_state.csv
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 14: customers_valid|customers_valid.csv
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 15: generated_customer|generated_customers.csv
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 16: generated_customer_only|generated_customer_only.csv
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 17: global_config_dir|/talend/config
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 18: global_config_file|talend.cfg
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 19: global_var|hardcoded_global_var
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 20: in_dir|/talend/SE_DEMO/talend_sample_container_app/t0_docker_create_customer/in
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 21: instance_var|hardcoded_instance_var
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 22: job_config_dir|/talend/SE_DEMO/t0_docker_create_customer/config
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 23: job_config_file|job.cfg
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 24: job_id|841ed6d0-2c63-11e8-8d9c-080027f69c5a
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 25: job_var|hardcoded_job_var
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 26: log_dir|/talend/SE_DEMO/t0_docker_create_customer/841ed6d0-2c63-11e8-8d9c-080027f69c5a/log
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 27: log_file|talend.log
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 28: log_level|INFO
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 29: out_dir|/talend/SE_DEMO/t0_docker_create_customer/841ed6d0-2c63-11e8-8d9c-080027f69c5a/out
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 30: project_config_dir|/talend/SE_DEMO/config
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 31: project_config_file|project.cfg
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 32: project_var|hardcoded_project_var
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 33: records|100
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 34: rejected_customer|rejected_customers.csv
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 35: rejected_customer_only|rejected_customers_only.csv
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 36: root_dir|/talend
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 37: sequenceStart|100
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 38: states_file|states.csv
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Content of row 39: temp_dir|/talend/SE_DEMO/t0_docker_create_customer/841ed6d0-2c63-11e8-8d9c-080027f69c5a/temp
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - LogContext_1_tLogRow_2 - Printed row count: 39.
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tWarn_3 - Message: job: 841ed6d0-2c63-11e8-8d9c-080027f69c5a: started. Code: 0
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tWarn_4 - Message: job: 841ed6d0-2c63-11e8-8d9c-080027f69c5a: subjob: Create Customers with Addresses: started. Code: 0
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tFileInputDelimited_2 - Retrieved records count: 0.
+[FATAL]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tFileInputDelimited_2 /talend/SE_DEMO/talend_sample_container_app/t0_docker_create_customer/in/states.csv (No such file or directory)
+[INFO ]: se_demo.t0_docker_create_customer_0_1.t0_docker_create_customer - tWarn_2 - Message: job: 841ed6d0-2c63-11e8-8d9c-080027f69c5a: finished. Code: 0

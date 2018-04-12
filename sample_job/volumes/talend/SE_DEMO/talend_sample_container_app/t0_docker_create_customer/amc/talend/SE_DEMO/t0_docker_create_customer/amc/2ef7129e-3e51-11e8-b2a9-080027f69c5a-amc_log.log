@@ -1,0 +1,4 @@
+2018-04-12 12:58:25;3mllTj;3mllTj;3mllTj;SE_DEMO;t0_docker_create_customer;Default;3;tWarn;tWarn_3;job: 2ef7129e-3e51-11e8-b2a9-080027f69c5a: started;0
+2018-04-12 12:58:25;3mllTj;3mllTj;3mllTj;SE_DEMO;t0_docker_create_customer;Default;3;tWarn;tWarn_4;job: 2ef7129e-3e51-11e8-b2a9-080027f69c5a: subjob: Create Customers with Addresses: started;0
+2018-04-12 12:58:25;3mllTj;3mllTj;3mllTj;SE_DEMO;t0_docker_create_customer;Default;3;tWarn;tWarn_1;job: 2ef7129e-3e51-11e8-b2a9-080027f69c5a: subjob: Create Customers with Addresses: finished;0
+2018-04-12 12:58:25;3mllTj;3mllTj;3mllTj;SE_DEMO;t0_docker_create_customer;Default;3;tWarn;tWarn_2;job: 2ef7129e-3e51-11e8-b2a9-080027f69c5a: finished;0

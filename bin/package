@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+set -e
+set -u
+
+package_script_path=$(readlink -e "${BASH_SOURCE[0]}")
+package_script_dir="${package_script_path%/*}"
+
+source "${package_script_dir}/../util/util.sh"
+#source "${package_script_dir}/talend-container-factory.sh"
+source "${package_script_dir}/tcf-package.sh"
+
+
+declare artifactid="${1:-talend_sample_container_app}"
+declare groupid="${2:-com/talend/se/container}"
+declare version="${3:-0.1.0}"
+declare manifest="${4:-manifest.cfg}"
+export nexus_host=192.168.99.1
+
+required artifactid groupid manifest version
+
+export INFO_LOG=true
+export DEBUG_LOG=true
+
+talend_packager -m "${manifest}" -g "${groupid}" -a "${artifactid}" -v "${version}"
+
+infoLog "Finished"
