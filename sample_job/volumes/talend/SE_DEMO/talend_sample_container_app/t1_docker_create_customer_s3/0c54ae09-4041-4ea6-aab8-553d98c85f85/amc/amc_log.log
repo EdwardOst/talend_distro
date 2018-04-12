@@ -1,9 +1,0 @@
-2017-12-31 13:33:48;twRAU8;twRAU8;twRAU8;SE_DEMO;t1_docker_create_customer_s3;container;6;Java Exception;tS3Connection_2;java.lang.IllegalArgumentException:Access key cannot be null.;1
-2017-12-31 13:33:48;twRAU8;twRAU8;twRAU8;SE_DEMO;t1_docker_create_customer_s3;container;3;tWarn;tWarn_3;job: null: started;0
-2017-12-31 13:33:48;twRAU8;twRAU8;twRAU8;SE_DEMO;t1_docker_create_customer_s3;container;3;tWarn;tWarn_4;job: null: subjob: Create Customers with Addresses: started;0
-2017-12-31 13:33:48;twRAU8;twRAU8;twRAU8;SE_DEMO;t1_docker_create_customer_s3;container;3;tWarn;tWarn_1;job: null: subjob: Create Customers with Addresses: finished;0
-2017-12-31 13:33:48;twRAU8;twRAU8;twRAU8;SE_DEMO;t1_docker_create_customer_s3;container;3;tWarn;tWarn_2;job: null: finished;0
-2017-12-31 13:42:17;Yvej5j;Yvej5j;Yvej5j;SE_DEMO;t1_docker_create_customer_s3;container;3;tWarn;tWarn_3;job: null: started;0
-2017-12-31 13:42:17;Yvej5j;Yvej5j;Yvej5j;SE_DEMO;t1_docker_create_customer_s3;container;3;tWarn;tWarn_4;job: null: subjob: Create Customers with Addresses: started;0
-2017-12-31 13:42:18;Yvej5j;Yvej5j;Yvej5j;SE_DEMO;t1_docker_create_customer_s3;container;3;tWarn;tWarn_1;job: null: subjob: Create Customers with Addresses: finished;0
-2017-12-31 13:42:19;Yvej5j;Yvej5j;Yvej5j;SE_DEMO;t1_docker_create_customer_s3;container;3;tWarn;tWarn_2;job: null: finished;0
