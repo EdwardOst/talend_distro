@@ -1,11 +1,5 @@
 # talend_distro
 
-### util
-
-shared bash script utilities.
-
-### packager
-
 Bash scripts to (re)package Talend Jobs for use in containers.
 
 * Download potentially multiple Talend Jobs from Nexus based on the Manifest.
@@ -13,8 +7,16 @@ Bash scripts to (re)package Talend Jobs for use in containers.
 * Modify each Job launch script to use `exec` so that Talend Jobs run as PID 1
 * Repackage as a tgz preserving privileges
 * Publish back to Nexus
+* Build a Docker image with job entry points
+* Deploy Docker image
 
-### talend-job
+Directories:
+
+* /bin
+    * package
+    * run
+    * deploy-az
+    * deploy-aws
 
 sample talend job image
 
