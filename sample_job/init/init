@@ -10,9 +10,9 @@ script_dir="${script_path%/*}"
 #source ../../util/util.sh
 source "${script_dir}/../../util/util.sh"
 
-./init-global
-./init-project
-./init-app
-./init-job t0_docker_create_customer
-./init-job t1_docker_create_customer_s3
-./init-job t3_tmap_customers
+"${script_dir}/init-global"
+"${script_dir}/init-project"
+"${script_dir}/init-app"
+"${script_dir}/init-job" t0_docker_create_customer
+"${script_dir}/init-job" t1_docker_create_customer_s3
+"${script_dir}/init-job" t3_tmap_customers

@@ -6,7 +6,7 @@ set -u
 container_run_script_path=$(readlink -e "${BASH_SOURCE[0]}") 
 container_run_script_dir="${container_run_script_path%/*}"
 
-source "${container_run_script_dir}/util/util.sh"
+source "${container_run_script_dir}/../util/util.sh"
 
 
 function container_run() {
@@ -53,15 +53,15 @@ function container_run() {
 
     docker run \
       --env "TALEND_${project_name^^}_${job_name^^}_JOB_ID=${job_id}" \
-      -v ${volume_root}/${job_root}/config:/${job_target}/config:ro \
-      -v ${volume_root}/${job_root}/amc:/${job_target}/amc \
-      -v ${volume_root}/${job_root}/in:/${job_target}/in:ro \
-      -v ${volume_root}/${job_instance_root}/config:/${job_instance_target}/config:ro \
-      -v ${volume_root}/${job_instance_root}/in:/${job_instance_target}/in:ro \
-      -v ${volume_root}/${job_instance_root}/out:/${job_instance_target}/out \
-      -v ${volume_root}/${job_instance_root}/data:/${job_instance_target}/data \
-      -v ${volume_root}/${job_instance_root}/temp:/${job_instance_target}/temp \
-      -v ${volume_root}/${job_instance_root}/log:/${job_instance_target}/log \
+      -v "${volume_root}/${job_root}/config:/${job_target}/config:ro" \
+      -v "${volume_root}/${job_root}/amc:/${job_target}/amc" \
+      -v "${volume_root}/${job_root}/in:/${job_target}/in:ro" \
+      -v "${volume_root}/${job_instance_root}/config:/${job_instance_target}/config:ro" \
+      -v "${volume_root}/${job_instance_root}/in:/${job_instance_target}/in:ro" \
+      -v "${volume_root}/${job_instance_root}/out:/${job_instance_target}/out" \
+      -v "${volume_root}/${job_instance_root}/data:/${job_instance_target}/data" \
+      -v "${volume_root}/${job_instance_root}/temp:/${job_instance_target}/temp" \
+      -v "${volume_root}/${job_instance_root}/log:/${job_instance_target}/log" \
       --rm \
       "${image}:${image_version}" \
       "/talend/${app_name}/${job_name}/${job_name}_run.sh" "--context_param" "job_id=${job_id}"

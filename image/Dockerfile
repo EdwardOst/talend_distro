@@ -18,11 +18,6 @@ ADD "http://${nexus_host}:8081/nexus/service/local/repositories/snapshots/conten
 RUN tar xzvpf "${job_parent_dir}/${app_tgz}" -C "${job_parent_dir}" && \
     rm "${job_parent_dir}/${app_tgz}" && \
     mkdir -p /talend/config
-#    mkdir -p /talend/in && \
-#    mkdir -p /talend/out && \
-#    mkdir -p /talend/log && \
-#    mkdir -p /talend/temp && \
-#    mkdir -p /talend/data && \
-#    mkdir -p /talend/amc
+
 
 ENTRYPOINT [ "/bin/ash" ]

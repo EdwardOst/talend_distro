@@ -8,7 +8,7 @@ package_script_dir="${package_script_path%/*}"
 
 source "${package_script_dir}/../util/util.sh"
 
-#source "${package_script_dir}/talend-container-factory.sh"
+#source "${package_script_dir}/tcf-package.sh"
 source "${package_script_dir}/tcf-package.sh"
 
 
@@ -21,7 +21,7 @@ export nexus_host=192.168.99.1
 required artifactid groupid manifest version
 
 export INFO_LOG=true
-export DEBUG_LOG=true
+#export DEBUG_LOG=true
 
 talend_packager -m "${manifest}" -g "${groupid}" -a "${artifactid}" -v "${version}"
 

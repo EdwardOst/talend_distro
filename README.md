@@ -10,6 +10,11 @@ Typically, only one job should be run per container instance.
 * [Directory Index](#directory-index)
 * [Environment](#environment)
 * [Sample Jobs](#sample-jobs)
+    * [Setup the Sample Jobs](#setup-the-sample-jobs)
+    * [Running the Sample Jobs in Docker](#running-the-sample-jobs-in-docker)
+    * [Running the Sample Jobs in AWS](#running-the-sample-jobs-in-aws)
+    * [Running the Sample Jobs in Azure](#running-the-sample-jobs-in-azure)
+* [Talend Container Factory Design Overview]
 
 ### Directory Index
 
@@ -40,6 +45,10 @@ In my environment, I ran Studio on my Windows laptop and published to a Nexus in
 From there I ran the scripts in this project on an Ubuntu image running in a VirtualBox VM running on my same Windows laptop.
 I have used Ubuntu in the examples but the scripts should work in most bash environments.
 
+Start by cloning this github repo.
+
+    git clone https://github.com/EdwardOst/talend_distro.git
+
 
 ### Sample Jobs
 
@@ -52,7 +61,7 @@ Sample jobs are provided in the sample_job/jobs directory.
 * (tbd) t4_docker_tmap_customer_aws
 * (tbd) t5_docker_tmap_customer_az
 
-### Setup the Sample Job Environent
+### Setup the Sample Jobs
 
 The sample jobs externalize the configuration in a separate directory outside the SCM directory tree.
 
@@ -93,14 +102,9 @@ It will be populated with default config files for the sample jobs.
 1.  Import the sample job found in the `sample_job/jobs` directory into Talend Studio. 
 2.  Select Publish Job from the Talend Studio to create a Talend job zip file.
 3.  Create a manifest file for use by the Talend container packager.
-4.  Create your local Context Variable configuration file with S3 credentials.
 5.  Invoke the packager.
 6.  Invoke the build script to create the Talend Docker image.
-7.  Invoke the Talend run script to create and execute a container.
-
-Clone this github repo.
-
-    git clone https://github.com/EdwardOst/talend_distro.git
+7.  Invoke the run script to create and execute a container.
 
 Import the `t0_docker_create_customer.zip` sample job from `sample_job/jobs` directory.
 
@@ -118,6 +122,8 @@ Now go to the `sample_job` directory and edit the `job_manifest.cfg` file.
 It should have one entry in it which is the url of your published job.
 Edit the url if necessary to reflect the url you got from Nexus.  Save the file.
 
+Repeat this process for any sample jobs of interest.  Remove or comment out other manifest entries.
+
 You should still be in the `sample_job` directory.
 Run the `d01-package` script.  It is a symbolic link to a script in the /bin directory.
 This should retrieve the published job zip file from Nexus, unzip, modify it, and compress in tgz format before publishing it back to Nexus.
@@ -134,7 +140,7 @@ You could just copy the lookup table to the host directory.
 But it is included in the example so that the example can run independently in the Cloud without any extra parameters in your ECS Task definition.
 The default image tag will use your linux user name.  You may wish to change this if you are logged in as root, but it is not required.
 
-### Running the AWS Sample Jobs
+#### Running the Sample Jobs in AWS
 
 The job itself also writes to S3.  
 This means you need to provide your S3 credentials via Context variables.
@@ -152,11 +158,7 @@ When you run the container the Talend Job will run as PID 1.  When the Talend Jo
 
 If you do not wish to write to S3 then just edit the sample job.
 
-### Deploying to AWS
-
-#### Running the Azure Sample Jobs
-
-### Deploying to Azure
+#### Running the Sample Jobs in Azure
 
 ### Talend Container Factory Design Overview
 

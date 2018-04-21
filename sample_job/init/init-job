@@ -53,7 +53,7 @@ mkdir -p "${job_dir}/config"
 # default job_config sets the shared input directory
 declare job_config_content
 define job_config_content <<EOF
-in_dir="${app_dir}/in"
+my_property="some_value"
 EOF
 declare job_config_file_path="${job_dir}/config/job.cfg"
 printf "%s" "${job_config_content}" > "${job_config_file_path}"

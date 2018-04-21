@@ -88,29 +88,6 @@ function parse_args() {
 }
 
 
-#function parse_zip_url() {
-#
-#    local nexus_url="${1}"
-#
-#    local -A parsed_nexus_url
-#
-#    parse_url parsed_nexus_url "${nexus_url}"
-#
-#    local nexus_host="${parsed_nexus_url[host]}"
-    # shellcheck disable=2034
-#    local nexus_port="${parsed_nexus_url[port]}"
-#    local nexus_path="${parsed_nexus_url[path]}"
-#    local nexus_file="${parsed_nexus_url[file]}"
-#
-#    local nexus_job_path="${nexus_path#*content/}"
-#    nexus_job_path="${nexus_job_path%/*}"
-#
-#    job_file_name="${nexus_file}"
-#    job_file_root="${nexus_file%.*}"
-#
-#
-#}
-
 function process_zip() {
 
     mkdir -p "${working_dir}/${job_file_root}"
@@ -145,6 +122,12 @@ function process_job_entry() {
     local current_url="${1}"
 
     debugVar "current_url"
+
+    if [ "${current_url:0:1}" == "#" ]; then
+        return 0
+    else
+        infoLog "processing manifest entry: ${current_url}"
+    fi
 
     local -A parsed_source_url
     parse_url parsed_source_url "${current_url}"
