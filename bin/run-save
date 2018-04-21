@@ -2,12 +2,6 @@
 
 set -e
 set -u
-set -o pipefail
-
-run_script_path=$(readlink -e "${BASH_SOURCE[0]}")
-run_script_dir="${run_script_path%/*}"
-
-source "${package_script_dir}/container-run.sh"
 
 # declare environment vars with empty defaults to satisify -u option
 declare APP_NAME="${APP_NAME:-}"

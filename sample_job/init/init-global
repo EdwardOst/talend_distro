@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+
+set -e
+set -u
+set -o pipefail
+
+script_path=$(readlink -e "${BASH_SOURCE[0]}")
+script_dir="${script_path%/*}"
+
+#source ../../util/util.sh
+source "${script_dir}/../../util/util.sh"
+
+declare sample_home="${1:-${TALEND_DOCKER_SAMPLE_HOME:-${HOME}/talend/docker/sample}}"
+
+if [ "${1:-}" == "-h" ]; then
+    declare usage
+    define usage <<EOF
+Usage
+
+    ./init-global [ <sample_home> ]
+
+Defaults:
+
+    sample_home: TALEND_DOCKER_SAMPLE_HOME or "${HOME}/talend/docker/sample"
+EOF
+    printf "\n%s\n\n" "${usage}" >&2
+    exit
+fi
+
+declare global_dir="${sample_home}"
+global_dir=$(readlink -m "${global_dir}")
+
+printf "\n"
+printf "Setting up Talend docker sample environment\n"
+printf "global_dir=%s\n" "${global_dir}"
+printf "\n"
+
+# create global config directory
+mkdir -p "${global_dir}/config"
+cp "${script_dir}/data/global.cfg" "${global_dir}/config"
+printf "Global configuration copied to: %s\n" "${global_dir}/config"

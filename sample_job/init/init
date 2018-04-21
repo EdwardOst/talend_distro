@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+set -e
+set -u
+set -o pipefail
+
+script_path=$(readlink -e "${BASH_SOURCE[0]}")
+script_dir="${script_path%/*}"
+
+#source ../../util/util.sh
+source "${script_dir}/../../util/util.sh"
+
+./init-global
+./init-project
+./init-app
+./init-job t0_docker_create_customer
+./init-job t1_docker_create_customer_s3
+./init-job t3_tmap_customers

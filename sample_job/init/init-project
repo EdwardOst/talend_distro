@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+
+set -e
+set -u
+set -o pipefail
+
+script_path=$(readlink -e "${BASH_SOURCE[0]}")
+script_dir="${script_path%/*}"
+
+#source ../../util/util.sh
+source "${script_dir}/../../util/util.sh"
+
+declare project_name="${1:-SE_DEMO}"
+declare sample_home="${2:-${TALEND_DOCKER_SAMPLE_HOME:-${HOME}/talend/docker/sample}}"
+
+if [ "${1:-}" == "-h" ]; then
+    declare usage
+    define usage <<EOF
+Usage
+
+    ./init-project [ <project_name> [ <sample_home> ] ]
+
+Defaults:
+
+    project_name: "SE_DEMO"
+    sample_home: TALEND_DOCKER_SAMPLE_HOME or "${HOME}/talend/docker/sample"
+EOF
+    printf "\n%s\n\n" "${usage}" >&2
+    exit
+fi
+
+declare global_dir="${sample_home}"
+global_dir=$(readlink -m "${global_dir}")
+declare project_dir="${global_dir}/${project_name}"
+
+printf "\n"
+printf "Setting up Talend docker sample environment\n"
+printf "global_dir=%s\n" "${global_dir}"
+printf "project_dir=%s\n" "${project_dir}"
+printf "\n"
+
+# create global config directory
+mkdir -p "${global_dir}/config"
+cp "${script_dir}/data/global.cfg" "${global_dir}/config"
+printf "Global configuration copied to: %s\n" "${global_dir}/config"
+
+# create project config directory
+mkdir -p "${project_dir}/config"
+cp "${script_dir}/data/project.cfg" "${project_dir}/config"
+printf "Project configuration copied to: %s\n" "${project_dir}/config"
