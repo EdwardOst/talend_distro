@@ -1,26 +1,30 @@
-# Talend Docker Example
+# Talend Container Factory
 
-Bash scripts to (re)package Talend Jobs for use in containers.
+This repository includes sample bash scripts which allow you to deploy Talend jobs to Docker containers.
+The Docker image will include one or more Talend jobs listed in a manifest configuration file.
+All jobs in the manifest must have been published to your Talend Nexus repository.
+The scripts automate the process to create a new Docker image.
+The Docker image will have separate entry points for each job in the manifest.
+Typically, only one job should be run per container instance.
 
-1.  Download potentially multiple Talend Jobs from Nexus based on the Manifest.
-2.  Unzip and merge jobs
-3.  Modify each Job launch script to use `exec` so that Talend Jobs run as PID 1
-4.  Repackage as a tgz preserving privileges
-5.  Publish back to Nexus
-6.  Build a Docker image with job entry points
-7.  Deploy Docker image
+* [Directory Index](#directory-index)
+* [Environment](#environment)
+* [Sample Jobs](#sample-jobs)
 
-###
+### Directory Index
 
-Directories:
-
-* /bin
-    * package
-    * run
-    * deploy-az
-    * deploy-aws
-
-sample talend job image
+* bin - scripts for creating docker images, creating containers, and deploying images to the cloud
+    * package - create a docker ready tgz file
+    * run - run a docker image locally
+    * deploy-az - deploy a docker image to Azure
+    * deploy-aws - deploy a docker image to AWS
+* image - docker build artifacts
+    * build - paraeterized script for running docker build
+    * Dockerfile - docker build file used for all talend jobs
+* jobs - sample talend jobs
+* pictures - jpg files used in this readme
+* sample_job - scripts used to create docker images from sample jobs
+* util - utility bash scripts
 
 ### Environment
 
@@ -36,7 +40,8 @@ In my environment, I ran Studio on my Windows laptop and published to a Nexus in
 From there I ran the scripts in this project on an Ubuntu image running in a VirtualBox VM running on my same Windows laptop.
 I have used Ubuntu in the examples but the scripts should work in most bash environments.
 
-### Sample Job
+
+### Sample Jobs
 
 Sample jobs are provided in the sample_job/jobs directory.
 
@@ -47,10 +52,43 @@ Sample jobs are provided in the sample_job/jobs directory.
 * (tbd) t4_docker_tmap_customer_aws
 * (tbd) t5_docker_tmap_customer_az
 
-#### Setup the Sammple Job Environent
+### Setup the Sample Job Environent
 
+The sample jobs externalize the configuration in a separate directory outside the SCM directory tree.
 
-#### Running the Sample Job
+Run the following command
+
+````bash
+sample_jobs/init/init
+````
+
+This will create a HOME/talend/docker/sample as the root of your Talend Docker work area.
+It will be populated with default config files for the sample jobs.
+
+````
+/home/eost/talend
+└── docker
+    └── sample
+        ├── config
+        │   └── global.cfg
+        └── SE_DEMO
+            ├── config
+            │   └── project.cfg
+            └── talend_sample_container_app
+                ├── in
+                │   └── states.csv
+                ├── t0_docker_create_customer
+                │   └── config
+                │       └── job.cfg
+                ├── t1_docker_create_customer_s3
+                │   └── config
+                │       └── job.cfg
+                └── t3_tmap_customers
+                    └── config
+                        └── job.cfg
+````
+
+#### Running the Sample Jobs in Docker
 
 1.  Import the sample job found in the `sample_job/jobs` directory into Talend Studio. 
 2.  Select Publish Job from the Talend Studio to create a Talend job zip file.
@@ -96,22 +134,7 @@ You could just copy the lookup table to the host directory.
 But it is included in the example so that the example can run independently in the Cloud without any extra parameters in your ECS Task definition.
 The default image tag will use your linux user name.  You may wish to change this if you are logged in as root, but it is not required.
 
-The style of use of the container follows common practice in using Docker volumes to support immutable containers for different runtime aspects.
-Different volumes are used to provision and isolate data used by the containerized job.
-
-* job-root/config (ro) – configuration files common to all job instances
-* job-instance/config (ro) – configuration files specific to this job instance
-* in (ro) - input data
-* data (rw) – data required by the container, survives restarts
-* log (w) – log files
-* amc (w) - activity monitor console log files
-* out (rw) - output data
-* temp (rw) – transient and can always be deleted prior to the container (re)start
-
-I have attached these volumes to host files so that we can see the resulting output and verify that things ran successfully.
-In practice you might well use other Docker data containers for this purpose.
-
-#### Running the AWS Sample Job
+### Running the AWS Sample Jobs
 
 The job itself also writes to S3.  
 This means you need to provide your S3 credentials via Context variables.
@@ -128,3 +151,39 @@ You are now ready to launch the container.  Still in the `sample_job` directory,
 When you run the container the Talend Job will run as PID 1.  When the Talend Job is finished running it will end and the container will shut down.
 
 If you do not wish to write to S3 then just edit the sample job.
+
+### Deploying to AWS
+
+#### Running the Azure Sample Jobs
+
+### Deploying to Azure
+
+### Talend Container Factory Design Overview
+
+The bash scripts perform the following steps to create a Docker image containing Talend jobs.
+
+1.  Download potentially multiple Talend Jobs from Nexus based on the Manifest.
+2.  Unzip and merge jobs
+3.  Modify each Job launch script to use `exec` so that Talend Jobs run as PID 1
+4.  Repackage as a tgz preserving privileges
+5.  Publish back to Nexus
+6.  Build a Docker image with job entry points
+7.  Deploy Docker image
+
+The style of use of the container follows common practice in using Docker volumes to support immutable containers for different runtime aspects.
+Different volumes are used to provision and isolate data used by the containerized job.
+
+* job-root/config (ro) – configuration files common to all job instances
+* job-instance/config (ro) – configuration files specific to this job instance
+* in (ro) - input data
+* data (rw) – data required by the container, survives restarts
+* log (w) – log files
+* amc (w) - activity monitor console log files
+* out (rw) - output data
+* temp (rw) – transient and can always be deleted prior to the container (re)start
+
+I have attached these volumes to host files so that we can see the resulting output and verify that things ran successfully.
+In practice you might well use other Docker data containers for this purpose.
+
+This sample uses volumes for sensitive data.  While it separated from less sensitive configuraiton data, this is not best practice.
+A preferred approach would be to use [Kubernetes Service Catalog](https://kubernetes.io/docs/concepts/service-catalog/)
