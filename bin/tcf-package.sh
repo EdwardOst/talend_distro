@@ -1,20 +1,20 @@
 #!/usr/bin/env bash
 
-[ "${TALEND_PACKAGER_FLAG:-0}" -gt 0 ] && return 0
+[ "${TCF_PACKAGE_FLAG:-0}" -gt 0 ] && return 0
 
-export TALEND_PACKAGER_FLAG=1
+export TCF_PACKAGE_FLAG=1
 
 set -e
 set -u
 
 
-talend_packager_script_path=$(readlink -e "${BASH_SOURCE[0]}")
-talend_packager_script_dir="${talend_packager_script_path%/*}"
+tcf_package_script_path=$(readlink -e "${BASH_SOURCE[0]}")
+tcf_package_script_dir="${tcf_package_script_path%/*}"
 
-source "${talend_packager_script_dir}/../util/util.sh"
-source "${talend_packager_script_dir}/../util/url.sh"
-source "${talend_packager_script_dir}/../util/file-util.sh"
-source "${talend_packager_script_dir}/../util/array-util.sh"
+source "${tcf_package_script_dir}/../util/util.sh"
+source "${tcf_package_script_dir}/../util/url.sh"
+source "${tcf_package_script_dir}/../util/file-util.sh"
+source "${tcf_package_script_dir}/../util/array-util.sh"
 
 
 function help() {
@@ -30,9 +30,10 @@ Compress the merged files with tgz rather than zip.
 Publish the new app tgz to target nexus.
 
 usage:
-    talend_packager [-m manifest_file] [-g group_path] [-a app_name] [-v version] [-s source credential] [-t target credential] [-w working directory]
+    talend_packager [-m manifest_file] [-n nexus_host] [-g group_path] [-a app_name] [-v version] [-s source credential] [-t target credential] [-w working directory]
 
     -m manifest_file: env var TALEND_PACKAGER_JOB_MANIFEST : default "job_manifest.cfg"
+    -n nexus_host: env var TALEND_PACKAGER_NEXUS_HOST : default "192.168.99.1"
     -g target group_path: env var TALEND_PACKAGER_GROUP_PATH : default "com/talend"
     -a target app_name: env var TALEND_PACKAGER_APP_NAME : default "myapp"
     -v target version: env var TALEND_PACKAGER_VERSION : default "0.1.0-SNAPSHOT"
@@ -48,7 +49,7 @@ EOF
 function parse_args() {
 
     local OPTIND=1
-    while getopts ":hm:g:a:v:s:t:w:" opt; do
+    while getopts ":hm:n:g:a:v:s:t:w:" opt; do
         case "$opt" in
             h)
                 help
@@ -56,6 +57,9 @@ function parse_args() {
                 ;;
             m)
                 manifest_file="${OPTARG}"
+                ;;
+            n)
+                nexus_host="${OPTARG}"
                 ;;
             g)
                 group_path="${OPTARG}"
@@ -91,7 +95,9 @@ function parse_args() {
 function process_zip() {
 
     mkdir -p "${working_dir}/${job_file_root}"
-    unzip -qq -d "${working_dir}/${job_file_root}" "${working_dir}/${job_file_name}"
+
+    infoLog "Uzipping '${working_dir}/${job_file_name}' to '${working_dir}/${job_file_root}'"
+    unzip -qq -o -d "${working_dir}/${job_file_root}" "${working_dir}/${job_file_name}"
 
     debugVar job_file_root
 
@@ -161,8 +167,13 @@ function process_manifest() {
 
     mv "${working_dir}/target" "${working_dir}/${app_name}"
 
+    echo "process_manifest: PWD=${PWD}"
+
     # keep permissions using tgz format
+    echo tar -C "${working_dir}" -zcpf "${app_name}.tgz" "${app_name}"
     tar -C "${working_dir}" -zcpf "${app_name}.tgz" "${app_name}"
+
+    echo "tar zip result = ${?}"
 
     debugLog "END"
 }
@@ -175,12 +186,18 @@ function publish_app() {
 
     debugLog "publishing talend app to ${nexus_target_url}"
 
+    echo curl -u "${nexus_target_userid}:${nexus_target_password}" \
+        -w "\n\nhttp-result=%{http_code}\n" --upload-file "${app_name}.tgz" \
+        "${nexus_target_url}"
+
     curl -u "${nexus_target_userid}:${nexus_target_password}" \
-        --upload-file "${app_name}.tgz" \
+        -w "\n\nhttp-result=%{http_code}\n" --upload-file "${app_name}.tgz" \
         "${nexus_target_url}"
 
     # shellcheck disable=2154
     infoLog "Published manifest ${manifest} as ${group_path}:${app_name}:${version} to Nexus ${nexus_host}"
+
+    exit 0
 
     debugLog "END"
 }
@@ -202,12 +219,16 @@ function talend_packager() {
     local nexus_password="${TALEND_PACKAGER_NEXUS_PASSWORD:-tadmin}"
 
     # default nexus target configuration
-    local nexus_source_userid="${TALEND_PACKAGER_NEXUS_SOURCE_USERID:-tadmin}"
-    local nexus_source_password="${TALEND_PACKAGER_NEXUS_SOURCE_PASSWORD:-tadmin}"
+    local nexus_source_userid="${TALEND_PACKAGER_NEXUS_SOURCE_USERID:-admin}"
+    local nexus_source_password="${TALEND_PACKAGER_NEXUS_SOURCE_PASSWORD:-Talend123}"
     local source_credential="${nexus_source_userid}:${nexus_source_password}"
-    local nexus_target_repo="${TALEND_PACKAGER_NEXUS_TARGET_REPO:-http://192.168.99.1:8081/nexus/service/local/repositories/snapshots/content}"
-    local nexus_target_userid="${TALEND_PACKAGER_NEXUS_TARGET_USERID:-tadmin}"
-    local nexus_target_password="${TALEND_PACKAGER_NEXUS_TARGET_PASSWORD:-tadmin}"
+    local nexus_host="${TALEND_PACKAGER_NEXUS_HOST:-192.168.99.1}"
+# nexus 2 path
+#    local nexus_target_repo="${TALEND_PACKAGER_NEXUS_TARGET_REPO:-http://${nexus_host}:8081/nexus/service/local/repositories/snapshots/content}"
+# nexus 3 path
+    local nexus_target_repo="${TALEND_PACKAGER_NEXUS_TARGET_REPO:-http://${nexus_host}:8081/repository/snapshots}"
+    local nexus_target_userid="${TALEND_PACKAGER_NEXUS_TARGET_USERID:-admin}"
+    local nexus_target_password="${TALEND_PACKAGER_NEXUS_TARGET_PASSWORD:-Talend123}"
     local target_credential="${nexus_target_userid}:${nexus_target_password}"
     local group_path="${TALEND_PACKAGER_GROUP_PATH:-com/talend}"
     local app_name="${TALEND_PACKAGER_APP_NAME:-myapp}"
@@ -236,6 +257,7 @@ function talend_packager() {
     trap_add "rm -f ${app_name}.tgz" EXIT
     process_manifest "${manifest_file}" "${app_name}"
 
+    infoVar working_dir
     publish_app
 
     debugLog "END"

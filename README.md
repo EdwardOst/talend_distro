@@ -10,7 +10,7 @@ Typically, only one job should be run per container instance.
 * [Directory Index](#directory-index)
 * [Environment](#environment)
 * [Sample Jobs](#sample-jobs)
-    * [Setup the Sample Jobs](#setup-the-sample-jobs)
+    * [Setup](#setup)
     * [Running the Sample Jobs in Docker](#running-the-sample-jobs-in-docker)
     * [Running the Sample Jobs in AWS](#running-the-sample-jobs-in-aws)
     * [Running the Sample Jobs in Azure](#running-the-sample-jobs-in-azure)
@@ -41,14 +41,11 @@ All containerization work is done on Linux with Docker installed.
 Your Linux machine can be a console machine if you run Taled Studio on another machine.
 Both Linux and Studio machines need access to a Nexus instance provided with a Talend enterprise subscription.
 
-In my environment, I ran Studio on my Windows laptop and published to a Nexus instance also running on my Windows laptop.
-From there I ran the scripts in this project on an Ubuntu image running in a VirtualBox VM running on my same Windows laptop.
+I ran Studio on my Windows laptop and published to a Nexus instance also running on my Windows laptop.
+I ran the scripts in this project on an Ubuntu image running in a VirtualBox VM running on the same Windows laptop.
 I have used Ubuntu in the examples but the scripts should work in most bash environments.
 
 Start by cloning this github repo.
-
-    git clone https://github.com/EdwardOst/talend_distro.git
-
 
 ### Sample Jobs
 
@@ -61,43 +58,51 @@ Sample jobs are provided in the sample_job/jobs directory.
 * (tbd) t4_docker_tmap_customer_aws
 * (tbd) t5_docker_tmap_customer_az
 
-### Setup the Sample Jobs
+### Setup
 
-The sample jobs externalize the configuration in a separate directory outside the SCM directory tree.
+Configuration is externalized outside the SCM directory tree.
 
 Run the following command
 
 ````bash
-sample_jobs/init/init
+sample_jobs/setup/init
 ````
 
-This will create a HOME/talend/docker/sample as the root of your Talend Docker work area.
+This will initialize `TALEND_DOCKER_HOME` in `${HOME}/talend/docker` as the root of your work area.
 It will be populated with default config files for the sample jobs.
 
 ````
-/home/eost/talend
+${HOME}/talend
 └── docker
-    └── sample
-        ├── config
-        │   └── global.cfg
-        └── SE_DEMO
-            ├── config
-            │   └── project.cfg
-            └── talend_sample_container_app
-                ├── in
-                │   └── states.csv
-                ├── t0_docker_create_customer
-                │   └── config
-                │       └── job.cfg
-                ├── t1_docker_create_customer_s3
-                │   └── config
-                │       └── job.cfg
-                └── t3_tmap_customers
-                    └── config
-                        └── job.cfg
+    ├── config
+    │   └── global.cfg
+    ├── SE_DEMO
+    │   ├── config
+    │   │   └── project.cfg
+    │   └── talend_sample_container_app
+    │       ├── in
+    │       │   └── states.csv
+    │       ├── t0_docker_create_customer
+    │       │   └── config
+    │       │       └── job.cfg
+    │       ├── t0_docker_create_customer_s3
+    │       │   └── config
+    │       │       └── job.cfg
+    │       └── t3_docker_tmap_customers
+    │           └── config
+    │               └── job.cfg
+    └── talend-docker.env
 ````
 
-#### Running the Sample Jobs in Docker
+Edit the `docker/config/global.cfg` file with your AWS access and secret key.
+The file permissions should already be limited to -rw for the current user, but doublechck.
+
+The scripts for building docker images publish files to Nexus which do not conform to the strict maven filename conventions.
+Set the Nexus 3 Layout policy to permissive for the Snapshots repository.
+
+![get nexus job url](pictures/03_nexus_3_permissive.png)
+
+### Running the Sample Jobs in Docker
 
 1.  Import the sample job found in the `sample_job/jobs` directory into Talend Studio. 
 2.  Select Publish Job from the Talend Studio to create a Talend job zip file.

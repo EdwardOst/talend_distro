@@ -14,7 +14,7 @@ ENV ARG_NEXUS_GROUP=$nexus_group \
     ARG_APP_TGZ=${app_tgz} \
     ARG_JOB_PARENT_DIR=${job_parent_dir}
 
-ADD "http://${nexus_host}:8081/repository/snapshots/${nexus_group}/${nexus_version}/${app_tgz}" "${job_parent_dir}/"
+ADD "http://${nexus_host}:8081/nexus/service/local/repositories/snapshots/content/${nexus_group}/${nexus_version}/${app_tgz}" "${job_parent_dir}/"
 RUN tar xzvpf "${job_parent_dir}/${app_tgz}" -C "${job_parent_dir}" && \
     rm "${job_parent_dir}/${app_tgz}" && \
     mkdir -p /talend/config

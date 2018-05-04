@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+
+set -e
+set -u
+set -o pipefail
+
+script_path=$(readlink -e "${BASH_SOURCE[0]}")
+script_dir="${script_path%/*}"
+
+#source init.sh
+source "${script_dir}/init.sh"
+
+declare talend_docker_home="${1:-${HOME}/talend/docker}"
+declare talend_docker_project_name="${2:-SE_DEMO}"
+declare talend_docker_app_name="${3:-talend_sample_container_app}"
+declare talend_docker_nexus_host="${4:-192.168.99.1}"
+
+declare talend_docker_home_dir_out
+declare talend_docker_project_dir_out
+declare talend_docker_app_dir_out
+declare talend_docker_job_dir_out
+
+export INFO_LOG=true
+
+init_global talend_docker_home_dir_out "${talend_docker_home}"
+infoVar talend_docker_home_dir_out
+init_project talend_docker_project_dir_out "${talend_docker_home_dir_out}" "${talend_docker_project_name}"
+infoVar talend_docker_project_dir_out
+init_app talend_docker_app_dir_out "${talend_docker_home_dir_out}" "${talend_docker_project_dir_out}" "${talend_docker_app_name}"
+infoVar talend_docker_app_dir_out
+init_job talend_docker_job_dir_out "${talend_docker_home_dir_out}" "${talend_docker_project_dir_out}" "${talend_docker_app_dir_out}" "t0_docker_create_customer"
+infoVar talend_docker_job_dir_out
+init_job talend_docker_job_dir_out "${talend_docker_home_dir_out}" "${talend_docker_project_dir_out}" "${talend_docker_app_dir_out}" "t0_docker_create_customer_s3"
+infoVar talend_docker_job_dir_out
+init_job talend_docker_job_dir_out "${talend_docker_home_dir_out}" "${talend_docker_project_dir_out}" "${talend_docker_app_dir_out}" "t3_docker_tmap_customers"
+infoVar talend_docker_job_dir_out
+
+
+define talend_docker_env_content <<EOF
+TALEND_DOCKER_HOME="${talend_docker_home_dir_out}"
+TALEND_DOCKER_PROJECT_NAME="${talend_docker_project_name}"
+TALEND_DOCKER_PROJECT_DIR="${talend_docker_project_dir_out}"
+TALEND_DOCKER_MANIFEST="manifest.cfg"
+TALEND_DOCKER_APP_NAME="${talend_docker_app_name}"
+TALEND_DOCKER_APP_DIR="${talend_docker_app_dir_out}"
+TALEND_DOCKER_APP_VERSION="0.1.0"
+TALEND_DOCKER_JOB_NAME="t0_docker_create_customer"
+TALEND_DOCKER_JOB_DIR="${talend_docker_job_dir_out}"
+TALEND_DOCKER_JOB_VERSION="0.1.0"
+TALEND_DOCKER_NEXUS_HOST="${talend_docker_nexus_host}"
+TALEND_DOCKER_GROUP_ID="com/talend/se/container"
+TALEND_DOCKER_ARTIFACT_ID="${talend_docker_app_name}"
+TALEND_DOCKER_NEXUS_VERSION="0.1.0-SNAPSHOT"
+TALEND_DOCKER_APP_USER="${USER}"
+TALEND_DOCKER_IMAGE_VERSION="0.1.0"
+TALEND_DOCKER_JOB_PARENT_DIR="/talend"
+EOF
+
+echo "${talend_docker_env_content}" > "${talend_docker_home_dir_out}/talend-docker.env"
