@@ -1,0 +1,577 @@
+TALEND_SE_DEMO_T1_DOCKER_CREATE_CUSTOMER_S3_JOB_ID=52d0579c-5135-11e8-a195-080027f69c5a
+/home/eost/talend/docker/config   ==>   /talend/work/config:ro
+/home/eost/talend/docker/SE_DEMO/config   ==>   /talend/work/SE_DEMO/config:ro
+/home/eost/talend/docker/SE_DEMO/talend_sample_container_app/t1_docker_create_customer_s3/config   ==>   /talend/work/SE_DEMO/t1_docker_create_customer_s3/config:ro
+/home/eost/talend/docker/SE_DEMO/talend_sample_container_app/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/config   ==>   /talend/work/SE_DEMO/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/config:ro
+/home/eost/talend/docker/SE_DEMO/talend_sample_container_app/t1_docker_create_customer_s3/amc   ==>   /talend/work/SE_DEMO/t1_docker_create_customer_s3/amc
+/home/eost/talend/docker/SE_DEMO/talend_sample_container_app/in   ==>   /talend/work/SE_DEMO/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/in:ro
+/home/eost/talend/docker/SE_DEMO/talend_sample_container_app/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/out   ==>   /talend/work/SE_DEMO/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/out
+/home/eost/talend/docker/SE_DEMO/talend_sample_container_app/data   ==>   /talend/work/SE_DEMO/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/data
+/home/eost/talend/docker/SE_DEMO/talend_sample_container_app/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/temp   ==>   /talend/work/SE_DEMO/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/temp
+/home/eost/talend/docker/SE_DEMO/talend_sample_container_app/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/log   ==>   /talend/work/SE_DEMO/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/log
+.----------------------------------+---------------------------------------------------------------------------------------------.
+|                                                     LogGlobals_1_tLogRow_1                                                     |
+|=---------------------------------+--------------------------------------------------------------------------------------------=|
+|key                               |value                                                                                        |
+|=---------------------------------+--------------------------------------------------------------------------------------------=|
+|context_default_amc_dir           |/talend/work/SE_DEMO/t1_docker_create_customer_s3/amc                                        |
+|context_default_amc_key           |talend/SE_DEMO/t1_docker_create_customer_s3/amc                                              |
+|context_default_config_dir        |/talend/work/SE_DEMO/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/config|
+|context_default_config_global_dir |/talend/work/config                                                                          |
+|context_default_config_job_dir    |/talend/work/SE_DEMO/t1_docker_create_customer_s3/config                                     |
+|context_default_config_key        |talend/SE_DEMO/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/config      |
+|context_default_config_project_dir|/talend/work/SE_DEMO/config                                                                  |
+|context_default_data_dir          |/talend/work/SE_DEMO/t1_docker_create_customer_s3/data                                       |
+|context_default_global_config_key |talend/config                                                                                |
+|context_default_in_dir            |/talend/work/SE_DEMO/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/in    |
+|context_default_in_key            |talend/SE_DEMO/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/in          |
+|context_default_job_config_key    |talend/SE_DEMO/t1_docker_create_customer_s3/config                                           |
+|context_default_job_id            |52d0579c-5135-11e8-a195-080027f69c5a                                                         |
+|context_default_log_dir           |/talend/work/SE_DEMO/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/log   |
+|context_default_log_file          |t1_docker_create_customer_s3-52d0579c-5135-11e8-a195-080027f69c5a.log                        |
+|context_default_log_key           |talend/SE_DEMO/t1_docker_create_customer_s3/log                                              |
+|context_default_out_dir           |/talend/work/SE_DEMO/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/out   |
+|context_default_out_key           |talend/SE_DEMO/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/out         |
+|context_default_project_config_key|talend/SE_DEMO/config                                                                        |
+|context_default_root_key          |talend                                                                                       |
+|context_default_temp_dir          |/talend/work/SE_DEMO/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/temp  |
+|context_default_temp_key          |talend/SE_DEMO/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/temp        |
+'----------------------------------+---------------------------------------------------------------------------------------------'
+
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LoadContext_3_tFileExist_1 - Directory or file : /talend/work/config/global.cfg exists.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LoadContext_3_tFileInputDelimited_1 - Retrieving records from the datasource.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LoadContext_3_tFileInputDelimited_1 - Retrieved records count: 2.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LoadContext_3_tContextLoad_1 - Loaded contexts count: 2.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LoadContext_3_tFileExist_2 - Directory or file : /talend/work/SE_DEMO/config/project.cfg exists.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LoadContext_3_tFileInputDelimited_2 - Retrieving records from the datasource.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LoadContext_3_tFileInputDelimited_2 - Retrieved records count: 5.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LoadContext_3_tContextLoad_2 - Loaded contexts count: 5.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LoadContext_3_tFileExist_3 - Directory or file : /talend/work/SE_DEMO/t1_docker_create_customer_s3/config/job.cfg doesn't exist.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LoadContext_3_tFileExist_4 - Directory or file : /talend/work/SE_DEMO/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/config/job_instance.cfg doesn't exist.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tContextDump_2 - Dumping context.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tContextDump_2 - Dumped contexts count: 57.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 1: address_rejects|address_rejects.csv
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 2: addresses_file|addresses.csv
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 3: amc_bucket|eost-amc
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 4: amc_dir|/talend/work/SE_DEMO/t1_docker_create_customer_s3/amc
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 5: amc_key|talend/SE_DEMO/t1_docker_create_customer_s3/amc
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 6: amc_log_file|amc_log.log
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 7: amc_log_key|
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 8: amc_meter_file|amc_meter.log
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 9: amc_meter_key|
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 10: amc_stats_file|amc_stats.log
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 11: amc_stats_key|
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 12: config_bucket|eost-config
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 13: config_dir|/talend/work/SE_DEMO/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/config
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 14: config_file|job_instance.cfg
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 15: config_global_dir|/talend/work/config
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 16: config_global_file|global.cfg
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 17: config_job_dir|/talend/work/SE_DEMO/t1_docker_create_customer_s3/config
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 18: config_job_file|job.cfg
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 19: config_key|talend/SE_DEMO/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/config
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 20: config_log_file|
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 21: config_project_dir|/talend/work/SE_DEMO/config
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 22: config_project_file|project.cfg
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 23: connection_awss3_access_key|********************
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 24: connection_awss3_secret_key|****************************************
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 25: customer_only_records|10
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 26: customers_file|customers.csv
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 27: customers_rejected|customer_rejected.csv
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 28: customers_target_state|customers_target_state.csv
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 29: customers_valid|customers_valid.csv
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 30: data_dir|/talend/work/SE_DEMO/t1_docker_create_customer_s3/data
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 31: generated_customer|generated_customers.csv
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 32: generated_customer_only|generated_customer_only.csv
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 33: global_config_key|talend/config
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 34: in_bucket|eost-in
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 35: in_dir|/talend/work/SE_DEMO/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/in
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 36: in_key|in
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 37: job_config_key|talend/SE_DEMO/t1_docker_create_customer_s3/config
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 38: job_id|52d0579c-5135-11e8-a195-080027f69c5a
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 39: log_bucket|eost-log
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 40: log_dir|/talend/work/SE_DEMO/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/log
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 41: log_file|t1_docker_create_customer_s3-52d0579c-5135-11e8-a195-080027f69c5a.log
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 42: log_key|talend/SE_DEMO/t1_docker_create_customer_s3/log
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 43: log_level|INFO
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 44: out_bucket|eost-out
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 45: out_dir|/talend/work/SE_DEMO/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/out
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 46: out_key|out
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 47: project_config_key|talend/SE_DEMO/config
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 48: records|100
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 49: rejected_customer|rejected_customers.csv
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 50: rejected_customer_only|rejected_customers_only.csv
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 51: root_dir|/talend/work
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 52: root_key|talend
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 53: sequenceStart|100
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 54: states_file|states.csv
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 55: temp_bucket|eost-temp
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 56: temp_dir|/talend/work/SE_DEMO/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/temp
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Content of row 57: temp_key|talend/SE_DEMO/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/temp
+.---------------------------+---------------------------------------------------------------------------------------------.
+|                                                 LogContext_7_tLogRow_2                                                  |
+|=--------------------------+--------------------------------------------------------------------------------------------=|
+|key                        |value                                                                                        |
+|=--------------------------+--------------------------------------------------------------------------------------------=|
+|address_rejects            |address_rejects.csv                                                                          |
+|addresses_file             |addresses.csv                                                                                |
+|amc_bucket                 |eost-amc                                                                                     |
+|amc_dir                    |/talend/work/SE_DEMO/t1_docker_create_customer_s3/amc                                        |
+|amc_key                    |talend/SE_DEMO/t1_docker_create_customer_s3/amc                                              |
+|amc_log_file               |amc_log.log                                                                                  |
+|amc_log_key                |                                                                                             |
+|amc_meter_file             |amc_meter.log                                                                                |
+|amc_meter_key              |                                                                                             |
+|amc_stats_file             |amc_stats.log                                                                                |
+|amc_stats_key              |                                                                                             |
+|config_bucket              |eost-config                                                                                  |
+|config_dir                 |/talend/work/SE_DEMO/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/config|
+|config_file                |job_instance.cfg                                                                             |
+|config_global_dir          |/talend/work/config                                                                          |
+|config_global_file         |global.cfg                                                                                   |
+|config_job_dir             |/talend/work/SE_DEMO/t1_docker_create_customer_s3/config                                     |
+|config_job_file            |job.cfg                                                                                      |
+|config_key                 |talend/SE_DEMO/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/config      |
+|config_log_file            |                                                                                             |
+|config_project_dir         |/talend/work/SE_DEMO/config                                                                  |
+|config_project_file        |project.cfg                                                                                  |
+|connection_awss3_access_key|********************                                                                         |
+|connection_awss3_secret_key|****************************************                                                     |
+|customer_only_records      |10                                                                                           |
+|customers_file             |customers.csv                                                                                |
+|customers_rejected         |customer_rejected.csv                                                                        |
+|customers_target_state     |customers_target_state.csv                                                                   |
+|customers_valid            |customers_valid.csv                                                                          |
+|data_dir                   |/talend/work/SE_DEMO/t1_docker_create_customer_s3/data                                       |
+|generated_customer         |generated_customers.csv                                                                      |
+|generated_customer_only    |generated_customer_only.csv                                                                  |
+|global_config_key          |talend/config                                                                                |
+|in_bucket                  |eost-in                                                                                      |
+|in_dir                     |/talend/work/SE_DEMO/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/in    |
+|in_key                     |in                                                                                           |
+|job_config_key             |talend/SE_DEMO/t1_docker_create_customer_s3/config                                           |
+|job_id                     |52d0579c-5135-11e8-a195-080027f69c5a                                                         |
+|log_bucket                 |eost-log                                                                                     |
+|log_dir                    |/talend/work/SE_DEMO/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/log   |
+|log_file                   |t1_docker_create_customer_s3-52d0579c-5135-11e8-a195-080027f69c5a.log                        |
+|log_key                    |talend/SE_DEMO/t1_docker_create_customer_s3/log                                              |
+|log_level                  |INFO                                                                                         |
+|out_bucket                 |eost-out                                                                                     |
+|out_dir                    |/talend/work/SE_DEMO/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/out   |
+|out_key                    |out                                                                                          |
+|project_config_key         |talend/SE_DEMO/config                                                                        |
+|records                    |100                                                                                          |
+|rejected_customer          |rejected_customers.csv                                                                       |
+|rejected_customer_only     |rejected_customers_only.csv                                                                  |
+|root_dir                   |/talend/work                                                                                 |
+|root_key                   |talend                                                                                       |
+|sequenceStart              |100                                                                                          |
+|states_file                |states.csv                                                                                   |
+|temp_bucket                |eost-temp                                                                                    |
+|temp_dir                   |/talend/work/SE_DEMO/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/temp  |
+|temp_key                   |talend/SE_DEMO/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/temp        |
+'---------------------------+---------------------------------------------------------------------------------------------'
+
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_7_tLogRow_2 - Printed row count: 57.
+[INFO ]: root - FLUSH
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tS3Connection_1 - Creating new connection.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tS3Connection_1 - Creating new connection successfully.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tS3Get_5 - Get an free connection from tS3Connection_1.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tS3Get_5 - Getting an object with key:talend/config/global.cfg
+[ERROR]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tS3Get_5 - The specified key does not exist. (Service: Amazon S3; Status Code: 404; Error Code: NoSuchKey; Request ID: 3A7A73F05E4E041F; S3 Extended Request ID: rQFUFkAbxnbRfNb2hICRr/elbunranNWek9XvO607dHg2+6s8Ib+bdp51qp9FC+498KY3mG8ohM=)
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tS3Get_1 - Get an free connection from tS3Connection_1.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tS3Get_1 - Getting an object with key:talend/SE_DEMO/config/project.cfg
+[ERROR]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tS3Get_1 - The specified key does not exist. (Service: Amazon S3; Status Code: 404; Error Code: NoSuchKey; Request ID: 71C6572A1CDF1DEB; S3 Extended Request ID: KBZgbG2oyjJ5Zz6FTszlaHAuhSt4mv5yktj32t8Rxpz4tlW/9PbVcIN1ovmR1mclqIGd4UQXwig=)
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tS3Get_3 - Get an free connection from tS3Connection_1.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tS3Get_3 - Getting an object with key:talend/SE_DEMO/t1_docker_create_customer_s3/config/job.cfg
+[ERROR]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tS3Get_3 - The specified key does not exist. (Service: Amazon S3; Status Code: 404; Error Code: NoSuchKey; Request ID: A39F086C3C7FDD2A; S3 Extended Request ID: CasouCRc4tEJwxYh+k2kbk1NdluUeVyJ3nB1G+b2lChjUa99mK0J9ha+UKctuLvier3ANqzbvO8=)
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tS3Get_4 - Get an free connection from tS3Connection_1.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tS3Get_4 - Getting an object with key:talend/SE_DEMO/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/config/job_instance.cfg
+[ERROR]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tS3Get_4 - The specified key does not exist. (Service: Amazon S3; Status Code: 404; Error Code: NoSuchKey; Request ID: D4D0034B0BD1FFEA; S3 Extended Request ID: Adedc1Fg67t3PXlFte6RjFPevhdFjn96rKw+ftk0L33pwVlloldjzpmi4C8cvBvSTeGKm0/Kfy8=)
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LoadContext_1_tFileExist_1 - Directory or file : /talend/work/config/global.cfg exists.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LoadContext_1_tFileInputDelimited_1 - Retrieving records from the datasource.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LoadContext_1_tFileInputDelimited_1 - Retrieved records count: 2.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LoadContext_1_tContextLoad_1 - Loaded contexts count: 2.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LoadContext_1_tFileExist_2 - Directory or file : /talend/work/SE_DEMO/config/project.cfg exists.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LoadContext_1_tFileInputDelimited_2 - Retrieving records from the datasource.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LoadContext_1_tFileInputDelimited_2 - Retrieved records count: 5.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LoadContext_1_tContextLoad_2 - Loaded contexts count: 5.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LoadContext_1_tFileExist_3 - Directory or file : /talend/work/SE_DEMO/t1_docker_create_customer_s3/config/job.cfg doesn't exist.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LoadContext_1_tFileExist_4 - Directory or file : /talend/work/SE_DEMO/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/config/job_instance.cfg doesn't exist.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tContextDump_2 - Dumping context.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tContextDump_2 - Dumped contexts count: 57.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 1: address_rejects|address_rejects.csv
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 2: addresses_file|addresses.csv
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 3: amc_bucket|eost-amc
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 4: amc_dir|/talend/work/SE_DEMO/t1_docker_create_customer_s3/amc
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 5: amc_key|talend/SE_DEMO/t1_docker_create_customer_s3/amc
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 6: amc_log_file|amc_log.log
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 7: amc_log_key|
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 8: amc_meter_file|amc_meter.log
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 9: amc_meter_key|
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 10: amc_stats_file|amc_stats.log
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 11: amc_stats_key|
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 12: config_bucket|eost-config
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 13: config_dir|/talend/work/SE_DEMO/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/config
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 14: config_file|job_instance.cfg
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 15: config_global_dir|/talend/work/config
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 16: config_global_file|global.cfg
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 17: config_job_dir|/talend/work/SE_DEMO/t1_docker_create_customer_s3/config
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 18: config_job_file|job.cfg
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 19: config_key|talend/SE_DEMO/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/config
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 20: config_log_file|
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 21: config_project_dir|/talend/work/SE_DEMO/config
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 22: config_project_file|project.cfg
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 23: connection_awss3_access_key|********************
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 24: connection_awss3_secret_key|****************************************
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 25: customer_only_records|10
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 26: customers_file|customers.csv
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 27: customers_rejected|customer_rejected.csv
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 28: customers_target_state|customers_target_state.csv
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 29: customers_valid|customers_valid.csv
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 30: data_dir|/talend/work/SE_DEMO/t1_docker_create_customer_s3/data
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 31: generated_customer|generated_customers.csv
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 32: generated_customer_only|generated_customer_only.csv
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 33: global_config_key|talend/config
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 34: in_bucket|eost-in
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 35: in_dir|/talend/work/SE_DEMO/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/in
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 36: in_key|in
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 37: job_config_key|talend/SE_DEMO/t1_docker_create_customer_s3/config
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 38: job_id|52d0579c-5135-11e8-a195-080027f69c5a
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 39: log_bucket|eost-log
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 40: log_dir|/talend/work/SE_DEMO/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/log
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 41: log_file|t1_docker_create_customer_s3-52d0579c-5135-11e8-a195-080027f69c5a.log
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 42: log_key|talend/SE_DEMO/t1_docker_create_customer_s3/log
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 43: log_level|INFO
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 44: out_bucket|eost-out
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 45: out_dir|/talend/work/SE_DEMO/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/out
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 46: out_key|out
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 47: project_config_key|talend/SE_DEMO/config
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 48: records|100
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 49: rejected_customer|rejected_customers.csv
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 50: rejected_customer_only|rejected_customers_only.csv
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 51: root_dir|/talend/work
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 52: root_key|talend
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 53: sequenceStart|100
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 54: states_file|states.csv
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 55: temp_bucket|eost-temp
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 56: temp_dir|/talend/work/SE_DEMO/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/temp
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Content of row 57: temp_key|talend/SE_DEMO/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/temp
+.---------------------------+---------------------------------------------------------------------------------------------.
+|                                                 LogContext_1_tLogRow_2                                                  |
+|=--------------------------+--------------------------------------------------------------------------------------------=|
+|key                        |value                                                                                        |
+|=--------------------------+--------------------------------------------------------------------------------------------=|
+|address_rejects            |address_rejects.csv                                                                          |
+|addresses_file             |addresses.csv                                                                                |
+|amc_bucket                 |eost-amc                                                                                     |
+|amc_dir                    |/talend/work/SE_DEMO/t1_docker_create_customer_s3/amc                                        |
+|amc_key                    |talend/SE_DEMO/t1_docker_create_customer_s3/amc                                              |
+|amc_log_file               |amc_log.log                                                                                  |
+|amc_log_key                |                                                                                             |
+|amc_meter_file             |amc_meter.log                                                                                |
+|amc_meter_key              |                                                                                             |
+|amc_stats_file             |amc_stats.log                                                                                |
+|amc_stats_key              |                                                                                             |
+|config_bucket              |eost-config                                                                                  |
+|config_dir                 |/talend/work/SE_DEMO/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/config|
+|config_file                |job_instance.cfg                                                                             |
+|config_global_dir          |/talend/work/config                                                                          |
+|config_global_file         |global.cfg                                                                                   |
+|config_job_dir             |/talend/work/SE_DEMO/t1_docker_create_customer_s3/config                                     |
+|config_job_file            |job.cfg                                                                                      |
+|config_key                 |talend/SE_DEMO/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/config      |
+|config_log_file            |                                                                                             |
+|config_project_dir         |/talend/work/SE_DEMO/config                                                                  |
+|config_project_file        |project.cfg                                                                                  |
+|connection_awss3_access_key|********************                                                                         |
+|connection_awss3_secret_key|****************************************                                                     |
+|customer_only_records      |10                                                                                           |
+|customers_file             |customers.csv                                                                                |
+|customers_rejected         |customer_rejected.csv                                                                        |
+|customers_target_state     |customers_target_state.csv                                                                   |
+|customers_valid            |customers_valid.csv                                                                          |
+|data_dir                   |/talend/work/SE_DEMO/t1_docker_create_customer_s3/data                                       |
+|generated_customer         |generated_customers.csv                                                                      |
+|generated_customer_only    |generated_customer_only.csv                                                                  |
+|global_config_key          |talend/config                                                                                |
+|in_bucket                  |eost-in                                                                                      |
+|in_dir                     |/talend/work/SE_DEMO/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/in    |
+|in_key                     |in                                                                                           |
+|job_config_key             |talend/SE_DEMO/t1_docker_create_customer_s3/config                                           |
+|job_id                     |52d0579c-5135-11e8-a195-080027f69c5a                                                         |
+|log_bucket                 |eost-log                                                                                     |
+|log_dir                    |/talend/work/SE_DEMO/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/log   |
+|log_file                   |t1_docker_create_customer_s3-52d0579c-5135-11e8-a195-080027f69c5a.log                        |
+|log_key                    |talend/SE_DEMO/t1_docker_create_customer_s3/log                                              |
+|log_level                  |INFO                                                                                         |
+|out_bucket                 |eost-out                                                                                     |
+|out_dir                    |/talend/work/SE_DEMO/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/out   |
+|out_key                    |out                                                                                          |
+|project_config_key         |talend/SE_DEMO/config                                                                        |
+|records                    |100                                                                                          |
+|rejected_customer          |rejected_customers.csv                                                                       |
+|rejected_customer_only     |rejected_customers_only.csv                                                                  |
+|root_dir                   |/talend/work                                                                                 |
+|root_key                   |talend                                                                                       |
+|sequenceStart              |100                                                                                          |
+|states_file                |states.csv                                                                                   |
+|temp_bucket                |eost-temp                                                                                    |
+|temp_dir                   |/talend/work/SE_DEMO/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/temp  |
+|temp_key                   |talend/SE_DEMO/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/temp        |
+'---------------------------+---------------------------------------------------------------------------------------------'
+
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - LogContext_1_tLogRow_2 - Printed row count: 57.
+[INFO ]: root - FLUSH
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tS3Put_4 - Get an free connection from tS3Connection_1.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tS3Put_4 - Uploading an object with key:talend/SE_DEMO/t1_docker_create_customer_s3/log/t1_docker_create_customer_s3-52d0579c-5135-11e8-a195-080027f69c5a-context.log
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tS3Put_4 - Upload the object successfully.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tWarn_3 - Message: job: 52d0579c-5135-11e8-a195-080027f69c5a: started. Code: 0
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tS3Get_2 - Get an free connection from tS3Connection_1.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tS3Get_2 - Getting an object with key:in/states.csv
+[ERROR]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tS3Get_2 - The specified key does not exist. (Service: Amazon S3; Status Code: 404; Error Code: NoSuchKey; Request ID: 28910C1F1DE011D2; S3 Extended Request ID: TUZOwwTOkSQ5QY2OG3kkcLjH+vs3yvZhctGb+yypZ1y9rwZxJXzaIc52xLKqqhm4eC8KaGjalQE=)
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tWarn_4 - Message: job: 52d0579c-5135-11e8-a195-080027f69c5a: subjob: Create Customers with Addresses: started. Code: 0
+[ERROR]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tFileInputDelimited_2 - /talend/work/SE_DEMO/t1_docker_create_customer_s3/data/states.csv (No such file or directory)
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tFileInputDelimited_2 - Retrieving records from the datasource.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tFileInputDelimited_2 - Retrieved records count: 0.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tRowGenerator_1 - Generating records.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 1: [tLogRow_1] 1100|100|Business|Westside Freeway||Indianapolis||||US|Millard.Monroe@gmail.com|234-555-1212
+[tLogRow_1] 1100|100|Business|Westside Freeway||Indianapolis||||US|Millard.Monroe@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 2: [tLogRow_1] 1101|101|Personnal|Carpinteria North||Austin||||US|Ronald.Washington@gmail.com|234-555-1212
+[tLogRow_1] 1101|101|Personnal|Carpinteria North||Austin||||US|Ronald.Washington@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 3: [tLogRow_1] 1102|102|Business|Santa Ana Freeway||Little Rock||||US|Millard.Roosevelt@gmail.com|234-555-1212
+[tLogRow_1] 1102|102|Business|Santa Ana Freeway||Little Rock||||US|Millard.Roosevelt@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 4: [tLogRow_1] 1103|103|Personnal|Carpinteria South||Baton Rouge||||US|Bill.Harrison@gmail.com|234-555-1212
+[tLogRow_1] 1103|103|Personnal|Carpinteria South||Baton Rouge||||US|Bill.Harrison@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 5: [tLogRow_1] 1104|104|Personnal|North Ventu Park Road||Des Moines||||US|George.Harding@gmail.com|234-555-1212
+[tLogRow_1] 1104|104|Personnal|North Ventu Park Road||Des Moines||||US|George.Harding@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 6: [tLogRow_1] 1105|105|Business|Grandview Drive||Jefferson City||||US|Ulysses.Nixon@gmail.com|234-555-1212
+[tLogRow_1] 1105|105|Business|Grandview Drive||Jefferson City||||US|Ulysses.Nixon@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 7: [tLogRow_1] 1106|106|Business|Jones Road||Santa Fe||||US|George.Van Buren@gmail.com|234-555-1212
+[tLogRow_1] 1106|106|Business|Jones Road||Santa Fe||||US|George.Van Buren@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 8: [tLogRow_1] 1107|107|Business|Apalachee Parkway||Charleston||||US|Ulysses.Van Buren@gmail.com|234-555-1212
+[tLogRow_1] 1107|107|Business|Apalachee Parkway||Charleston||||US|Ulysses.Van Buren@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 9: [tLogRow_1] 1108|108|Business|Cleveland Ave.||Lincoln||||US|Franklin.Wilson@gmail.com|234-555-1212
+[tLogRow_1] 1108|108|Business|Cleveland Ave.||Lincoln||||US|Franklin.Wilson@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 10: [tLogRow_1] 1109|109|Personnal|San Ysidro Blvd||Carson City||||US|John.Harding@gmail.com|234-555-1212
+[tLogRow_1] 1109|109|Personnal|San Ysidro Blvd||Carson City||||US|John.Harding@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 11: [tLogRow_1] 1110|110|Business|Greenwood Road||Montpelier||||US|Ronald.Garfield@gmail.com|234-555-1212
+[tLogRow_1] 1110|110|Business|Greenwood Road||Montpelier||||US|Ronald.Garfield@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 12: [tLogRow_1] 1111|111|Business|Castillo Drive||Lincoln||||US|Benjamin.Grant@gmail.com|234-555-1212
+[tLogRow_1] 1111|111|Business|Castillo Drive||Lincoln||||US|Benjamin.Grant@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 13: [tLogRow_1] 1112|112|Personnal|San Simeon||Madison||||US|Jimmy.Johnson@gmail.com|234-555-1212
+[tLogRow_1] 1112|112|Personnal|San Simeon||Madison||||US|Jimmy.Johnson@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 14: [tLogRow_1] 1113|113|Business|Camelback Rd||Annapolis||||US|Ronald.Carter@gmail.com|234-555-1212
+[tLogRow_1] 1113|113|Business|Camelback Rd||Annapolis||||US|Ronald.Carter@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 15: [tLogRow_1] 1114|114|Business|Timberlane Drive||Oklahoma City||||US|Calvin.Polk@gmail.com|234-555-1212
+[tLogRow_1] 1114|114|Business|Timberlane Drive||Oklahoma City||||US|Calvin.Polk@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 16: [tLogRow_1] 1115|115|Business|Moreno Drive||Lincoln||||US|Harry.Washington@gmail.com|234-555-1212
+[tLogRow_1] 1115|115|Business|Moreno Drive||Lincoln||||US|Harry.Washington@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 17: [tLogRow_1] 1116|116|Business|South Highway||Juneau||||US|Herbert.Quincy@gmail.com|234-555-1212
+[tLogRow_1] 1116|116|Business|South Highway||Juneau||||US|Herbert.Quincy@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 18: [tLogRow_1] 1117|117|Business|Steele Lane||Phoenix||||US|John.Wilson@gmail.com|234-555-1212
+[tLogRow_1] 1117|117|Business|Steele Lane||Phoenix||||US|John.Wilson@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 19: [tLogRow_1] 1118|118|Business|Harbor Dr||Olympia||||US|Ulysses.Jefferson@gmail.com|234-555-1212
+[tLogRow_1] 1118|118|Business|Harbor Dr||Olympia||||US|Ulysses.Jefferson@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 20: [tLogRow_1] 1119|119|Business|Via Real||Harrisburg||||US|Woodrow.Cleveland@gmail.com|234-555-1212
+[tLogRow_1] 1119|119|Business|Via Real||Harrisburg||||US|Woodrow.Cleveland@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 21: [tLogRow_1] 1120|120|Business|San Luis Obispo North||Columbus||||US|Bill.Pierce@gmail.com|234-555-1212
+[tLogRow_1] 1120|120|Business|San Luis Obispo North||Columbus||||US|Bill.Pierce@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 22: [tLogRow_1] 1121|121|Personnal|Burnett Road||Madison||||US|Lyndon.Roosevelt@gmail.com|234-555-1212
+[tLogRow_1] 1121|121|Personnal|Burnett Road||Madison||||US|Lyndon.Roosevelt@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 23: [tLogRow_1] 1122|122|Business|S Rustle St||Juneau||||US|Franklin.Nixon@gmail.com|234-555-1212
+[tLogRow_1] 1122|122|Business|S Rustle St||Juneau||||US|Franklin.Nixon@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 24: [tLogRow_1] 1123|123|Personnal|Fairview Avenue||Harrisburg||||US|Ronald.Fillmore@gmail.com|234-555-1212
+[tLogRow_1] 1123|123|Personnal|Fairview Avenue||Harrisburg||||US|Ronald.Fillmore@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 25: [tLogRow_1] 1124|124|Personnal|North Broadway Street||Annapolis||||US|Woodrow.Washington@gmail.com|234-555-1212
+[tLogRow_1] 1124|124|Personnal|North Broadway Street||Annapolis||||US|Woodrow.Washington@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 26: [tLogRow_1] 1125|125|Business|Redwood Highway||Austin||||US|Calvin.Harding@gmail.com|234-555-1212
+[tLogRow_1] 1125|125|Business|Redwood Highway||Austin||||US|Calvin.Harding@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 27: [tLogRow_1] 1126|126|Personnal|Harbor Dr||Denver||||US|Gerald.Polk@gmail.com|234-555-1212
+[tLogRow_1] 1126|126|Personnal|Harbor Dr||Denver||||US|Gerald.Polk@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 28: [tLogRow_1] 1127|127|Personnal|East Calle Primera||Jackson||||US|Lyndon.Ford@gmail.com|234-555-1212
+[tLogRow_1] 1127|127|Personnal|East Calle Primera||Jackson||||US|Lyndon.Ford@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 29: [tLogRow_1] 1128|128|Business|North Erringer Road||Madison||||US|Dwight.Roosevelt@gmail.com|234-555-1212
+[tLogRow_1] 1128|128|Business|North Erringer Road||Madison||||US|Dwight.Roosevelt@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 30: [tLogRow_1] 1129|129|Personnal|Greenwood Road||Little Rock||||US|Thomas.Harrison@gmail.com|234-555-1212
+[tLogRow_1] 1129|129|Personnal|Greenwood Road||Little Rock||||US|Thomas.Harrison@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 31: [tLogRow_1] 1130|130|Personnal|Richmond Hill||Juneau||||US|Thomas.Hayes@gmail.com|234-555-1212
+[tLogRow_1] 1130|130|Personnal|Richmond Hill||Juneau||||US|Thomas.Hayes@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 32: [tLogRow_1] 1131|131|Personnal|S Rustle St||Concord||||US|Millard.Wilson@gmail.com|234-555-1212
+[tLogRow_1] 1131|131|Personnal|S Rustle St||Concord||||US|Millard.Wilson@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 33: [tLogRow_1] 1132|132|Personnal|Katella Avenue||Boston||||US|Rutherford.Grant@gmail.com|234-555-1212
+[tLogRow_1] 1132|132|Personnal|Katella Avenue||Boston||||US|Rutherford.Grant@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 34: [tLogRow_1] 1133|133|Personnal|North Preisker Lane||Little Rock||||US|William.Hoover@gmail.com|234-555-1212
+[tLogRow_1] 1133|133|Personnal|North Preisker Lane||Little Rock||||US|William.Hoover@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 35: [tLogRow_1] 1134|134|Business|San Diego Freeway||Madison||||US|Grover.Nixon@gmail.com|234-555-1212
+[tLogRow_1] 1134|134|Business|San Diego Freeway||Madison||||US|Grover.Nixon@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 36: [tLogRow_1] 1135|135|Business|San Ysidro Blvd||Juneau||||US|Lyndon.Grant@gmail.com|234-555-1212
+[tLogRow_1] 1135|135|Business|San Ysidro Blvd||Juneau||||US|Lyndon.Grant@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 37: [tLogRow_1] 1136|136|Personnal|Corona Del Mar||Jefferson City||||US|James.Reagan@gmail.com|234-555-1212
+[tLogRow_1] 1136|136|Personnal|Corona Del Mar||Jefferson City||||US|James.Reagan@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 38: [tLogRow_1] 1137|137|Business|San Ysidro Blvd||Des Moines||||US|Bill.Fillmore@gmail.com|234-555-1212
+[tLogRow_1] 1137|137|Business|San Ysidro Blvd||Des Moines||||US|Bill.Fillmore@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 39: [tLogRow_1] 1138|138|Business|Padre Boulevard||Baton Rouge||||US|George.Adams@gmail.com|234-555-1212
+[tLogRow_1] 1138|138|Business|Padre Boulevard||Baton Rouge||||US|George.Adams@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 40: [tLogRow_1] 1139|139|Business|Santa Ana Freeway||Madison||||US|Chester.Eisenhower@gmail.com|234-555-1212
+[tLogRow_1] 1139|139|Business|Santa Ana Freeway||Madison||||US|Chester.Eisenhower@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 41: [tLogRow_1] 1140|140|Personnal|Bailard Avenue||Boston||||US|Thomas.Harding@gmail.com|234-555-1212
+[tLogRow_1] 1140|140|Personnal|Bailard Avenue||Boston||||US|Thomas.Harding@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 42: [tLogRow_1] 1141|141|Business|San Marcos||Tallahassee||||US|Rutherford.Ford@gmail.com|234-555-1212
+[tLogRow_1] 1141|141|Business|San Marcos||Tallahassee||||US|Rutherford.Ford@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 43: [tLogRow_1] 1142|142|Personnal|W. Russell St.||Charleston||||US|Calvin.Quincy@gmail.com|234-555-1212
+[tLogRow_1] 1142|142|Personnal|W. Russell St.||Charleston||||US|Calvin.Quincy@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 44: [tLogRow_1] 1143|143|Business|North Broadway Street||Oklahoma City||||US|Jimmy.Taft@gmail.com|234-555-1212
+[tLogRow_1] 1143|143|Business|North Broadway Street||Oklahoma City||||US|Jimmy.Taft@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 45: [tLogRow_1] 1144|144|Personnal|Bowles Avenue||Madison||||US|Zachary.Harrison@gmail.com|234-555-1212
+[tLogRow_1] 1144|144|Personnal|Bowles Avenue||Madison||||US|Zachary.Harrison@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 46: [tLogRow_1] 1145|145|Business|Bailard Avenue||Boise||||US|Abraham.Eisenhower@gmail.com|234-555-1212
+[tLogRow_1] 1145|145|Business|Bailard Avenue||Boise||||US|Abraham.Eisenhower@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 47: [tLogRow_1] 1146|146|Business|N Kentwood||Salt Lake City||||US|Warren.Roosevelt@gmail.com|234-555-1212
+[tLogRow_1] 1146|146|Business|N Kentwood||Salt Lake City||||US|Warren.Roosevelt@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 48: [tLogRow_1] 1147|147|Business|North Erringer Road||Denver||||US|Dwight.Roosevelt@gmail.com|234-555-1212
+[tLogRow_1] 1147|147|Business|North Erringer Road||Denver||||US|Dwight.Roosevelt@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 49: [tLogRow_1] 1148|148|Business|French Camp Turnpike Road||Columbia||||US|Benjamin.Reagan@gmail.com|234-555-1212
+[tLogRow_1] 1148|148|Business|French Camp Turnpike Road||Columbia||||US|Benjamin.Reagan@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 50: [tLogRow_1] 1149|149|Business|Carpinteria South||Concord||||US|Dwight.Hayes@gmail.com|234-555-1212
+[tLogRow_1] 1149|149|Business|Carpinteria South||Concord||||US|Dwight.Hayes@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 51: [tLogRow_1] 1150|150|Personnal|Santa Monica Road||Cheyenne||||US|George.Jefferson@gmail.com|234-555-1212
+[tLogRow_1] 1150|150|Personnal|Santa Monica Road||Cheyenne||||US|George.Jefferson@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 52: [tLogRow_1] 1151|151|Business|Greenwood Road||Des Moines||||US|Grover.Roosevelt@gmail.com|234-555-1212
+[tLogRow_1] 1151|151|Business|Greenwood Road||Des Moines||||US|Grover.Roosevelt@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 53: [tLogRow_1] 1152|152|Personnal|Bowles Avenue||Boise||||US|George.Quincy@gmail.com|234-555-1212
+[tLogRow_1] 1152|152|Personnal|Bowles Avenue||Boise||||US|George.Quincy@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 54: [tLogRow_1] 1153|153|Business|Camelback Rd||Richmond||||US|Benjamin.Harrison@gmail.com|234-555-1212
+[tLogRow_1] 1153|153|Business|Camelback Rd||Richmond||||US|Benjamin.Harrison@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 55: [tLogRow_1] 1154|154|Personnal|Richmond Hill||Montpelier||||US|Ulysses.Madison@gmail.com|234-555-1212
+[tLogRow_1] 1154|154|Personnal|Richmond Hill||Montpelier||||US|Ulysses.Madison@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 56: [tLogRow_1] 1155|155|Personnal|Santa Rosa South||Helena||||US|Grover.Garfield@gmail.com|234-555-1212
+[tLogRow_1] 1155|155|Personnal|Santa Rosa South||Helena||||US|Grover.Garfield@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 57: [tLogRow_1] 1156|156|Business|W. Russell St.||Salem||||US|Lyndon.Washington@gmail.com|234-555-1212
+[tLogRow_1] 1156|156|Business|W. Russell St.||Salem||||US|Lyndon.Washington@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 58: [tLogRow_1] 1157|157|Personnal|Carpinteria South||Augusta||||US|Bill.Fillmore@gmail.com|234-555-1212
+[tLogRow_1] 1157|157|Personnal|Carpinteria South||Augusta||||US|Bill.Fillmore@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 59: [tLogRow_1] 1158|158|Personnal|Santa Ana Freeway||Jackson||||US|Franklin.Madison@gmail.com|234-555-1212
+[tLogRow_1] 1158|158|Personnal|Santa Ana Freeway||Jackson||||US|Franklin.Madison@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 60: [tLogRow_1] 1159|159|Personnal|Harbor Dr||Tallahassee||||US|William.Jackson@gmail.com|234-555-1212
+[tLogRow_1] 1159|159|Personnal|Harbor Dr||Tallahassee||||US|William.Jackson@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 61: [tLogRow_1] 1160|160|Personnal|South Roosevelt Drive||Carson City||||US|Millard.Johnson@gmail.com|234-555-1212
+[tLogRow_1] 1160|160|Personnal|South Roosevelt Drive||Carson City||||US|Millard.Johnson@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 62: [tLogRow_1] 1161|161|Personnal|Erringer Road||Dover||||US|Andrew.Eisenhower@gmail.com|234-555-1212
+[tLogRow_1] 1161|161|Personnal|Erringer Road||Dover||||US|Andrew.Eisenhower@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 63: [tLogRow_1] 1162|162|Business|East 1st Street||Saint Paul||||US|Jimmy.Hoover@gmail.com|234-555-1212
+[tLogRow_1] 1162|162|Business|East 1st Street||Saint Paul||||US|Jimmy.Hoover@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 64: [tLogRow_1] 1163|163|Business|North Broadway Street||Albany||||US|Benjamin.Adams@gmail.com|234-555-1212
+[tLogRow_1] 1163|163|Business|North Broadway Street||Albany||||US|Benjamin.Adams@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 65: [tLogRow_1] 1164|164|Personnal|S Rustle St||Baton Rouge||||US|George.Grant@gmail.com|234-555-1212
+[tLogRow_1] 1164|164|Personnal|S Rustle St||Baton Rouge||||US|George.Grant@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 66: [tLogRow_1] 1165|165|Business|Westside Freeway||Little Rock||||US|Benjamin.Wilson@gmail.com|234-555-1212
+[tLogRow_1] 1165|165|Business|Westside Freeway||Little Rock||||US|Benjamin.Wilson@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 67: [tLogRow_1] 1166|166|Personnal|Milpas Street||Madison||||US|Jimmy.Adams@gmail.com|234-555-1212
+[tLogRow_1] 1166|166|Personnal|Milpas Street||Madison||||US|Jimmy.Adams@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 68: [tLogRow_1] 1167|167|Personnal|Calle Real||Phoenix||||US|Ulysses.Pierce@gmail.com|234-555-1212
+[tLogRow_1] 1167|167|Personnal|Calle Real||Phoenix||||US|Ulysses.Pierce@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 69: [tLogRow_1] 1168|168|Business|East Fry Blvd.||Little Rock||||US|George.Hayes@gmail.com|234-555-1212
+[tLogRow_1] 1168|168|Business|East Fry Blvd.||Little Rock||||US|George.Hayes@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 70: [tLogRow_1] 1169|169|Business|Corona Del Mar||Madison||||US|Thomas.Truman@gmail.com|234-555-1212
+[tLogRow_1] 1169|169|Business|Corona Del Mar||Madison||||US|Thomas.Truman@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 71: [tLogRow_1] 1170|170|Business|Via Real||Albany||||US|Rutherford.Fillmore@gmail.com|234-555-1212
+[tLogRow_1] 1170|170|Business|Via Real||Albany||||US|Rutherford.Fillmore@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 72: [tLogRow_1] 1171|171|Personnal|North Erringer Road||Montgomery||||US|Woodrow.Jackson@gmail.com|234-555-1212
+[tLogRow_1] 1171|171|Personnal|North Erringer Road||Montgomery||||US|Woodrow.Jackson@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 73: [tLogRow_1] 1172|172|Personnal|Lindbergh Blvd||Santa Fe||||US|Dwight.Jefferson@gmail.com|234-555-1212
+[tLogRow_1] 1172|172|Personnal|Lindbergh Blvd||Santa Fe||||US|Dwight.Jefferson@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 74: [tLogRow_1] 1173|173|Business|Greenwood Road||Honolulu||||US|John.Jefferson@gmail.com|234-555-1212
+[tLogRow_1] 1173|173|Business|Greenwood Road||Honolulu||||US|John.Jefferson@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 75: [tLogRow_1] 1174|174|Business|East Main Street||Oklahoma City||||US|George.Harrison@gmail.com|234-555-1212
+[tLogRow_1] 1174|174|Business|East Main Street||Oklahoma City||||US|George.Harrison@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 76: [tLogRow_1] 1175|175|Personnal|Fairview Avenue||Honolulu||||US|Andrew.Ford@gmail.com|234-555-1212
+[tLogRow_1] 1175|175|Personnal|Fairview Avenue||Honolulu||||US|Andrew.Ford@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 77: [tLogRow_1] 1176|176|Personnal|Apalachee Parkway||Little Rock||||US|Jimmy.Polk@gmail.com|234-555-1212
+[tLogRow_1] 1176|176|Personnal|Apalachee Parkway||Little Rock||||US|Jimmy.Polk@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 78: [tLogRow_1] 1177|177|Personnal|S Rustle St||Honolulu||||US|Calvin.Harrison@gmail.com|234-555-1212
+[tLogRow_1] 1177|177|Personnal|S Rustle St||Honolulu||||US|Calvin.Harrison@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 79: [tLogRow_1] 1178|178|Business|Newbury Road||Albany||||US|Harry.Monroe@gmail.com|234-555-1212
+[tLogRow_1] 1178|178|Business|Newbury Road||Albany||||US|Harry.Monroe@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 80: [tLogRow_1] 1179|179|Personnal|Lindbergh Blvd||Bismarck||||US|Jimmy.Buchanan@gmail.com|234-555-1212
+[tLogRow_1] 1179|179|Personnal|Lindbergh Blvd||Bismarck||||US|Jimmy.Buchanan@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 81: [tLogRow_1] 1180|180|Personnal|San Marcos||Dover||||US|Ronald.Jackson@gmail.com|234-555-1212
+[tLogRow_1] 1180|180|Personnal|San Marcos||Dover||||US|Ronald.Jackson@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 82: [tLogRow_1] 1181|181|Personnal|Harbor Dr||Carson City||||US|William.Lincoln@gmail.com|234-555-1212
+[tLogRow_1] 1181|181|Personnal|Harbor Dr||Carson City||||US|William.Lincoln@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 83: [tLogRow_1] 1182|182|Business|Via Real||Frankfort||||US|Lyndon.Garfield@gmail.com|234-555-1212
+[tLogRow_1] 1182|182|Business|Via Real||Frankfort||||US|Lyndon.Garfield@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 84: [tLogRow_1] 1183|183|Personnal|Harry S Truman Blvd||Boston||||US|James.Fillmore@gmail.com|234-555-1212
+[tLogRow_1] 1183|183|Personnal|Harry S Truman Blvd||Boston||||US|James.Fillmore@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 85: [tLogRow_1] 1184|184|Business|Harry S Truman Blvd||Montpelier||||US|James.Clinton@gmail.com|234-555-1212
+[tLogRow_1] 1184|184|Business|Harry S Truman Blvd||Montpelier||||US|James.Clinton@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 86: [tLogRow_1] 1185|185|Personnal|Santa Rosa North||Santa Fe||||US|Woodrow.Wilson@gmail.com|234-555-1212
+[tLogRow_1] 1185|185|Personnal|Santa Rosa North||Santa Fe||||US|Woodrow.Wilson@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 87: [tLogRow_1] 1186|186|Business|Richmond Hill||Nashville||||US|Harry.Garfield@gmail.com|234-555-1212
+[tLogRow_1] 1186|186|Business|Richmond Hill||Nashville||||US|Harry.Garfield@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 88: [tLogRow_1] 1187|187|Business|North Erringer Road||Trenton||||US|Woodrow.Harrison@gmail.com|234-555-1212
+[tLogRow_1] 1187|187|Business|North Erringer Road||Trenton||||US|Woodrow.Harrison@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 89: [tLogRow_1] 1188|188|Personnal|S Rustle St||Springfield||||US|Calvin.Harrison@gmail.com|234-555-1212
+[tLogRow_1] 1188|188|Personnal|S Rustle St||Springfield||||US|Calvin.Harrison@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 90: [tLogRow_1] 1189|189|Business|South Highway||Harrisburg||||US|George.Hayes@gmail.com|234-555-1212
+[tLogRow_1] 1189|189|Business|South Highway||Harrisburg||||US|George.Hayes@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 91: [tLogRow_1] 1190|190|Business|Padre Boulevard||Juneau||||US|William.Lincoln@gmail.com|234-555-1212
+[tLogRow_1] 1190|190|Business|Padre Boulevard||Juneau||||US|William.Lincoln@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 92: [tLogRow_1] 1191|191|Business|N Harrison St||Harrisburg||||US|Dwight.Harrison@gmail.com|234-555-1212
+[tLogRow_1] 1191|191|Business|N Harrison St||Harrisburg||||US|Dwight.Harrison@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 93: [tLogRow_1] 1192|192|Business|Cabrillo Highway||Albany||||US|Warren.Harrison@gmail.com|234-555-1212
+[tLogRow_1] 1192|192|Business|Cabrillo Highway||Albany||||US|Warren.Harrison@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 94: [tLogRow_1] 1193|193|Personnal|San Marcos||Dover||||US|Herbert.Harrison@gmail.com|234-555-1212
+[tLogRow_1] 1193|193|Personnal|San Marcos||Dover||||US|Herbert.Harrison@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 95: [tLogRow_1] 1194|194|Business|Carpinteria Avenue||Indianapolis||||US|Harry.Roosevelt@gmail.com|234-555-1212
+[tLogRow_1] 1194|194|Business|Carpinteria Avenue||Indianapolis||||US|Harry.Roosevelt@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 96: [tLogRow_1] 1195|195|Business|W. Russell St.||Indianapolis||||US|Harry.Buchanan@gmail.com|234-555-1212
+[tLogRow_1] 1195|195|Business|W. Russell St.||Indianapolis||||US|Harry.Buchanan@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 97: [tLogRow_1] 1196|196|Personnal|French Camp Turnpike Road||Columbia||||US|Franklin.Grant@gmail.com|234-555-1212
+[tLogRow_1] 1196|196|Personnal|French Camp Turnpike Road||Columbia||||US|Franklin.Grant@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 98: [tLogRow_1] 1197|197|Personnal|Bowles Avenue||Juneau||||US|Calvin.Harrison@gmail.com|234-555-1212
+[tLogRow_1] 1197|197|Personnal|Bowles Avenue||Juneau||||US|Calvin.Harrison@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 99: [tLogRow_1] 1198|198|Personnal|Tanger Blvd||Juneau||||US|Andrew.Grant@gmail.com|234-555-1212
+[tLogRow_1] 1198|198|Personnal|Tanger Blvd||Juneau||||US|Andrew.Grant@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Content of row 100: [tLogRow_1] 1199|199|Personnal|Bayshore Freeway||Trenton||||US|Rutherford.Hoover@gmail.com|234-555-1212
+[tLogRow_1] 1199|199|Personnal|Bayshore Freeway||Trenton||||US|Rutherford.Hoover@gmail.com|234-555-1212
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tRowGenerator_1 - Generated records count:100 .
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tS3Put_1 - Get an free connection from tS3Connection_1.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tS3Put_1 - Uploading an object with key:talend/SE_DEMO/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/temp/generated_customers.csv
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tS3Put_1 - Upload the object successfully.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tS3Put_5 - Get an free connection from tS3Connection_1.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tS3Put_5 - Uploading an object with key:out/addresses.csv
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tS3Put_5 - Upload the object successfully.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tLogRow_1 - Printed row count: 100.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tS3Put_3 - Get an free connection from tS3Connection_1.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tS3Put_3 - Uploading an object with key:talend/SE_DEMO/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/temp/address_rejects.csv
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tS3Put_3 - Upload the object successfully.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tS3Put_2 - Get an free connection from tS3Connection_1.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tS3Put_2 - Uploading an object with key:talend/SE_DEMO/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/temp/rejected_customers.csv
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tS3Put_2 - Upload the object successfully.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tRowGenerator_2 - Generating records.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tRowGenerator_2 - Generated records count:10 .
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tS3Put_7 - Get an free connection from tS3Connection_1.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tS3Put_7 - Uploading an object with key:talend/SE_DEMO/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/temp/rejected_customers_only.csv
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tS3Put_7 - Upload the object successfully.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tS3Put_6 - Get an free connection from tS3Connection_1.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tS3Put_6 - Uploading an object with key:talend/SE_DEMO/t1_docker_create_customer_s3/52d0579c-5135-11e8-a195-080027f69c5a/temp/generated_customer_only.csv
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tS3Put_6 - Upload the object successfully.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tS3Put_8 - Get an free connection from tS3Connection_1.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tS3Put_8 - Uploading an object with key:out/customers.csv
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tS3Put_8 - Upload the object successfully.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tWarn_1 - Message: job: 52d0579c-5135-11e8-a195-080027f69c5a: subjob: Create Customers with Addresses: finished. Code: 0
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tS3Put_11 - Get an free connection from tS3Connection_1.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tS3Put_11 - Uploading an object with key:talend/SE_DEMO/t1_docker_create_customer_s3/amc/52d0579c-5135-11e8-a195-080027f69c5a-amc_stats.log
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tS3Put_11 - Upload the object successfully.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tS3Put_9 - Get an free connection from tS3Connection_1.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tS3Put_9 - Uploading an object with key:talend/SE_DEMO/t1_docker_create_customer_s3/amc/52d0579c-5135-11e8-a195-080027f69c5a-amc_log.log
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tS3Put_9 - Upload the object successfully.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tS3Put_10 - Get an free connection from tS3Connection_1.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tS3Put_10 - Uploading an object with key:talend/SE_DEMO/t1_docker_create_customer_s3/amc/52d0579c-5135-11e8-a195-080027f69c5a-amc_meter.log
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tS3Put_10 - Upload the object successfully.
+[INFO ]: root - FLUSH
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tS3Put_12 - Get an free connection from tS3Connection_1.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tS3Put_12 - Uploading an object with key:talend/SE_DEMO/t1_docker_create_customer_s3/log/t1_docker_create_customer_s3-52d0579c-5135-11e8-a195-080027f69c5a.log
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tS3Put_12 - Upload the object successfully.
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - tWarn_2 - Message: job: 52d0579c-5135-11e8-a195-080027f69c5a: finished. Code: 0
+[INFO ]: se_demo.t1_docker_create_customer_s3_0_1.t1_docker_create_customer_s3 - TalendJob: 't1_docker_create_customer_s3' - Done.

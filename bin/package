@@ -7,9 +7,10 @@ set -o pipefail
 package_script_path=$(readlink -e "${BASH_SOURCE[0]}")
 package_script_dir="${package_script_path%/*}"
 
+#source ../util/util.sh
 source "${package_script_dir}/../util/util.sh"
 
-#source "${package_script_dir}/tcf-package.sh"
+#source "tcf-package.sh"
 source "${package_script_dir}/tcf-package.sh"
 
 if [ "${1:-}" == "-h" ]; then

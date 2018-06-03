@@ -19,7 +19,7 @@ fi
 declare APP_NAME="${APP_NAME:-}"
 
 declare job_id="${1:-}"
-declare -r job_name="${2:-t1_docker_create_customer_s3}"
+declare -r job_name="${2:-t3_docker_tmap_customer}"
 declare -r project_name="${3:-SE_DEMO}"
 declare -r app_name="${4:-${APP_NAME:-${app_name:-talend_sample_container_app}}}"
 declare -r job_version="${5:-0.1.0-SNAPSHOT}"
@@ -50,35 +50,17 @@ declare -r job_instance_target="${job_target}/${job_id}"
 
 echo "TALEND_${project_name^^}_${job_name^^}_JOB_ID=${job_id}"
 
-# we use re-use ${project_root}/in for common input file
-# it is mapped to in_dir context variable by the job level configuration ${job_root}/job.cfg
-# note that the paths within job.cfg must be relative to the container, not the host OS
-
-echo "${global_root}/config   ==>   /${global_target}/config:ro"
-echo "${project_root}/config   ==>   /${project_target}/config:ro"
-echo "${job_root}/config   ==>   /${job_target}/config:ro"
-echo "${job_instance_root}/config   ==>   /${job_instance_target}/config:ro"
-echo "${job_root}/amc   ==>   /${job_target}/amc"
-echo "${app_root}/in   ==>   /${job_instance_target}/in:ro"
-echo "${job_instance_root}/out   ==>   /${job_instance_target}/out"
-echo "${app_root}/data   ==>   /${job_instance_target}/data"
-echo "${job_instance_root}/temp   ==>   /${job_instance_target}/temp"
-echo "${job_instance_root}/log   ==>   /${job_instance_target}/log"
+echo "mounting ${job_root} ==> /talend/work"
 
 # set JOB_ID environment variable to allow introspection of container
 docker run \
     --env "TALEND_${project_name^^}_${job_name^^}_JOB_ID=${job_id}" \
     --rm \
-    -v "${global_root}/config:/${global_target}/config:ro" \
-    -v "${project_root}/config:/${project_target}/config:ro" \
-    -v "${job_root}/config:/${job_target}/config:ro" \
-    -v "${job_instance_root}/config:/${job_instance_target}/config:ro" \
-    -v "${job_root}/amc:/${job_target}/amc" \
-    -v "${app_root}/in:/${job_instance_target}/in:ro" \
-    -v "${job_instance_root}/out:/${job_instance_target}/out" \
-    -v "${app_root}/data:/${job_instance_target}/data" \
-    -v "${job_instance_root}/temp:/${job_instance_target}/temp" \
-    -v "${job_instance_root}/log:/${job_instance_target}/log" \
+    -v "${job_root}/config:/talend/work/config" \
+    -v "${job_root}/in:/talend/work/in" \
+    -v "${job_root}/out:/talend/work/out" \
+    -v "${job_root}/amc:/var/log/talend/amc" \
+    -v "${job_root}/log:/var/log/talend/log" \
     "${image}:${image_version}" \
     "/talend/${app_name}/${job_name}/${job_name}_run.sh" "--context_param" "job_id=${job_id}"
 
