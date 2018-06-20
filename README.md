@@ -13,11 +13,11 @@ The resulting Docker image requires users to provide the Docker CMD to run the d
 * [Pre-requisites](#pre-requisites)
 * [Environment](#environment)
 * [Directory Index](#directory-index)
-* [Getting Started](#getting-started)
-    * [HelloWorld with Job2Docker](#helloworld-with-job2docker)
 * [Design Overview](#design-overview)
     * [Job2Docker Design](#job2docker-design)
     * [Manifest Design](#manifest-design)
+* [Getting Started](#getting-started)
+    * [HelloWorld with Job2Docker](#helloworld-with-job2docker)
 * [Sample Jobs](#sample-jobs)
     * [Setup](#setup)
     * [Running the Sample Jobs in Docker](#running-the-sample-jobs-in-docker)
@@ -104,13 +104,12 @@ While not strictly necessary for the job2docker approach (since there is just a 
 
 1.  Download scripts
 2.  Create a shared directory
-3.  Download and start job2docker_listener.
-4.  Create a simple helloworld job in Talend Studio
-5.  Build helloworld job to shared directory
-6.  Run helloworld job container
-7.  Run helloworld job container with context parameters
+3.  Start job2docker_listener
+4.  Build helloworld job to shared directory
+5.  Run helloworld job container
+6.  Run helloworld job container with context parameters
 
-[HelloWorld with Job2Docker Step-by-Step](helloworld-with-job2docker.md)
+See [HelloWorld with Job2Docker Step-by-Step](helloworld-with-job2docker.md) for details
 
 #### Passing Parameters with Implicit Context Load from File
 
