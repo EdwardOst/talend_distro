@@ -14,6 +14,7 @@ The resulting Docker image requires users to provide the Docker CMD to run the d
 * [Environment](#environment)
 * [Directory Index](#directory-index)
 * [Getting Started](#getting-started)
+    * [HelloWorld with Job2Docker](#helloworld-with-job2docker)
 * [Design Overview](#design-overview)
     * [Job2Docker Design](#job2docker-design)
     * [Manifest Design](#manifest-design)
@@ -111,16 +112,6 @@ While not strictly necessary for the job2docker approach (since there is just a 
 
 [HelloWorld with Job2Docker Step-by-Step](helloworld-with-job2docker.md)
 
-#### HelloWorld with Manifest
-
-1.  Modify Nexus to accept non-maven artifacts
-2.  Publish Helloworld to Nexus from Studio
-3.  Modify manifest
-4.  Run package command
-5.  Run build command
-6.  Run helloworld job container
-7.  Run helloworld job container with context parameters
-
 #### Passing Parameters with Implicit Context Load from File
 
 1.  Create a sample parameter file
@@ -150,6 +141,16 @@ This step requires a database that is accessible from the Docker container.
 4.  Test HelloWorld in Studio
 5.  Rebuild HelloWorld image
 6.  Run helloworld job with parameter group id
+
+#### HelloWorld with Manifest
+
+1.  Modify Nexus to accept non-maven artifacts
+2.  Publish Helloworld to Nexus from Studio
+3.  Modify manifest
+4.  Run package command
+5.  Run build command
+6.  Run helloworld job container
+7.  Run helloworld job container with context parameters
 
 ### Sample Jobs
 
