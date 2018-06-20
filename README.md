@@ -151,6 +151,25 @@ This step requires a database that is accessible from the Docker container.
 6.  Run helloworld job container
 7.  Run helloworld job container with context parameters
 
+
+
+
+Note that you have to provide the path to the Talend launch script as the CMD parameter with the manifest style.
+
+````
+docker run eost/docker_hello_world:0.1.0 /talend/docker_hello_world/docker_hello_world/docker_hello_world_run.sh
+log4j:ERROR Could not connect to remote log4j server at [localhost]. We will try again later.
+hello world
+````
+
+You append regular Talennd commandline syntax to set context variables.
+
+````
+docker run eost/docker_hello_world:0.1.0 /talend/docker_hello_world/docker_hello_world/docker_hello_world_run.sh --context_param "message=Greetings earthling"
+log4j:ERROR Could not connect to remote log4j server at [localhost]. We will try again later.
+Greetings earthling
+````
+
 ### Sample Jobs
 
 (work in progress)

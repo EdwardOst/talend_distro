@@ -23,7 +23,7 @@ if [ "${1:-}" == "-h" ]; then
 fi
 
 # nexus source
-declare -r nexus_artifactid="${1:-${nexus_artifactid:-talend_sample_container_app_v2}}"
+declare -r nexus_artifactid="${1:-${nexus_artifactid:-docker_hello_world}}"
 declare -r nexus_group="${2:-${nexus_group:-com/talend/se/container}}"
 declare -r nexus_version="${3:-${nexus_version:-0.1.0}}"
 
@@ -68,4 +68,4 @@ docker build --no-cache -t "${image_tag}" \
 
 popd
 
-infoLog "Finished"
+infoLog "Finished building ${image_tag}"

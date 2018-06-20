@@ -150,7 +150,7 @@ function process_job_entry() {
     local job_file_name
     local job_file_root
     local job_root
-    local job_root_pattern="${job_file_root/%-+([0-9])\.+([0-9])\.+([0-9])*}"
+    local job_root_pattern="-+([0-9])\.+([0-9])\.+([0-9])*"
 
 
     debugVar "current_url"
