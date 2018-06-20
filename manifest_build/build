@@ -1,0 +1,71 @@
+#!/usr/bin/env bash
+
+[ "${TALEND_BUILD_FLAG:-0}" -gt 0 ] && return 0
+
+export TALEND_BUILD_FLAG=1
+
+set -e
+set -u
+set -o pipefail
+
+talend_build_script_path=$(readlink -e "${BASH_SOURCE[0]}")
+talend_build_script_dir="${talend_build_script_path%/*}"
+
+source "${talend_build_script_dir}/../util/util.sh"
+
+export INFO_LOG=true
+#export DEBUG_LOG=true
+
+if [ "${1:-}" == "-h" ]; then
+    declare usage="./build [ <nexus_artifactid> [ <nexus_group [ <nexus_version> [ <app_user> [ <app_name> [ <app_version> [ <nexus_host> [ <job_parent_id> ] ] ] ] ] ] ] ]"
+    echo "${usage}"
+    exit
+fi
+
+# nexus source
+declare -r nexus_artifactid="${1:-${nexus_artifactid:-talend_sample_container_app_v2}}"
+declare -r nexus_group="${2:-${nexus_group:-com/talend/se/container}}"
+declare -r nexus_version="${3:-${nexus_version:-0.1.0}}"
+
+# docker target
+declare -r app_user="${4:-${app_user:-${USER}}}"
+declare -r app_name="${5:-${app_name:-${nexus_artifactid}}}"
+declare -r app_version="${6:-${app_version:-${nexus_version}}}"
+declare -r nexus_host="${7:-${nexus_host:-192.168.99.1}}"
+declare -r job_parent_dir="${8:-${job_parent_dir:-/talend}}"
+
+required nexus_group nexus_artifactid nexus_version app_user app_name app_version nexus_host job_parent_dir
+
+infoVar nexus_group
+infoVar nexus_artifactid
+infoVar nexus_version
+infoVar app_user
+infoVar app_name
+infoVar app_version
+infoVar nexus_host
+infoVar job_parent_dir
+
+declare image_tag="${app_user}/${app_name}:${app_version}"
+declare app_tgz="${nexus_artifactid}-${nexus_version}.tgz"
+
+infoVar image_tag
+infoVar app_tgz
+
+pushd "${talend_build_script_dir}"
+infoLog docker build --no-cache -t "${image_tag}" \
+             --build-arg nexus_group="${nexus_group}" \
+             --build-arg nexus_version="${nexus_version}" \
+             --build-arg app_tgz="${app_tgz}" \
+             --build-arg nexus_host="${nexus_host}" \
+             --build-arg job_parent_dir="${job_parent_dir}" .
+
+docker build --no-cache -t "${image_tag}" \
+             --build-arg nexus_group="${nexus_group}" \
+             --build-arg nexus_version="${nexus_version}" \
+             --build-arg app_tgz="${app_tgz}" \
+             --build-arg nexus_host="${nexus_host}" \
+             --build-arg job_parent_dir="${job_parent_dir}" .
+
+popd
+
+infoLog "Finished"

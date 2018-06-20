@@ -1,55 +1,108 @@
 # Talend Container Factory
 
 This repository includes sample bash scripts which allow you to deploy Talend jobs to Docker containers.
-The Docker image will include one or more Talend jobs listed in a manifest configuration file.
-All jobs in the manifest must have been published to your Talend Nexus repository.
-The scripts automate the process to create a new Docker image.
-The Docker image will have separate entry points for each job in the manifest.
-Typically, only one job should be run per container instance.
 
-* [Directory Index](#directory-index)
+Two methods are supported.  The first job2docker approach converts a single Talend job zip file to a container.
+The resulting Docker image will have a single entry point for the job.
+It is intended for use by developers during their build / test / debug cycle and provides desktop parity.
+
+The second Manifest based approach reads a file with links to one or more Talend jobs to create a docker image.
+All jobs in the manifest must have been published to your Talend Nexus repository.
+The resulting Docker image requires users to provide the Docker CMD to run the desired job.
+
+* [Pre-requisites](#pre-requisites)
 * [Environment](#environment)
+* [Directory Index](#directory-index)
+* [Getting Started](#getting-started)
+* [Talend Container Factory Design Overview](#talend-container-factory-design-overview)
+    * [Job2Docker Design](#job2docker-design)
+    * [Manifest Design](#manifest-design)
 * [Sample Jobs](#sample-jobs)
     * [Setup](#setup)
     * [Running the Sample Jobs in Docker](#running-the-sample-jobs-in-docker)
     * [Running the Sample Jobs in AWS](#running-the-sample-jobs-in-aws)
     * [Running the Sample Jobs in Azure](#running-the-sample-jobs-in-azure)
-* [Talend Container Factory Design Overview]
+    * [Sample Job Desing](#sample-job-design)
+
+
+### Pre-Requisites
+
+* Talend enterprise subscription
+* Talend Studio
+* Talend Artifact Repository for the manifest based approach
+* Docker
+* Basic knowledge of Docker
+* Bash 4.3 - supporting scripts use a nameref feature
+
+
+### Environment
+
+* All containerization work is done on Linux with Docker installed.
+* Talend Studio steps can run on a separate machine if desired, it could be a Windows machine.
+* For the manifest based approach Both Linux and Studio machines need access to a Nexus instance provided with a Talend enterprise subscription.
+* For the job2docker approach, a common drop point (shared directory, shared network drive, shared folder) for Jobs built from Studio for the job2docker approach.
+
+* The environment used to test these scripts was a Windows laptop running Studio and Nexus.
+* The docker script were run on an Ubuntu VM running on the same Windows laptop.
+* VirtualBox was used for the VM hosting.
+* A shared folder was created using VirtualBox so that Studio builds would be visible to the Linux VM.
+
 
 ### Directory Index
 
 * bin - scripts for creating docker images, creating containers, and deploying images to the cloud
-    * package - create a docker ready tgz file
-    * run - run a docker image locally
-    * deploy-az - deploy a docker image to Azure
-    * deploy-aws - deploy a docker image to AWS
-* image - docker build artifacts
-    * build - paraeterized script for running docker build
-    * Dockerfile - docker build file used for all talend jobs
-* jobs - sample talend jobs
+* job2docker - working directory for running the agent that monitors the build directory for Talend zip files
+* job2docker_build - sample Dockerfile used to create Docker image containing the Talend job
+* manifest_build - docker build artifacts for manifest based build
 * pictures - jpg files used in this readme
-* sample_job - scripts used to create docker images from sample jobs
+* sample_job - scripts for step-by-step walkthrough
 * util - utility bash scripts
 
-### Environment
+### Talend Container Factory Design Overview
 
-These directions assume you have an enterprise Talend subscription and that you have correctly configured Talend Studio to use the Talend Artifact Repository (i.e Nexus).
+The job2docker and manifest based approaches are intended to compliment each other.
+Job2docker provides a simple mechanism for developers to automate builds of containers from their Studio.
+It is intended to run locally for a single developer.
 
-The environment is fairly simple.
-Talend Studio steps can run on a separate machine if desired.
-All containerization work is done on Linux with Docker installed.
-Your Linux machine can be a console machine if you run Taled Studio on another machine.
-Both Linux and Studio machines need access to a Nexus instance provided with a Talend enterprise subscription.
+In contrast, the manifest based approach allows a set of jobs to be released as a unit.
+This allows but does _not_ ensure a consistent set of metadata, configuration, and supporting artifacts delivered by the manifest based Docker image.
 
-I ran Studio on my Windows laptop and published to a Nexus instance also running on my Windows laptop.
-I ran the scripts in this project on an Ubuntu image running in a VirtualBox VM running on the same Windows laptop.
-I have used Ubuntu in the examples but the scripts should work in most bash environments.
+In a true CI/CD environment the set of Jobs in the manifest would ideally be built from scratch and then packaged with these scripts.
+That would ensure consistency of the artifacts within the Image which would then become the single point of control in the chain of custody.
 
-Start by cloning this github repo.
+When running multiple jobs within a single container there can be collisions in some Talend configuration files.
+This is addressed by the packaging step in the Manifest approach.
+While not strictly necessary for the job2docker approach (since there is just a single Job), the same packaing structure is used to ensure consistency between developer and CI images.
+
+### Job2Docker Design
+
+1.  A Talend job2docker_listener job is used to monitor a shared directory.
+2.  The developer clicks Build in Talend Studio to create Talend job zip file in the shared directory.
+3.  The Talend `job2docker_listener` triggers the `job2docker` script to convert the Talend zip file to a tgz ready for Docker.
+4.  The Talend `job2docker_listener` triggers the `job2docker_build` script.
+5.  The Talend `job2docker_listener` optionally publishes the resulting container to a Docker Registry.
+
+### Manifest Design
+
+1.  Download Talend Jobs from Nexus based on the Manifest.
+2.  Unzip and merge jobs to avoid collisions
+3.  Modify each Job launch script to use `exec` so that Talend Jobs run as PID 1
+4.  Repackage as a tgz preserving privileges
+5.  Publish back to Nexus
+6.  Build a Docker image with job entry points
+7.  Deploy Docker image
+
 
 ### Sample Jobs
 
-Sample jobs are provided in the sample_job/jobs directory.
+(work in progress)
+
+Slightly more advanced sample jobs are provided in the sample_job/jobs directory.
+The sample jobs are used to illustrate the use of some basic Docker practices like creating immutable containers.
+The sample jobs are also set up to run in a Cloud environment so they use Cloud storage.
+As a result, additional steps are required to configure Cloud credentials.
+When jobs are run in the Cloud, the container can inherit permissions from the hosting EC2 instance.
+But when run locally things need to be configured.  So this adds some complexity.
 
 * t0_docker_create_customer
 * t1_docker_create_customer_aws
@@ -101,6 +154,7 @@ The scripts for building docker images publish files to Nexus which do not confo
 Set the Nexus 3 Layout policy to permissive for the Snapshots repository.
 
 ![get nexus job url](pictures/03_nexus_3_permissive.png)
+
 
 ### Running the Sample Jobs in Docker
 
@@ -165,19 +219,9 @@ If you do not wish to write to S3 then just edit the sample job.
 
 #### Running the Sample Jobs in Azure
 
-### Talend Container Factory Design Overview
+#### Sample Job Design
 
-The bash scripts perform the following steps to create a Docker image containing Talend jobs.
-
-1.  Download potentially multiple Talend Jobs from Nexus based on the Manifest.
-2.  Unzip and merge jobs
-3.  Modify each Job launch script to use `exec` so that Talend Jobs run as PID 1
-4.  Repackage as a tgz preserving privileges
-5.  Publish back to Nexus
-6.  Build a Docker image with job entry points
-7.  Deploy Docker image
-
-The style of use of the container follows common practice in using Docker volumes to support immutable containers for different runtime aspects.
+The sample jobs attempt to illustrate some common practices in using Docker volumes to support immutable containers for different runtime aspects.
 Different volumes are used to provision and isolate data used by the containerized job.
 
 * job-root/config (ro) – configuration files common to all job instances
@@ -189,8 +233,11 @@ Different volumes are used to provision and isolate data used by the containeriz
 * out (rw) - output data
 * temp (rw) – transient and can always be deleted prior to the container (re)start
 
-I have attached these volumes to host files so that we can see the resulting output and verify that things ran successfully.
-In practice you might well use other Docker data containers for this purpose.
+The volume mounts are addressed when launching containers with the Docker Run command rather than in the Docker Image build.
+As a result, this has no impact on the Manifest or job2docker approach.  It a container issue rather than an image issue.
 
-This sample uses volumes for sensitive data.  While it separated from less sensitive configuraiton data, this is not best practice.
+The sample jobs include a custom run script which attaches these volumes to host files so that the resulting output is visible.
+
+The sample jobs use volumes for sensitive data.  While it separated from less sensitive configuraiton data, this is not best practice.
 A preferred approach would be to use [Kubernetes Service Catalog](https://kubernetes.io/docs/concepts/service-catalog/)
+
