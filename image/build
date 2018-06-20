@@ -23,7 +23,7 @@ if [ "${1:-}" == "-h" ]; then
 fi
 
 # nexus source
-declare -r nexus_artifactid="${1:-${nexus_artifactid:-talend_sample_container_app}}"
+declare -r nexus_artifactid="${1:-${nexus_artifactid:-talend_sample_container_app_v2}}"
 declare -r nexus_group="${2:-${nexus_group:-com/talend/se/container}}"
 declare -r nexus_version="${3:-${nexus_version:-0.1.0}}"
 

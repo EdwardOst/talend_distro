@@ -92,12 +92,23 @@ function parse_args() {
 }
 
 
-function multi_job() {
-    local working_dir="${1:-${working_dir:-}}"
-    local job_file_root="${2:-${job_file_root:-}}"
-    local job_root="${3:-${job_root:-}}"
+function process_zip() {
 
-    debugLog "applying multi-job modifications"
+    mkdir -p "${working_dir}/${job_file_root}"
+
+    infoLog "Uzipping '${working_dir}/${job_file_name}' to '${working_dir}/${job_file_root}'"
+    unzip -qq -o -d "${working_dir}/${job_file_root}" "${working_dir}/${job_file_name}"
+
+    debugVar job_file_root
+
+    local extglob_save
+    extglob_save=$(shopt -p extglob || true )
+
+    shopt -s extglob
+
+    local job_root="${job_file_root/%-+([0-9])\.+([0-9])\.+([0-9])*}"
+
+    eval "${extglob_save}"
 
     # rename jobInfo.properties
     mv "${working_dir}/${job_file_root}/jobInfo.properties" "${working_dir}/${job_file_root}/jobInfo_${job_root}.properties"
@@ -105,53 +116,16 @@ function multi_job() {
     mv "${working_dir}/${job_file_root}/lib/routines.jar" "${working_dir}/${job_file_root}/lib/routines_${job_root}.jar"
     # sed command to tweak shell script to use routines_${job_root}.jar
     sed -i "s/routines\.jar/routines_${job_root}\.jar/g" "${working_dir}/${job_file_root}/${job_root}/${job_root}_run.sh"
-}
-
-
-function process_zip() {
-
-    local working_dir="${1:-${working_dir:-}}"
-    local job_file_name="${2:-${job_file_name:-}}"
-    local job_file_root="${3:-${job_file_root:-}}"
-    local job_root="${4:-${job_root:-}}"
-    local is_multi_job="${5:-${is_multi_job:-true}}"
-
-    debugVar working_dir
-    debugVar job_file_name
-    debugVar job_file_root
-    debugVar job_root
-    debugVar is_multi_job
-
-    mkdir -p "${working_dir}/${job_file_root}"
-
-    infoLog "Unzipping '${working_dir}/${job_file_name}' to '${working_dir}/${job_file_root}'"
-    unzip -qq -o -d "${working_dir}/${job_file_root}" "${working_dir}/${job_file_name}"
-
-    debugLog "rename 'jobInfo.properties' to 'jobInfo_${job_root}.properties'"
-    mv "${working_dir}/${job_file_root}/jobInfo.properties" "${working_dir}/${job_file_root}/jobInfo_${job_root}.properties"
-    debugLog "rename 'routines.jar' to 'routines_${job_root}.jar'"
-    mv "${working_dir}/${job_file_root}/lib/routines.jar" "${working_dir}/${job_file_root}/lib/routines_${job_root}.jar"
-    debugLog "tweak shell script to use 'routines_${job_root}.jar'"
-    sed -i "s/routines\.jar/routines_${job_root}\.jar/g" "${working_dir}/${job_file_root}/${job_root}/${job_root}_run.sh"
-
-#    [ "${is_multi_job}" == "true" ] && multi_job "${working_dir}" "${job_file_root}" "${job_root}"
-
-    debugLog "insert exec at beginning of java invocation"
+    # sed command to insert exec at beginning of java invocation
     sed -i "s/^java /exec java /g" "${working_dir}/${job_file_root}/${job_root}/${job_root}_run.sh"
-    debugLog "set exec permission since it is not set and is not maintianed by zip format"
+    # exec permission is not set and is not maintianed by zip format, so set it here
     chmod +x "${working_dir}/${job_file_root}/${job_root}/${job_root}_run.sh"
 }
-
 
 function process_job_entry() {
     debugLog "BEGIN"
 
     local current_url="${1}"
-    local job_file_name
-    local job_file_root
-    local job_root
-    local job_root_pattern="${job_file_root/%-+([0-9])\.+([0-9])\.+([0-9])*}"
-
 
     debugVar "current_url"
 
@@ -164,8 +138,8 @@ function process_job_entry() {
     local -A parsed_source_url
     parse_url parsed_source_url "${current_url}"
 
-    local job_zip_path="${parsed_source_url[file]}"
-    parse_job_zip_path "${job_zip_path}" "${job_root_pattern}" job_file_name job_file_root job_root
+    local job_file_name="${parsed_source_url[file]}"
+    local job_file_root="${job_file_name%.*}"
 
     debugLog "attempting to retrieve ${current_url} to ${working_dir}"
     wget -q --http-user="${nexus_userid}" --http-password="${nexus_password}" --directory-prefix="${working_dir}" "${current_url}" && true
@@ -174,85 +148,12 @@ function process_job_entry() {
         return 1
     fi
 
-    process_zip "${working_dir}" "${job_zip_path}" "${job_file_root}" "${job_root}"
+    process_zip "${current_url}"
 
     # merge zip file contents
     rsync -aibh --stats "${working_dir}/${job_file_root}/" "${working_dir}/target/" > /dev/null
 
     debugLog "END"
-}
-
-
-function parse_job_zip_path() {
-
-    local job_zip_path="${1}"
-    local job_root_pattern="${2}"
-    local _job_file_name="${3}"
-    local _job_file_root="${4}"
-    local _job_root="${5}"
-
-    required job_zip_path job_root_pattern _job_file_name _job_file_root _job_root
-
-    local job_file_name_out="${job_zip_path##*/}"
-    local job_file_root_out="${job_file_name_out%.*}"
-
-    local extglob_save
-    extglob_save=$(shopt -p extglob || true )
-
-    shopt -s extglob
-
-    local job_root_out="${job_file_root_out/%${job_root_pattern}}"
-
-    eval "${extglob_save}"
-
-    assign "${_job_file_name}" "${job_file_name_out}"
-    assign "${_job_file_root}" "${job_file_root_out}"
-    assign "${_job_root}" "${job_root_out}"
-}
-
-
-function job_to_docker() {
-    local job_zip_path="${1:-${job_zip_path:-}}"
-    local job_zip_target_dir="${2:-${job_zip_target_dir:-${PWD}}}"
-    local working_dir="${3:-${working_dir:-}}"
-
-    debugVar job_zip_path
-    debugVar job_zip_target_dir
-    debugVar working_dir
-
-    local job_file_name
-    local job_file_root
-    local job_root
-    local job_root_pattern="_+([0-9])\.+([0-9])*"
-    local tmp_working_dir
-
-    required job_zip_path
-
-    default_working_dir="${working_dir:-${TMPDIR:-${HOME}/tmp/job2docker}}"
-    mkdir -p "${default_working_dir}"
-    [ ! -w "${default_working_dir}" ] && errorMessage "Working directory '${default_working_dir}' is not writeable" && return 1
-    tmp_working_dir=$(mktemp -d -p "${default_working_dir}" "XXXXXX")
-    debugVar tmp_working_dir
-
-    parse_job_zip_path "${job_zip_path}" "${job_root_pattern}" job_file_name job_file_root job_root
-
-    infoLog "Copying '${job_zip_path}' to working directory '${tmp_working_dir}'"
-    cp "${job_zip_path}" "${tmp_working_dir}"
-
-    process_zip "${tmp_working_dir}" "${job_file_name}" "${job_file_root}" "${job_root}" "false"
-
-    # delete local zip file copy when finished
-    # this needs to occur after zip command since zip does not like the additional file desriptor
-    local working_zip_path_fd
-    exec {working_zip_path_fd}>"${tmp_working_dir}/${job_file_name}"
-    rm "${tmp_working_dir}/${job_file_name}"
-
-    tar -C "${tmp_working_dir}" -zcpf "${tmp_working_dir}/${job_root}.tgz" "${job_file_root}"
-    mv "${tmp_working_dir}/${job_root}.tgz" "${job_zip_target_dir}"
-    infoLog "Dockerized zip file ready in '${job_zip_target_dir}/${job_root}.tgz'"
-
-    # clean up working directory
-    rm -rf "${tmp_working_dir:?}/${job_file_root}"
 }
 
 
@@ -264,18 +165,15 @@ function process_manifest() {
 
     forline "${manifest_file}" process_job_entry
 
-    debugLog "**** moving '${working_dir}/target' to '${working_dir}/${app_name}' ****"
     mv "${working_dir}/target" "${working_dir}/${app_name}"
 
+    echo "process_manifest: PWD=${PWD}"
+
     # keep permissions using tgz format
-    debugLog "process_manifest: PWD=${PWD}"
-    debugLog "zipping from directory '${working_dir}/${app_name}' into '${app_name}.tgz'"
+    echo tar -C "${working_dir}" -zcpf "${app_name}.tgz" "${app_name}"
     tar -C "${working_dir}" -zcpf "${app_name}.tgz" "${app_name}"
-    debugLog "tar zip result = ${?}"
 
-    debugLog "deleting working directory '${working_dir}/${app_name}'"
-    rm -rf "${working_dir:?}/${app_name}"
-
+    echo "tar zip result = ${?}"
 
     debugLog "END"
 }
@@ -286,7 +184,12 @@ function publish_app() {
 
     local nexus_target_url="${nexus_target_repo}/${group_path}/${version}/${app_name}-${version}.tgz"
 
-    infoLog "publishing talend app to ${nexus_target_url}"
+    debugLog "publishing talend app to ${nexus_target_url}"
+
+    echo curl -u "${nexus_target_userid}:${nexus_target_password}" \
+        -w "\n\nhttp-result=%{http_code}\n" --upload-file "${app_name}.tgz" \
+        "${nexus_target_url}"
+
     curl -u "${nexus_target_userid}:${nexus_target_password}" \
         -w "\n\nhttp-result=%{http_code}\n" --upload-file "${app_name}.tgz" \
         "${nexus_target_url}"
@@ -354,7 +257,7 @@ function talend_packager() {
     trap_add "rm -f ${app_name}.tgz" EXIT
     process_manifest "${manifest_file}" "${app_name}"
 
-    debugVar working_dir
+    infoVar working_dir
     publish_app
 
     debugLog "END"

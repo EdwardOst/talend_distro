@@ -19,7 +19,7 @@ if [ "${1:-}" == "-h" ]; then
     exit
 fi
 
-declare artifactid="${1:-talend_sample_container_app}"
+declare artifactid="${1:-docker_hello_world}"
 declare groupid="${2:-com/talend/se/container}"
 declare version="${3:-0.1.0}"
 declare manifest="${4:-manifest.cfg}"

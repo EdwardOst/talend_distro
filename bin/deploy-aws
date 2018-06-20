@@ -12,7 +12,7 @@ source "${script_dir}/../util/util.sh"
 declare -r aws_account_id="${1:-115057027035}"
 declare -r aws_region="${2:-us-east-1}"
 declare -r ecr_repo_name="${3:-talend/eost}"
-declare -r app_name="${4:-talend_sample_container_app}"
+declare -r app_name="${4:-talend_sample_container_app_v2}"
 declare -r image_version="${5:-0.1.0}"
 
 declare ecr_login_command
