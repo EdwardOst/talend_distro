@@ -14,7 +14,7 @@ The resulting Docker image requires users to provide the Docker CMD to run the d
 * [Environment](#environment)
 * [Directory Index](#directory-index)
 * [Getting Started](#getting-started)
-* [Talend Container Factory Design Overview](#talend-container-factory-design-overview)
+* [Design Overview](#design-overview)
     * [Job2Docker Design](#job2docker-design)
     * [Manifest Design](#manifest-design)
 * [Sample Jobs](#sample-jobs)
@@ -22,7 +22,7 @@ The resulting Docker image requires users to provide the Docker CMD to run the d
     * [Running the Sample Jobs in Docker](#running-the-sample-jobs-in-docker)
     * [Running the Sample Jobs in AWS](#running-the-sample-jobs-in-aws)
     * [Running the Sample Jobs in Azure](#running-the-sample-jobs-in-azure)
-    * [Sample Job Desing](#sample-job-design)
+    * [Sample Job Design](#sample-job-design)
 
 
 ### Pre-Requisites
@@ -58,7 +58,7 @@ The resulting Docker image requires users to provide the Docker CMD to run the d
 * sample_job - scripts for step-by-step walkthrough
 * util - utility bash scripts
 
-### Talend Container Factory Design Overview
+### Design Overview
 
 The job2docker and manifest based approaches are intended to compliment each other.
 Job2docker provides a simple mechanism for developers to automate builds of containers from their Studio.
@@ -69,6 +69,10 @@ This allows but does _not_ ensure a consistent set of metadata, configuration, a
 
 In a true CI/CD environment the set of Jobs in the manifest would ideally be built from scratch and then packaged with these scripts.
 That would ensure consistency of the artifacts within the Image which would then become the single point of control in the chain of custody.
+
+Either manifest or job2docker can be incorporated into a CI build environment.
+The advantage of the manifest approach is it leverages the Nexus infrastruxture so it can be easily combined with standard Talend CI.
+Since the CI build script is presumably running on a CI server local to Nexus and the SCM it will create a Docker image and supporting artifacts closer to the Nexus repository and Docker registry so there will be less network overhead than transferring from a laptop.
 
 When running multiple jobs within a single container there can be collisions in some Talend configuration files.
 This is addressed by the packaging step in the Manifest approach.
@@ -92,6 +96,60 @@ While not strictly necessary for the job2docker approach (since there is just a 
 6.  Build a Docker image with job entry points
 7.  Deploy Docker image
 
+
+### Getting Started
+
+#### HelloWorld with Job2Docker
+
+1.  Download scripts
+2.  Create a shared directory
+3.  Download and start job2docker_listener.
+4.  Create a simple helloworld job in Talend Studio
+5.  Build helloworld job to shared directory
+6.  Run helloworld job container
+7.  Run helloworld job container with context parameters
+
+[HelloWorld with Job2Docker Step-by-Step](helloworld-with-job2docker.md)
+
+#### HelloWorld with Manifest
+
+1.  Modify Nexus to accept non-maven artifacts
+2.  Publish Helloworld to Nexus from Studio
+3.  Modify manifest
+4.  Run package command
+5.  Run build command
+6.  Run helloworld job container
+7.  Run helloworld job container with context parameters
+
+#### Passing Parameters with Implicit Context Load from File
+
+1.  Create a sample parameter file
+2.  Modify HelloWorld to use implicit context load from file
+3.  Test HelloWorld in Studio
+4.  Create a parameter directory for volume mount point
+5.  Copy sample parameter file to parameter directory
+5.  Rebuild HelloWorld image
+6.  Run helloworld job container with mount point
+
+#### Passing Parameters with Implicit Context Load from Database
+
+This step requires a database that is accessible from the Docker container.
+
+1.  Create database tables to hold parameters
+2.  Populate database with sample parameters
+3.  Modify HelloWorld to use implicit context load from database
+4.  Test HelloWorld in Studio
+5.  Rebuild HelloWorld image
+6.  Run helloworld job with parameter group id
+
+#### Separating Configuration from Parameters
+
+1.  Create database tables to hold configuration
+2.  Populate database with sample configuration
+3.  Modify HelloWorld to use impllicit context load for both parameters and configuration
+4.  Test HelloWorld in Studio
+5.  Rebuild HelloWorld image
+6.  Run helloworld job with parameter group id
 
 ### Sample Jobs
 
