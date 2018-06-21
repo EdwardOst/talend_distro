@@ -1,21 +1,9 @@
 # HelloWorld with Job2Docker
 
-1.  Download scripts
-2.  Create a shared directory
-3.  Start job2docker_listener
-4.  Build helloworld job to shared directory
-5.  Run helloworld job container
-6.  Run helloworld job container with context parameters
-
-## Download Scripts
-
-Use git clone to download this repository.  Most scripts are in the bin directory.  Build scripts for Dockerfile are in job2docker_build and manifest_build.
-
-## Create a Shared Directory
-
-If you are running Studio on Linux then just create a directory that will be used as the target for Studio builds.
-
-If you are running Studio on Windows, then either use either a network share common to both Linux and Windows machines or [create a Shared folder](https://www.youtube.com/watch?v=89HDKvTfR_w) between the host OS and the guest VM.
+1.  Start job2docker_listener
+2.  Build helloworld job to shared directory
+3.  Run helloworld job container
+4.  Run helloworld job container with context parameters
 
 ## Job2Docker Listener
 
@@ -27,11 +15,12 @@ Note that you will want to create a parent directory for this job since Talend z
 The multiple redundant names can be a bit confusing, so use an abbreviated name for the top level.
 
 ````bash
-
+cd $HOME
 mkdir j2d
 cd j2d
-unzip ../jobs/job2docker_listener_0.1.zip
+unzip ${HOME}/talend_distro/jobs/job2docker_listener_0.1.zip
 cd job2docker_listener/se_demo/job2docker_listener_0_1/contexts
+nano -w Default.properties
 ````
 
 Edit the `Default.properties` file to point to your own directory paths.
@@ -47,16 +36,20 @@ deploy_command=/home/eost/talend_distro/bin/deploy-aws
 
 In the example above the `job_publish_directory` is the shared directory being monitored by the job2docker_listener job.
 
-The `job_zip_target_dir` is a working directory that will hold the modified job tgz file.
+You need to create The `job_zip_target_dir`.  It is a working directory that will hold the modified job tgz file.
+
+````bash
+mkdir -p /home/eost/containerized
+````
 
 The `working_dir` can be left blank.  The scripts will use a temporary directory.
 
-Change the package, build, and deploy paths to point to the correct locations from where you cloned this repo.
+Change the package, build, and deploy paths to point to where you cloned this repo.
 
 You will need to set the execute permission to start the job.
 
 ````bash
-cd j2d/job2docker_listener
+cd ${HOME}/j2d/job2docker_listener
 chmod +x job2docker_listener_run.sh
 ./job2docker_listener_run.sh
 ````
@@ -76,16 +69,16 @@ The jobs directory also includes a simple HelloWorld job.
 Both the exported job and the built job are included for reference.
 Use the `Import Items` capability to load `docker_hello_world.zip` into Studio.
 
-TODO: screrenshot for import
+![import job](pictures/import_job.jpg)
 
-No use `Build Job`, selecting the shared directory previously created.
+Use `Build Job` to generate the zip file in the shared directory previously created.
 
-TODO: screenshot for build
+![build job](pictures/build_job.jpg)
 
 Confirm that the docker image has been built
 
 ````
-docker images
+sudo docker images
 
 REPOSITORY                                          TAG                 IMAGE ID            CREATED              SIZE
 eost/docker_hello_world                             0.1                 ce044e5cbcb7        About a minute ago   176MB

@@ -1,12 +1,12 @@
-# Talend Container Factory
+# Talend Docker Example
 
 This repository includes sample bash scripts which allow you to deploy Talend jobs to Docker containers.
 
-Two methods are supported.  The first job2docker approach converts a single Talend job zip file to a container.
+Two methods are supported.  The `job2docker` approach converts a single Talend job zip file to a container.
 The resulting Docker image will have a single entry point for the job.
 It is intended for use by developers during their build / test / debug cycle and provides desktop parity.
 
-The second Manifest based approach reads a file with links to one or more Talend jobs to create a docker image.
+The second manifest based approach reads a file with links to one or more Talend jobs to create a docker image.
 All jobs in the manifest must have been published to your Talend Nexus repository.
 The resulting Docker image requires users to provide the Docker CMD to run the desired job.
 
@@ -16,6 +16,7 @@ The resulting Docker image requires users to provide the Docker CMD to run the d
 * [Design Overview](#design-overview)
     * [Job2Docker Design](#job2docker-design)
     * [Manifest Design](#manifest-design)
+* [Common Setup](#common-setup)
 * [Getting Started](#getting-started)
     * [HelloWorld with Job2Docker](#helloworld-with-job2docker)
 * [Sample Jobs](#sample-jobs)
@@ -28,11 +29,10 @@ The resulting Docker image requires users to provide the Docker CMD to run the d
 
 ### Pre-Requisites
 
-* Talend enterprise subscription
-* Talend Studio
-* Talend Artifact Repository for the manifest based approach
-* Docker
-* Basic knowledge of Docker
+* [Docker](https://docs.docker.com/install/linux/docker-ce/centos/)
+* [Oracle JRE](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+* [Talend Studio](https://info.talend.com/request-talend-data-integration.html)
+* Talend Artifact Repository for the manifest based approach requires Talend enterprise subscription
 * Bash 4.3 - supporting scripts use a nameref feature
 
 
@@ -98,18 +98,54 @@ While not strictly necessary for the job2docker approach (since there is just a 
 7.  Deploy Docker image
 
 
+### Common Setup
+
+#### Install Docker
+
+[Install Docker](https://docs.docker.com/install/linux/docker-ce/centos/) for you Linux environment.
+
+Follow the [Linux post-installation steps] for Docker to create a Docker user group.  This is required for the job2docker process to be able to invoke Docker without sudo.
+
+````bash
+sudo groupadd docker
+sudo usermod -aG docker $USER
+# logout and log back in so the settings take effect
+# then test that the command below runs without sudo
+docker run hello-world
+````
+
+#### Download Scripts
+
+Use git clone to download this repository.
+
+````bash
+git clone https://github.com/EdwardOst/talend_distro.git
+git submodule update --init --recursive
+````
+
+Note that you need to also initialize the submodules which include utility scripts.
+Other job2docker scripts are in the bin directory.
+Build scripts for Dockerfile are in job2docker_build and manifest_build.
+
+#### Create a Shared Directory
+
+(This step is only required for job2docker mode.)
+
+If you are running Studio on Linux then just create a directory that will be used as the target for Studio builds.
+
+If you are running Studio on Windows, then either use either a network share common to both Linux and Windows machines or [create a Shared folder](https://www.youtube.com/watch?v=89HDKvTfR$
+
+
 ### Getting Started
 
 #### HelloWorld with Job2Docker
 
-1.  Download scripts
-2.  Create a shared directory
-3.  Start job2docker_listener
-4.  Build helloworld job to shared directory
-5.  Run helloworld job container
-6.  Run helloworld job container with context parameters
-
 See [HelloWorld with Job2Docker Step-by-Step](helloworld-with-job2docker.md) for details
+
+1.  Start job2docker_listener
+2.  Build helloworld job to shared directory
+3.  Run helloworld job container
+4.  Run helloworld job container with context parameters
 
 #### Passing Parameters with Implicit Context Load from File
 
