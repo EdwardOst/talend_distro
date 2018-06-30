@@ -102,15 +102,33 @@ While not strictly necessary for the job2docker approach (since there is just a 
 
 #### Install Docker
 
-[Install Docker](https://docs.docker.com/install/linux/docker-ce/centos/) for you Linux environment.
+Install Docker for your host OS
 
-Follow the [Linux post-installation steps](https://docs.docker.com/install/linux/linux-postinstall/) for Docker to create a Docker user group.  This is required for the job2docker process to be able to invoke Docker without sudo.
+* [Install Docker on Centos](https://docs.docker.com/install/linux/docker-ce/centos/) for you Linux environment.
+* [Install Docker on Debian](https://docs.docker.com/install/linux/docker-ce/debian/)
+* [Install Docker on Fedora](https://docs.docker.com/install/linux/docker-ce/fedora/)
+* [Install Docker on Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
+
+For AWS Linux
+
+````
+sudo yum update -y
+sudo yum install -y docker
+sudo service docker start
+````
+
+Optional - Follow the [Linux post-installation steps](https://docs.docker.com/install/linux/linux-postinstall/) for Docker to create a Docker user group.  This is required for the job2docker process to be able to invoke Docker without sudo.
+Note that this grants root equivalent privileges to the account so it must be used with care.
+
 
 ````bash
 sudo groupadd docker
 sudo usermod -aG docker $USER
 # logout and log back in so the settings take effect
-# then test that the command below runs without sudo
+````
+
+Test that docker is running
+````bash
 docker run hello-world
 ````
 
@@ -129,18 +147,20 @@ Build scripts for Dockerfile are in job2docker_build and manifest_build.
 
 #### Create a Shared Directory
 
-(This step is only required for job2docker mode.)
+This step is only required for job2docker mode.
 
 If you are running Studio on Linux then just create a directory that will be used as the target for Studio builds.
 
-If you are running Studio on Windows, then either use either a network share common to both Linux and Windows machines or [create a Shared folder](https://www.youtube.com/watch?v=89HDKvTfR$
+If you are running Studio on Windows, then either use either a network share common to both Linux and Windows machines or [create a Shared folder](https://www.youtube.com/watch?v=89HDKvTfR$).  You will build your jobs from Studio to this directory and it will be monitored by the job2docker utililty.
 
 
 ### Getting Started
 
+The Getting Started section is divided into sections.  Each section has a separate detailed walk-through.
+
 #### HelloWorld with Job2Docker
 
-See [HelloWorld with Job2Docker Step-by-Step](helloworld-with-job2docker.md) for details
+See [Job2Docker HelloWorld Step-by-Step](job2docker-hello-world.md) for details
 
 1.  Start job2docker_listener
 2.  Build helloworld job to shared directory
