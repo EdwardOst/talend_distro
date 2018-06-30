@@ -185,7 +185,7 @@ You should see output similar to this [job2docker listener console capture](docs
 
 * [Job2Docker Design Overview](docs/job2docker-design-overview.md)
 * [Job2Docker HelloWorld](docs/job2docker-hello-world.md)
-* [Job2Docker HelloWorld Config Files](docs/job2docker-hello-world-config-files.md
+* [Job2Docker HelloWorld Config Files](docs/job2docker-hello-world-config-files.md)
 
 #### Passing Parameters with Implicit Context Load from Database
 
