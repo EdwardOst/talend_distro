@@ -19,7 +19,7 @@ This is addressed by the packaging step in the Manifest approach.
 While not strictly necessary for the job2docker approach (since there is just a single Job), the same packaing structure is used to ensure consistency between developer and CI images.
 
 
-### Job2Docker Design
+## Job2Docker Design
 
 1.  A Talend job2docker_listener job is used to monitor a shared directory.
 2.  The developer clicks Build in Talend Studio to create Talend job zip file in the shared directory.
@@ -27,7 +27,7 @@ While not strictly necessary for the job2docker approach (since there is just a 
 4.  The Talend `job2docker_listener` triggers the `job2docker_build` script.
 5.  The Talend `job2docker_listener` optionally publishes the resulting container to a Docker Registry.
 
-### Manifest Design
+## Manifest Design
 
 1.  Download Talend Jobs from Nexus based on the Manifest.
 2.  Unzip and merge jobs to avoid collisions

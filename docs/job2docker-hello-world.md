@@ -5,7 +5,7 @@
 3.  [Run helloworld job container with context parameters](#run-parameterized-job-in-container)
 
 
-# Build Docker Job
+## Build Docker Job
 
 The jobs directory also includes a simple HelloWorld job.
 Both the exported job and the built job are included for reference.
@@ -151,7 +151,7 @@ INFO: Finished : main
 +--------------+-------+
 ````
 
-# Run Job in Container
+## Run Job in Container
 
 You can run the HelloWorld job from the container using the Docker run command.
 
@@ -169,4 +169,4 @@ log4j:ERROR Could not connect to remote log4j server at [localhost]. We will try
 Greetings earthling
 ````
 
-# Run Parameterized Job in Container
+## Run Parameterized Job in Container
