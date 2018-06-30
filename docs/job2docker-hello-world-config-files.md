@@ -75,7 +75,7 @@ The config file now existings on the _hosts_ OS, but it will not be visible to t
 docker run \
     -v $HOME/docker_hello_world_implicit_file:/talend/config \
     eost/docker_hello_world_implicit_file:0.1 \
-    "--context_param config_file=/talend/config/docker_hello_world_implicit_file.cfg"
+    --context_param "config_file=/talend/config/docker_hello_world_implicit_file.cfg"
 ````
 
 The example above uses a Docker volume mount to map the directory in the host OS to a container directory.
