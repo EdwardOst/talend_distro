@@ -66,7 +66,7 @@ The resulting Docker image requires users to provide the Docker CMD to run the d
 
 Install Docker for your host OS
 
-* [Install Docker on Centos](https://docs.docker.com/install/linux/docker-ce/centos/) for you Linux environment.
+* [Install Docker on Centos](https://docs.docker.com/install/linux/docker-ce/centos/)
 * [Install Docker on Debian](https://docs.docker.com/install/linux/docker-ce/debian/)
 * [Install Docker on Fedora](https://docs.docker.com/install/linux/docker-ce/fedora/)
 * [Install Docker on Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
@@ -184,17 +184,8 @@ You should see output similar to this [job2docker listener console capture](docs
 ### Getting Started
 
 * [Job2Docker Design Overview](docs/job2docker-design-overview.md)
-* [Job2Docker HelloWorld Step-by-Step](docs/job2docker-hello-world.md)
-
-#### Passing Parameters with Implicit Context Load from File
-
-1.  Create a sample parameter file
-2.  Modify HelloWorld to use implicit context load from file
-3.  Test HelloWorld in Studio
-4.  Create a parameter directory for volume mount point
-5.  Copy sample parameter file to parameter directory
-5.  Rebuild HelloWorld image
-6.  Run helloworld job container with mount point
+* [Job2Docker HelloWorld](docs/job2docker-hello-world.md)
+* [Job2Docker HelloWorld Config Files](docs/job2docker-hello-world-config-files.md
 
 #### Passing Parameters with Implicit Context Load from Database
 
@@ -225,8 +216,6 @@ This step requires a database that is accessible from the Docker container.
 5.  Run build command
 6.  Run helloworld job container
 7.  Run helloworld job container with context parameters
-
-
 
 
 Note that you have to provide the path to the Talend launch script as the CMD parameter with the manifest style.
