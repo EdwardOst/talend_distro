@@ -34,7 +34,7 @@ You should see output similar to the [job2docker_listener console](job2docker_li
 You can run the HelloWorld job from the container using the Docker run command.
 
 ````
-docker run eost/docker_hello_world:0.1
+docker run ${USER}/docker_hello_world:0.1
 log4j:ERROR Could not connect to remote log4j server at [localhost]. We will try again later.
 hello world
 ````

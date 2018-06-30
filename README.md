@@ -141,7 +141,7 @@ Change the package, build, and deploy paths to point to where you cloned this re
 You need to create The `job_zip_target_dir`.  It is a working directory that will hold the modified job tgz file.
 
 ````bash
-mkdir -p /home/eost/containerized
+mkdir -p ${HOME}/containerized
 ````
 
 You will also need to set the execute permission on the shell script to start the job.
@@ -149,18 +149,20 @@ You will also need to set the execute permission on the shell script to start th
 ````bash
 cd ${HOME}/j2d/job2docker_listener
 chmod +x job2docker_listener_run.sh
-./job2docker_listener_run.sh
 ````
 
 Start the job2docker_listener process
 
 ````
-eost@ubuntu:~/talend_distro/j2d/job2docker_listener$ ./job2docker_listener_run.sh
+./job2docker_listener_run.sh
+````
+
+You should see output similar to the below
+
+````
 log4j:ERROR Could not connect to remote log4j server at [localhost]. We will try again later.
 Listening on /home/eost/shared/published_jobs
 ````
-
-You should see output similar to this [job2docker listener console capture](docs/job2docker_listener_console_sample.log)
 
 
 ## Getting Started

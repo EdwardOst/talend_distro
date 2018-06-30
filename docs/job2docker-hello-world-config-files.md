@@ -16,7 +16,7 @@ Therefore, you can set context variables from the Docker run command using stand
 The HelloWorld job takes a single context variable parameter named `message`.
 
 ````
-docker run eost/docker_hello_world:0.1 --context_param message="Greetings earthling"
+docker run ${USER}/docker_hello_world:0.1 --context_param message="Greetings earthling"
 log4j:ERROR Could not connect to remote log4j server at [localhost]. We will try again later.
 Greetings earthling
 ````
@@ -74,7 +74,7 @@ The config file now existings on the _hosts_ OS, but it will not be visible to t
 ````
 docker run \
     -v $HOME/docker_hello_world_implicit_file:/talend/config \
-    eost/docker_hello_world_implicit_file:0.1 \
+    ${USER}/docker_hello_world_implicit_file:0.1 \
     --context_param "config_file=/talend/config/docker_hello_world_implicit_file.cfg"
 ````
 
