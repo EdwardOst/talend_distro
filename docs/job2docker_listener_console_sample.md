@@ -1,6 +1,8 @@
 ````
 Script started on Sat 30 Jun 2018 12:12:06 PM EDT
-]0;eost@localhost:~/j2d/job2docker_listener[?1034h[eost@localhost job2docker_listener]$ ./job2docker_listener_run.sh 
+eost@localhost:~/j2d/job2docker_listener
+[eost@localhost job2docker_listener]
+$ ./job2docker_listener_run.sh 
 log4j:ERROR Could not connect to remote log4j server at [localhost]. We will try again later.
 Listening on /home/eost/shared/published_jobs
 .---------------------------------------------------------------------------------.
@@ -81,7 +83,8 @@ INFO: Finished : main
 | exitValue    | null  |
 +--------------+-------+
 
-^C]0;eost@localhost:~/j2d/job2docker_listener[eost@localhost job2docker_listener]$ exit
+eost@localhost:~/j2d/job2docker_listener
+[eost@localhost job2docker_listener]$ exit
 exit
 
 Script done on Sat 30 Jun 2018 12:12:50 PM EDT
