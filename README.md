@@ -138,6 +138,7 @@ Use git clone to download this repository.
 
 ````bash
 git clone https://github.com/EdwardOst/talend_distro.git
+cd talend_distro
 git submodule update --init --recursive
 ````
 
@@ -153,6 +154,70 @@ If you are running Studio on Linux then just create a directory that will be use
 
 If you are running Studio on Windows, then either use either a network share common to both Linux and Windows machines or [create a Shared folder](https://www.youtube.com/watch?v=89HDKvTfR$).  You will build your jobs from Studio to this directory and it will be monitored by the job2docker utililty.
 
+#### Job2Docker Listener
+
+The job2docker_listener is just a Talend job that listens on a directory and kicks off the bash scripts found in this git repo.
+The `job2docker_listener_0.1.zip` file is in the jobs directory.  It contains the already built job.
+Unzip this to a folder and then modify the context variables as shown in the steps below.
+Create a parent directory for this job since Talend zip files are not grouped under a parent directory by default.
+The multiple redundant names can be a bit confusing, so use an abbreviated name for the top level.
+
+````bash
+cd $HOME
+mkdir j2d
+cd j2d
+unzip ${HOME}/talend_distro/jobs/job2docker_listener_0.1.zip
+````
+
+Edit the `Default.properties` file to point to your own directory paths.
+
+````bash
+cd job2docker_listener/se_demo/job2docker_listener_0_1/contexts
+nano -w Default.properties
+````
+
+````
+#this is context properties
+#Wed Jun 20 04:00:15 EDT 2018
+job_publish_directory=/home/eost/shared/published_jobs
+job_zip_target_dir=/home/eost/containerized
+working_dir=
+package_command=/home/eost/talend_distro/bin/job2docker
+build_command=/home/eost/talend_distro/job2docker_build/build
+deploy_command=/home/eost/talend_distro/bin/deploy-aws
+job_owner=eost
+````
+
+In the example above the `job_publish_directory` is the shared directory being monitored by the job2docker_listener job.
+
+The `working_dir` can be left blank.  The scripts will use a temporary directory.
+
+Change the package, build, and deploy paths to point to where you cloned this repo.
+
+You need to create The `job_zip_target_dir`.  It is a working directory that will hold the modified job tgz file.
+
+````bash
+mkdir -p /home/eost/containerized
+````
+
+You will also need to set the execute permission on the shell script to start the job.
+
+````bash
+cd ${HOME}/j2d/job2docker_listener
+chmod +x job2docker_listener_run.sh
+./job2docker_listener_run.sh
+````
+
+Start the job2docker_listener process
+
+````
+eost@ubuntu:~/talend_distro/j2d/job2docker_listener$ ./job2docker_listener_run.sh
+log4j:ERROR Could not connect to remote log4j server at [localhost]. We will try again later.
+Listening on /home/eost/shared/published_jobs
+````
+
+You should see output similar to this [job2docker listener console capture](docs/job2docker_listener_console_sample.log)
+
 
 ### Getting Started
 
@@ -160,12 +225,11 @@ The Getting Started section is divided into sections.  Each section has a separa
 
 #### HelloWorld with Job2Docker
 
-See [Job2Docker HelloWorld Step-by-Step](job2docker-hello-world.md) for details
+See [Job2Docker HelloWorld Step-by-Step](docs/job2docker-hello-world.md) for details
 
-1.  Start job2docker_listener
-2.  Build helloworld job to shared directory
-3.  Run helloworld job container
-4.  Run helloworld job container with context parameters
+1.  Build helloworld job to shared directory
+2.  Run helloworld job container
+3.  Run helloworld job container with context parameters
 
 #### Passing Parameters with Implicit Context Load from File
 
