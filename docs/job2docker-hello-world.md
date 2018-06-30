@@ -11,7 +11,7 @@ The jobs directory also includes a simple HelloWorld job.
 Both the exported job and the built job are included for reference.
 Use the `Import Items` capability to load `docker_hello_world.zip` into Studio.
 
-![import job](pictures/import_job.jpg)
+![import job](pictures/import_items.jpg)
 
 Use `Build Job` to generate the zip file in the shared directory previously created.
 
