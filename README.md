@@ -16,11 +16,11 @@ The resulting Docker image requires users to provide the Docker CMD to run the d
 * [Design Overview](#design-overview)
     * [Job2Docker Design](#job2docker-design)
     * [Manifest Design](#manifest-design)
-* [Common Setup](#common-setup)
+* [Setup](#setup)
 * [Getting Started](#getting-started)
     * [HelloWorld with Job2Docker](#helloworld-with-job2docker)
 * [Sample Jobs](#sample-jobs)
-    * [Setup](#setup)
+    * [Configuration](#configuration)
     * [Running the Sample Jobs in Docker](#running-the-sample-jobs-in-docker)
     * [Running the Sample Jobs in AWS](#running-the-sample-jobs-in-aws)
     * [Running the Sample Jobs in Azure](#running-the-sample-jobs-in-azure)
@@ -98,13 +98,13 @@ While not strictly necessary for the job2docker approach (since there is just a 
 7.  Deploy Docker image
 
 
-### Common Setup
+### Setup
 
 #### Install Docker
 
 [Install Docker](https://docs.docker.com/install/linux/docker-ce/centos/) for you Linux environment.
 
-Follow the [Linux post-installation steps] for Docker to create a Docker user group.  This is required for the job2docker process to be able to invoke Docker without sudo.
+Follow the [Linux post-installation steps](https://docs.docker.com/install/linux/linux-postinstall/) for Docker to create a Docker user group.  This is required for the job2docker process to be able to invoke Docker without sudo.
 
 ````bash
 sudo groupadd docker
@@ -224,7 +224,7 @@ But when run locally things need to be configured.  So this adds some complexity
 * (tbd) t4_docker_tmap_customer_aws
 * (tbd) t5_docker_tmap_customer_az
 
-### Setup
+### Configuration
 
 Configuration is externalized outside the SCM directory tree.
 
